@@ -1,0 +1,81 @@
+\documentclass[a4paper,12pt]{report}
+%\setlength{\columnsep}{0.7cm} % space between columns
+\usepackage{filecontents}
+
+
+
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{afterpage}
+\usepackage[left=3cm,right=2cm,top=2 cm,bottom=2.5cm]{geometry}
+\usepackage{tocloft}
+\usepackage{enumerate} 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\usepackage{wrapfig}
+\usepackage{graphicx,tabularx}
+\usepackage{eurosym}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{rotating}
+%\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage[hyphens]{url}
+\usepackage[document]{ragged2e}
+
+\newcommand{\newItemUrl}[1]{\href{#1}{#1}}
+\newcommand{\tabitem}{~~\llap{--}~~}
+\newcommand{\newItem}[1]{\multicolumn{3}{|p{11cm}|}{\tabitem #1}\\}
+
+\newcommand\Tstrut{\rule{0pt}{2.6ex}} 
+\newcommand\Zstrut{\rule{0pt}{3.2ex}} 
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}
+\newcommand{\HRule}{\rule{\textwidth}{0.1mm}} 		
+\usepackage{hyperref}
+					% horizontal line and its thickness
+
+%nuevo comando
+
+\newcommand{\tb}[1]{\textcolor{blue}{#1}}
+\usepackage[english]{cleveref} %con este paquete si usas \cref{label} te pone automáticamente figura,ecuacion..
+
+\newcommand{\refAnexo}[1]{(Anexo \ref{#1})}
+\newcommand{\refFigura}[1]{(Figura \ref{#1})}
+\newcommand{\refApartado}[1]{(Apartado \ref{#1})}
+
+\title{\textbf{Control de drones mediante Reinforment Learning en plataformas reales}}
+\author{Miguel Fernández Cortizas}
+\date{}
+
+\newcommand{\grad}{$^{\circ}$}
+
+\usepackage{dtk-logos} % for BibTeX stylized logo
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	
+	\input{abstract/abstract}
+	\input{introduccion/introduccion}
+	\input{background/background}
+	\input{metodologia/metodologia}
+	\input{hardware/hardware}
+	\input{experimentos/experimentos}
+	\input{discusion/discusion}
+	\input{conclusiones/conclusiones}
+	
+
+	
+	\cfoot{\thepage}
+	\pagenumbering{arabic}
+	
+	\nocite{*}
+	\bibliographystyle{IEEEtran}
+	\bibliography{IEEEabrv,workBibliography}
+\end{document}
