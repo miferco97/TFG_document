@@ -21,6 +21,19 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{ESP32TechnicalReference}
+\BIBentryALTinterwordspacing
+``Esp32 technical reference manual,'' Espressif Systems, 2018. [Online].
+  Available:
+  \url{https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ESP32DataSheet}
+\BIBentryALTinterwordspacing
+``Esp32 datasheet,'' Espressif Systems, 2019. [Online]. Available:
+  \url{https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sutton2018reinforcement}
 R.~S. Sutton and A.~G. Barto, \emph{Reinforcement learning: An
   introduction}.\hskip 1em plus 0.5em minus 0.4em\relax MIT press, 2018.

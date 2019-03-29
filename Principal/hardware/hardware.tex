@@ -2,7 +2,7 @@
 
 \section{Autopiloto}
 
-En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hacerlo pilotable se denomina la controladora de vuelo o el Autopiloto. Existe una gran variedad de controladoras en el mercado, pero para este trabajo se ha diseñado una controladora propia con el fin de poder tener acceso a todos los sensores y a implementar el algoritmo de control de forma óptima. El autopiloto consta de 3 partes diferenciadas: la electrónica de potencia, el microprocesador y los sensores. A continuación \tb{se tratará} sobre estas partes con más detalle.\\
+En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hacerlo pilotable se denomina la controladora de vuelo o el Autopiloto. Existe una gran variedad de controladoras en el mercado, pero para este trabajo se ha diseñado una controladora propia con el fin de poder tener acceso a todos los sensores y a implementar el algoritmo de control de forma óptima. El autopiloto consta de 3 partes diferenciadas: la electrónica de potencia, el microcontrolador y los sensores. A continuación \tb{se tratará} sobre estas partes con más detalle.\\
 
 
 \tb{Estaría bien un par de imágenes de la PCB (anverso y reverso)}\\
@@ -14,14 +14,44 @@ Con el fin de poder gestionar la potencia entregada por las baterias a la placa 
 
 \subsubsection{Interruptor de potencia}
 
-Los motores del dron pueden llegar a consumir 12 Amperios cada uno, lo que los cuatro motores pueden llegar a consumir 48 Amperios. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de tipo P por el que pueden circular hasta 100 Amperios para que abra o cierre la corriente. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.\\
+Los motores del dron pueden llegar a consumir 12 Amperios cada uno, lo que los cuatro motores pueden llegar a consumir 48 Amperios. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de canal P por el que pueden circular hasta 100 Amperios, con el fin de abrir o cerrar el paso de corrriente desde las baterías al resto de la placa. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.\\
 
-Cuando se cierra el interruptor se alimenta directamente a los motores y al regulador de tensión.
+Cuando se cierra el interruptor se alimenta directamente al ESC y al regulador de tensión.
 
 
 \subsubsection{Regulador a 3.3V}
 
-La eléctronica digital de la PCB se alimenta y emplea lógica a 3.3 Voltios, por lo que no la podemos conectar a las baterías de 11.1 Voltios.  Para adecuar la tensión se ha escogido un regulador Step-down de tipo Buck \tb{¿explico como funciona un convertidor Buck?}. El circuito integrado que se encarga de conmutar la fuente es el chip AP3211.
+La eléctronica digital de la PCB se alimenta y emplea lógica a 3.3 Voltios, por lo que no la podemos conectar a las baterías de 11.1 Voltios.  Para adecuar la tensión se ha escogido un regulador Step-down de tipo Buck \tb{(¿explico como funciona un convertidor Buck?)}. El circuito integrado que se encarga de conmutar la fuente es el chip AP3211.
 
+
+\subsection{El microcontrolador (ESP32)}
+
+El microcontrolador por el que se ha optado para este Autopiloto es el ESP32, un microcontrolador de doble núcleo con dos CPUs XTensaL6 con arquitectura Harvard \cite{ESP32TechnicalReference}. El ESP32 tiene una frecuencia de reloj de hasta 240MHz ,y cuenta con una antena WiFi a 2,4 GHz y conexión Bluetooth 4.2 BLE \cite{ESP32DataSheet}. Los motivos por los que se ha decidido emplear este microcontrolador son:
+\begin{itemize}
+	\item Elevada frecuencia de procesamiento y dos nucleos de procesamiento.
+	\item Antena WiFi incorporada.
+	\item Bajo consumo de potencia.
+\end{itemize}
+
+\par Para poder programar el microcontrolador se utiliza un convertidor USB (Bus Serie Universal) a UART (Transmisor-Receptor Asíncrono Universal) que permite conectar por USB el microcontrolador para poder programarlo y hacer depuración utilizando comunicaciones Serial. El chip que realiza esta funcion es el CP2104. 
+
+\subsection{Sensores}
+La principal fuente de información procedente del exterior que recibe una controladora de vuelo se la proporcionan las unidades de medición inercial (IMU). Las IMUs son dispositivos electrónicos que son capaces de medir aceleraciones, velocidades y detectar la orientación de un sistema. El principal problema de estos sensores es que suelen sufrir error acumulativo.
+\tb{¿profundizo en los sensores MEMS (imus electrónicas )?}\\
+
+
+\par Otros sensores utilizados frecuentemente en los autopilotos son brújulas (se encuentran integrados en la IMU para corregir errores de orientación) y barómetros (para estimar la altitud a la que se encuentra el dron).\\
+\medskip
+
+Nuestro autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para conseguir una mejor estimación del estado del cuadricóptero:
+
+\begin{enumerate}
+	\item \textbf{BNO 055 (BOSCH)}: El circuito integrado de Bosch es un sensor "inteligente" que incluye los sensores y la fusión de las lecturas de los distintos sensores en un único componente.
+	Este sensor nos proporciona lecturas con muy poca deriva en las medidas de la IMU. \tb {argumentar un poco mejor}
+	
+	\item \textbf{MPU 9250 (TDK InvenSense)}: El sensor inercial de TDK tiene una mejor respuesta ante variaciones rápidas. \tb{Continuar}
+	
+	\item \textbf{BMP388 (BOSCH)}:
+\end{enumerate}
 
 
