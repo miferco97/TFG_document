@@ -40,6 +40,19 @@
 \usepackage{hyperref}
 					% horizontal line and its thickness
 
+
+\titleformat
+{\chapter} % command
+[hang] % shape
+{  \normalfont\bfseries\Huge} % format
+{} % label
+{0.5ex} % sep
+{
+%	\centering 
+} % before-code
+[] % after-code
+
+
 %nuevo comando
 
 \newcommand{\tb}[1]{\textcolor{blue}{#1}}
@@ -55,6 +68,7 @@
 
 \newcommand{\grad}{$^{\circ}$}
 
+
 \usepackage{dtk-logos} % for BibTeX stylized logo
 \begin{document}
 	
@@ -69,8 +83,6 @@
 	\input{experimentos/experimentos}
 	\input{discusion/discusion}
 	\input{conclusiones/conclusiones}
-	
-
 	
 	\cfoot{\thepage}
 	\pagenumbering{arabic}

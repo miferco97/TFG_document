@@ -1,0 +1,27 @@
+\chapter{Hardware}
+
+\section{Autopiloto}
+
+En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hacerlo pilotable se denomina la controladora de vuelo o el Autopiloto. Existe una gran variedad de controladoras en el mercado, pero para este trabajo se ha diseñado una controladora propia con el fin de poder tener acceso a todos los sensores y a implementar el algoritmo de control de forma óptima. El autopiloto consta de 3 partes diferenciadas: la electrónica de potencia, el microprocesador y los sensores. A continuación \tb{se tratará} sobre estas partes con más detalle.\\
+
+
+\tb{Estaría bien un par de imágenes de la PCB (anverso y reverso)}\\
+
+
+\subsection{Fase de Potencia}
+
+Con el fin de poder gestionar la potencia entregada por las baterias a la placa y a los motores se ha diseñado una etapa de potencia en la que se debe mencionar dos partes: el interruptor de potencia y el regulador a 3.3 Voltios.
+
+\subsubsection{Interruptor de potencia}
+
+Los motores del dron pueden llegar a consumir 12 Amperios cada uno, lo que los cuatro motores pueden llegar a consumir 48 Amperios. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de tipo P por el que pueden circular hasta 100 Amperios para que abra o cierre la corriente. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.\\
+
+Cuando se cierra el interruptor se alimenta directamente a los motores y al regulador de tensión.
+
+
+\subsubsection{Regulador a 3.3V}
+
+La eléctronica digital de la PCB se alimenta y emplea lógica a 3.3 Voltios, por lo que no la podemos conectar a las baterías de 11.1 Voltios.  Para adecuar la tensión se ha escogido un regulador Step-down de tipo Buck \tb{¿explico como funciona un convertidor Buck?}. El circuito integrado que se encarga de conmutar la fuente es el chip AP3211.
+
+
+
