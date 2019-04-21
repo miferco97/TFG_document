@@ -1,15 +1,16 @@
 \BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Metodolog\355a}{}% 3
-\BOOKMARK [0][-]{chapter.4}{Hardware}{}% 4
-\BOOKMARK [1][-]{section.4.1}{Frame*}{chapter.4}% 5
-\BOOKMARK [1][-]{section.4.2}{ESC* y motores}{chapter.4}% 6
-\BOOKMARK [1][-]{section.4.3}{Baterias}{chapter.4}% 7
-\BOOKMARK [1][-]{section.4.4}{Autopiloto}{chapter.4}% 8
-\BOOKMARK [2][-]{subsection.4.4.1}{Fase de Potencia}{section.4.4}% 9
-\BOOKMARK [2][-]{subsection.4.4.2}{El microcontrolador \(ESP32\)}{section.4.4}% 10
-\BOOKMARK [2][-]{subsection.4.4.3}{Sensores}{section.4.4}% 11
-\BOOKMARK [1][-]{section.4.5}{Otros \(Receptora radio\)}{chapter.4}% 12
-\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 13
-\BOOKMARK [0][-]{chapter.6}{Discusi\363n}{}% 14
-\BOOKMARK [0][-]{chapter.7}{Conclusiones y trabajo futuro}{}% 15
+\BOOKMARK [0][-]{chapter.3}{Reinforcement learning}{}% 3
+\BOOKMARK [0][-]{chapter.4}{Metodolog\355a}{}% 4
+\BOOKMARK [0][-]{chapter.5}{Hardware}{}% 5
+\BOOKMARK [1][-]{section.5.1}{Frame*}{chapter.5}% 6
+\BOOKMARK [1][-]{section.5.2}{ESC* y motores}{chapter.5}% 7
+\BOOKMARK [1][-]{section.5.3}{Baterias}{chapter.5}% 8
+\BOOKMARK [1][-]{section.5.4}{Autopiloto}{chapter.5}% 9
+\BOOKMARK [2][-]{subsection.5.4.1}{Fase de Potencia}{section.5.4}% 10
+\BOOKMARK [2][-]{subsection.5.4.2}{El microcontrolador \(ESP32\)}{section.5.4}% 11
+\BOOKMARK [2][-]{subsection.5.4.3}{Sensores}{section.5.4}% 12
+\BOOKMARK [1][-]{section.5.5}{Otros \(Receptora radio\)}{chapter.5}% 13
+\BOOKMARK [0][-]{chapter.6}{Experimentos}{}% 14
+\BOOKMARK [0][-]{chapter.7}{Discusi\363n}{}% 15
+\BOOKMARK [0][-]{chapter.8}{Conclusiones y trabajo futuro}{}% 16

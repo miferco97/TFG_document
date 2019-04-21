@@ -38,7 +38,7 @@ El microcontrolador por el que se ha optado para este Autopiloto es el ESP32, un
 	\item Bajo consumo de potencia.
 \end{itemize}
 
-\par Para poder programar el microcontrolador se utiliza un convertidor USB (Bus Serie Universal) a UART (Transmisor-Receptor Asíncrono Universal) que permite conectar por USB el microcontrolador para poder programarlo y hacer depuración utilizando comunicaciones Serial. El chip que realiza esta funcion es el CP2104. 
+\par Para poder programar el microcontrolador se utiliza un convertidor USB (Bus Serie Universal) a UART (Transmisor-Receptor Asíncrono Universal) que permite conectar por USB el microcontrolador para poder programarlo y hacer depuración utilizando comunicaciones Serial. El chip que realiza esta funcion es el CP2104.
 
 \subsection{Sensores}
 La principal fuente de información procedente del exterior que recibe una controladora de vuelo se la proporcionan las unidades de medición inercial (IMU). Las IMUs son dispositivos electrónicos que son capaces de medir aceleraciones, velocidades y detectar la orientación de un sistema. El principal problema de estos sensores es que suelen sufrir error acumulativo.
@@ -52,9 +52,9 @@ Nuestro autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro p
 
 \begin{enumerate}
 	\item \textbf{BNO 055 (BOSCH)}: El circuito integrado de Bosch es un sensor "inteligente" que incluye los sensores y la fusión de las lecturas de los distintos sensores en un único componente.
-	Este sensor nos proporciona lecturas con muy poca deriva en las medidas de la IMU. \tb {argumentar un poco mejor}
+	Este sensor nos proporciona estimaciones del estado con muy poca deriva. \tb {argumentar un poco mejor}
 	
-	\item \textbf{MPU 9250 (TDK InvenSense)}: El sensor inercial de TDK tiene una mejor respuesta ante variaciones rápidas. \tb{Continuar}
+	\item \textbf{MPU 9250 (TDK InvenSense)}: El sensor inercial de TDK tiene una mejor respuesta dinámica, aunque la fusión de las lecturas del sensor se realiza externamente en el microcontrolador del dron.
 	
 	\item \textbf{BMP388 (BOSCH)}:
 \end{enumerate}
