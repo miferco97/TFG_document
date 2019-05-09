@@ -21,6 +21,36 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{kim2004autonomous}
+H.~J. Kim, M.~I. Jordan, S.~Sastry, and A.~Y. Ng, ``Autonomous helicopter
+  flight via reinforcement learning,'' in \emph{Advances in neural information
+  processing systems}, 2004, pp. 799--806.
+
+\bibitem{ng2006autonomous}
+A.~Y. Ng, A.~Coates, M.~Diel, V.~Ganapathi, J.~Schulte, B.~Tse, E.~Berger, and
+  E.~Liang, ``Autonomous inverted helicopter flight via reinforcement
+  learning,'' in \emph{Experimental robotics IX}.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer, 2006, pp. 363--372.
+
+\bibitem{dierks2010output}
+T.~Dierks and S.~Jagannathan, ``Output feedback control of a quadrotor uav
+  using neural networks,'' \emph{IEEE transactions on neural networks},
+  vol.~21, no.~1, pp. 50--66, 2010.
+
+\bibitem{hwangbo2017control}
+J.~Hwangbo, I.~Sa, R.~Siegwart, and M.~Hutter, ``Control of a quadrotor with
+  reinforcement learning,'' \emph{IEEE Robotics and Automation Letters},
+  vol.~2, no.~4, pp. 2096--2103, 2017.
+
+\bibitem{koch2019reinforcement}
+W.~Koch, R.~Mancuso, R.~West, and A.~Bestavros, ``Reinforcement learning for
+  uav attitude control,'' \emph{ACM Transactions on Cyber-Physical Systems},
+  vol.~3, no.~2, p.~22, 2019.
+
+\bibitem{sutton2018reinforcement}
+R.~S. Sutton and A.~G. Barto, \emph{Reinforcement learning: An
+  introduction}.\hskip 1em plus 0.5em minus 0.4em\relax MIT press, 2018.
+
 \bibitem{ESP32TechnicalReference}
 \BIBentryALTinterwordspacing
 ``Esp32 technical reference manual,'' Espressif Systems, 2018. [Online].
@@ -33,9 +63,5 @@
 ``Esp32 datasheet,'' Espressif Systems, 2019. [Online]. Available:
   \url{https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf}
 \BIBentrySTDinterwordspacing
-
-\bibitem{sutton2018reinforcement}
-R.~S. Sutton and A.~G. Barto, \emph{Reinforcement learning: An
-  introduction}.\hskip 1em plus 0.5em minus 0.4em\relax MIT press, 2018.
 
 \end{thebibliography}
