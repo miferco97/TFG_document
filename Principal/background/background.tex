@@ -1,18 +1,31 @@
 \chapter{Background}
 
+\section{\tb{Reinforcement learning}}
 
-\chapter{\tb{Reinforcement learning}}
-El aprendizaje por refuerzo o \textit{Reinforcement learning} es un área del aprendizaje automático o \textit{Machine Learning} en el que un agente interactua con un medio, el cual le da recompensas en funcion de sus acciones.
+El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018reinforcement} es un área del aprendizaje 
+automático o \textit{Machine Learning} en el que un agente interactúa con un entorno buscando la mejor acción a realizar en función de su estado actual.
 
-Elementos del Reinforcement Learning \cite{sutton2018reinforcement}
+Se diferencia de otras técnicas de aprendizaje automático es su enfoque orientado a la interacción directa con el entorno, sin basarse en un modelo completo del entorno o en un conjunto de ejemplos supervisados.
+
+El aprendizaje por refuerzo emplea el marco formal de los procesos de decisión de Markov (\textit{MDP}) en los cuales para definir la interacción entre en agente y el entorno en términos de estados, acciones y recompensas.
+
+Un proceso de decisión de Markov (\textit{MDP})
+
+
+
+ Estos procesos de decisión incluyen causalidad, la existencia de recompensas explícitas \tb{a sense of uncertanty and nondeterminism}
+
+Además del agente y el entorno se pueden identificar cuatro elementos principales más en un sistema de aprendizaje con refuerzo:
+
 \begin{itemize}
+	\item[$\bullet$] \textbf{Política (\textit{Policy})}. Define el conjunto de acciones que debe realizar el agente para conseguir maximizar su recompensa en función su estado, el cuál es percibido a través del entorno. La \textit{policy} constituye el núcleo del agente y nos permite determinar su comportamiento. Estas políticas pueden ser estocásticas.
 	
+	\item[$\bullet$] \textbf{Recompensa (\textit{Reward signal})}. 
+	Define el objetivo del agente en un problema de aprendizaje por refuerzo. En cada salto de tiempo (\textit{step}) el agente recibe una recompensa por parte del entorno (un número). 
 	
-	\item[$\bullet$] \textbf{Policy}. Define el comportamiento que va 
+	El objetivo del agente es maximizar su recompensa a largo plazo.
 	
-	\item[$\bullet$] \textbf{Policy}. Define el comportamiento que va 
-	
-	\item[$\bullet$] \textbf{Policy}. Define el comportamiento que va 
+	\item[$\bullet$] \textbf{Función de valor (\textit{Value function})}. Define el comportamiento que va 
 	
 	\item[$\bullet$] \textbf{Policy}. Define el comportamiento que va 
 	

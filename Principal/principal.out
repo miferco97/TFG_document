@@ -1,17 +1,20 @@
 \BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Estado del arte}{}% 2
 \BOOKMARK [0][-]{chapter.3}{Background}{}% 3
-\BOOKMARK [0][-]{chapter.4}{Reinforcement learning}{}% 4
-\BOOKMARK [0][-]{chapter.5}{Metodolog\355a}{}% 5
-\BOOKMARK [0][-]{chapter.6}{Hardware}{}% 6
-\BOOKMARK [1][-]{section.6.1}{Frame*}{chapter.6}% 7
-\BOOKMARK [1][-]{section.6.2}{ESC* y motores}{chapter.6}% 8
-\BOOKMARK [1][-]{section.6.3}{Baterias}{chapter.6}% 9
-\BOOKMARK [1][-]{section.6.4}{Autopiloto}{chapter.6}% 10
-\BOOKMARK [2][-]{subsection.6.4.1}{Fase de Potencia}{section.6.4}% 11
-\BOOKMARK [2][-]{subsection.6.4.2}{El microcontrolador \(ESP32\)}{section.6.4}% 12
-\BOOKMARK [2][-]{subsection.6.4.3}{Sensores}{section.6.4}% 13
-\BOOKMARK [1][-]{section.6.5}{Otros \(Receptora radio\)}{chapter.6}% 14
-\BOOKMARK [0][-]{chapter.7}{Experimentos}{}% 15
-\BOOKMARK [0][-]{chapter.8}{Discusi\363n}{}% 16
-\BOOKMARK [0][-]{chapter.9}{Conclusiones y trabajo futuro}{}% 17
+\BOOKMARK [1][-]{section.3.1}{Reinforcement learning}{chapter.3}% 4
+\BOOKMARK [0][-]{chapter.4}{Metodolog\355a \(Problem Formulation\)}{}% 5
+\BOOKMARK [1][-]{section.4.1}{Dise\361o del estado}{chapter.4}% 6
+\BOOKMARK [1][-]{section.4.2}{Dise\361o de las acciones}{chapter.4}% 7
+\BOOKMARK [1][-]{section.4.3}{Dise\361o de la funci\363n de recompensa}{chapter.4}% 8
+\BOOKMARK [0][-]{chapter.5}{Hardware}{}% 9
+\BOOKMARK [1][-]{section.5.1}{Cuadro}{chapter.5}% 10
+\BOOKMARK [1][-]{section.5.2}{Motores y variadores\(ESC\)}{chapter.5}% 11
+\BOOKMARK [1][-]{section.5.3}{Baterias}{chapter.5}% 12
+\BOOKMARK [1][-]{section.5.4}{Autopiloto}{chapter.5}% 13
+\BOOKMARK [2][-]{subsection.5.4.1}{Fase de Potencia}{section.5.4}% 14
+\BOOKMARK [2][-]{subsection.5.4.2}{El microcontrolador \(ESP32\)}{section.5.4}% 15
+\BOOKMARK [2][-]{subsection.5.4.3}{Sensores}{section.5.4}% 16
+\BOOKMARK [1][-]{section.5.5}{Banco de pruebas}{chapter.5}% 17
+\BOOKMARK [0][-]{chapter.6}{Experimentos}{}% 18
+\BOOKMARK [0][-]{chapter.7}{Discusi\363n}{}% 19
+\BOOKMARK [0][-]{chapter.8}{Conclusiones y trabajo futuro}{}% 20

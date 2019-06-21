@@ -1,1 +1,32 @@
-\chapter{Metodología}
+\chapter{Metodología (\tb{Problem Formulation})}
+El objetivo del trabajo es estabilizar un UAV usando algoritmos de control basados en una red neuronal entrenada empleando algoritmos de aprendizaje automático. Los principales componentes que intervienen en el agente son el estado, las acciones y la recompensa, para cada problema hay un conjunto que estados, acciones y funciones de recompensa que pueden llevar a que el agente aprenda.
+
+\section{Diseño del estado}
+ El UAV cuenta con 2 IMUs para poder obtener datos sobre su estado. Se quiere estabilizar el dron en una orientación concreta, por lo tanto el estado que se ha diseñado consta de 6 parámetros:
+\begin{equation}
+	S=(\varphi,\theta,\psi,\dot\varphi,\dot\theta,\dot\psi) \qquad\qquad \varphi,\theta,\psi,\dot\varphi,\dot\theta,\dot\psi \in [-1,1]
+\end{equation} 
+
+Siendo $\varphi,\theta$ y $\psi$ los ángulos de alabeo, cabezeo y guiñada del dron  y $\dot\varphi,\dot\theta$ y $\dot\psi$ sus respectivas velocidades. Para favorecer la convergencia del aprendizaje, se ha normalizado el estado para que todas sus componentes estén comprendidas dentro del intervalo $[-1,1]$.
+
+Los ángulos proporcionan información sobre el estado actual y la velocidad angular sobre los estados pasados, es decir, proporciona cierta información temporal. 
+
+Para obtener la estimación de orientación se han fusionado las medidas de las 2 IMUs del autopiloto utilizando un filtro complementario, para así conseguir una buena estimación estática junto con una buena respuesta dinámica.
+\section{Diseño de las acciones}
+Al trabajar con un quadricóptero podemos actuar sobre la potencia que se le entrega a los motores, por lo que cada acción que realice el agente constará de 4 campos:
+\begin{equation}
+	A = (T_1,T_2,T_3,T_4) \qquad\qquad T_i \in [-1,1]
+\end{equation}
+Siendo $T_i$ la potencia \textit{(Thrust)} normalizada entregada a cada motor. Un valor de $T_1=-1$ significa que el motor 1 estaría girando a la mínima potencia permitida y un valor de $T_1=1$ corresponde a que el motor 1 estaría girando a la máxima potencia.\\
+
+\tb{\huge completar con la transformacion del mundo -1,1 al mundo 1000,2200 $\mu S$}
+
+\section{Diseño de la función de recompensa}
+La función de recompensa rige la forma en la que la red va a configurar sus pesos, por lo tanto, cómo se va a comportar el agente en un estado determinado.
+Para conseguir que el agente responda de la forma deseada se han probado una gran variedad de funciones de \textit{reward}, optando finalmente por:
+\begin{equation}
+	%R_t = \left( 1-\frac{|\varphi - \varphi_{ref}| + |\theta-\theta_{ref}| + |\psi- \psi_{ref}|}{3}\right)^3
+	R_t = \left( 1-\frac{|\varphi|  + |\theta| + |\psi|}{3}\right)^3
+\end{equation}
+Con esta funcion de recompensa \tb{BLA BLA BLA}
+

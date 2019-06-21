@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt]{report}
 %\setlength{\columnsep}{0.7cm} % space between columns
 \usepackage{filecontents}
-
+\usepackage{gensymb}
 
 
 \usepackage{lipsum}
@@ -28,6 +28,10 @@
 \usepackage{booktabs}
 \usepackage[hyphens]{url}
 \usepackage[document]{ragged2e}
+\usepackage{subcaption}
+
+\usepackage{tikz}
+\usepackage[cuteinductors,americanvoltages,americancurrents,american]{circuitikz}
 
 \newcommand{\newItemUrl}[1]{\href{#1}{#1}}
 \newcommand{\tabitem}{~~\llap{--}~~}
@@ -62,7 +66,7 @@
 \newcommand{\refFigura}[1]{(Figura \ref{#1})}
 \newcommand{\refApartado}[1]{(Apartado \ref{#1})}
 
-\title{\textbf{Control de drones mediante Reinforment Learning en plataformas reales}}
+\title{\textbf{Control de drones mediante Reinforcement Learning en plataformas reales}}
 \author{Miguel Fernández Cortizas}
 \date{}
 
