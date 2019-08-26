@@ -1,6 +1,42 @@
-\chapter{Background}
+\chapter{Fundamentos teóricos}
 
-\section{\tb{Reinforcement learning}}
+\section{Control clásico}
+
+
+Una vez conseguida una estimación del estado en el instante $t$ ,  $S_t$ se necesita emplear un algoritmo de control que genere	las acciones $A_t$ correspondientes para llegar al estado $S_{t'}$ deseado de forma óptima.
+
+
+\tb{BUCLE DE CONTROL}
+
+
+Existe una gran cantidad de controladores clásicos que se pueden emplear para generar estos comandos, por ejemplo: PID o LQR.
+En este trabajo se han explorado 2 controladores: el primero de ellos se trata de un controlador clásico PID y el segundo consiste en un controlador no lineal modelizado por una red neuronal.
+
+\subsection{Controlador PID}
+
+El controlador PID es un método de control clásico basado en generar una salida $A_t$ basada en el error $e_t$, es decir, la diferencia entre el estado deseado $S_{ref}$ y el estado actual $S_t$.
+
+\begin{equation}
+e_t= S_{ref} - S_t
+\end{equation}
+
+La salida del controlador PID se contruye sumando la contribución de 3 términos:
+\begin{enumerate}
+	\item \textbf{Parte proporcional (P)}
+	La parte proporcional, como su propio nombre indica, crece de forma proporcional con el error $e_t$, según la constante de proporcionalidad $K_p$
+	
+	\begin{equation}
+	P_{out}=K_p \cdot e_t
+	\end{equation} 
+	\item \textbf{Parte integral (I)}
+	La parte integral	
+	
+\end{enumerate}	
+
+
+\section{Redes neuronales}
+
+\section{Aprendizaje por refuerzo}
 
 El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018reinforcement} es un área del aprendizaje 
 automático o \textit{Machine Learning} en el que un agente interactúa con un entorno buscando la mejor acción a realizar en función de su estado actual.
@@ -9,24 +45,27 @@ Se diferencia de otras técnicas de aprendizaje automático es su enfoque orient
 
 El aprendizaje por refuerzo emplea el marco formal de los procesos de decisión de Markov (\textit{MDP}) en los cuales para definir la interacción entre en agente y el entorno en términos de estados, acciones y recompensas.
 
-Un proceso de decisión de Markov (\textit{MDP})
+Un proceso de decisión de Markov (\textit{MDP}) 
 
-
-
- Estos procesos de decisión incluyen causalidad, la existencia de recompensas explícitas \tb{a sense of uncertanty and nondeterminism}
+Estos procesos de decisión incluyen causalidad, la existencia de recompensas explícitas \tb{a sense of uncertanty and nondeterminism}
 
 Además del agente y el entorno se pueden identificar cuatro elementos principales más en un sistema de aprendizaje con refuerzo:
 
 \begin{itemize}
-	\item[$\bullet$] \textbf{Política (\textit{Policy})}. Define el conjunto de acciones que debe realizar el agente para conseguir maximizar su recompensa en función su estado, el cuál es percibido a través del entorno. La \textit{policy} constituye el núcleo del agente y nos permite determinar su comportamiento. Estas políticas pueden ser estocásticas.
+	\item[$\bullet$] \textbf{Política} (Proveniente del termino anglosajón \textit{policy}, el cual es el término empleado en el estado del arte). Define el conjunto de acciones que debe realizar el agente para conseguir maximizar su recompensa en función su estado, el cuál es percibido a través del entorno. La \textit{policy} constituye el núcleo del agente y nos permite determinar su comportamiento. Estas políticas pueden ser estocásticas.
 	
-	\item[$\bullet$] \textbf{Recompensa (\textit{Reward signal})}. 
+	\item[$\bullet$] \textbf{Recompensa}. 
 	Define el objetivo del agente en un problema de aprendizaje por refuerzo. En cada salto de tiempo (\textit{step}) el agente recibe una recompensa por parte del entorno (un número). 
 	
 	El objetivo del agente es maximizar su recompensa a largo plazo.
 	
-	\item[$\bullet$] \textbf{Función de valor (\textit{Value function})}. Define el comportamiento que va 
+	\item[$\bullet$] \textbf{Función de valor}. Define el comportamiento que va 
 	
 	\item[$\bullet$] \textbf{Policy}. Define el comportamiento que va 
 	
 \end{itemize}
+
+\subsection{DQN}
+\subsection{DDPG}
+\subsection{TRPO}
+\subsection{PPO}

@@ -1,0 +1,61 @@
+\chapter{Software}
+
+Durante el transcurso de este trabajo se ha dividido el desarrollo del software en varias partes, en las cuales se profundizará a continuación.
+
+\section{Software del Autopiloto}
+	El autopiloto es la parte del multirrotor que se encarga de generar las acciones de control o comandos, que permitan que el dron llegue a un determinado estado.
+	Para generar esas acciones de control, el autopiloto estima el estado de la aeronave en cada instante mediante las lecturas de las IMUs.
+
+\subsection{Estimación del Estado}
+	Para estimar el estado, el autopiloto toma las medidas procedentes de las 2 IMUs a través del protocolo I2C con una frecuencia máxima de 100Hz.
+	Posteriormente fusiona las medidas de ambos sensores empleando un filtro complementario y un filtro paso bajo para reducir el ruido de alta frecuencia de los sensores.
+	Con este método se consigue estimar el estado deseado $S_t=(\varphi,\theta,\psi,\dot\varphi,\dot\theta,\dot\psi)$
+	consiguiendo minimizar la deriva de la estimación (lecturas BNO055 muy estables) sin perder la reactividad de las estimaciones que proporciona el MPU6050.
+	
+	\tb{Profundizo en el filtrado?}
+
+
+\subsection{Generacion de comandos}
+
+  \large OFFBOARD -> Comunicacion a traves de un socket ROS\\
+  
+  	ONBOARD -> Algoritmo interno a Freq variable 
+
+
+
+
+\section{Entorno de simulación}
+
+\tb{\Large drones peligrosos}
+
+
+
+Debido a la naturaleza del apredizaje por refuerzo, este requiere de la interacción de un agente con un entorno para que el agente aprenda que acciones son las que debe tomar en cada estado. Esto significa que al comienzo del entrenamiento el agente realiza acciones aleatorias para poder explorar cuales son las que le proporcionan una recompensa mayor.
+
+Debido a esta forma de explorar, el agente requiere de una gran cantidad de pruebas, de ensayo y error, hasta que consigue aprender, por lo que no es conveniente realizar todas estas iteraciones en un modelo real.
+
+Por estas razones se necesita de un entorno de simulación para poder validar los algoritmos y poder generar modelos entrenados en simulación sin deteriorar el equipo real. Además el entorno en simulación te permite entrenar distintos agentes simultáneamente y reducir los tiempos de entrenamiento.
+
+Para el entorno de simulación nos hemos basado en Gym \tb{citar},una librería escrita en Python y desarrollada por la compañía OpenAI, que permite desarrollar y comparar algoritmos de aprendizaje por refuerzo. Esta librería te permite generar un entorno con el cual interactúe el agente, sin importar la implementación de éste, permitiendo comparar el rendimiento de distintos agentes sobre el mismo entorno.
+\tb{IMAGEN GYM}
+
+Como entorno se ha partido del entorno GymFC ha partido del entorno de simulación GymFC, desarrollado por William Koch et al. \cite{koch2019reinforcement}.
+Este es un entorno de simulación utiliza Gazebo 9, un entorno de simulación 3D de código abierto ampliamente utilizado en el campo de la robótica. En este entorno se simula el comportamiento de un multirrotor, concretamente el de un modelo del cuadricóptero IRIS.
+\tb{imagen GYMFC}
+
+Para acercar la simulación a la configuración de los experimentos que se realizarían posteriormente en la plataforma real, se ha situado una articulación en su centro de gravedad que fija la posición de su centro pero permite rotar el numero de grados de libertad que se predefina.
+ 
+Para probar distintos agentes con distintos algoritmos se han empleado la implementación de los algoritmos \textit{state of the art}, del repositorio de GitHub \textit{Stable-Baselines} \cite{stable-baselines}. Inicialmente se comenzó empleando las \textit{Baselines} de OpenAI \cite{OpenAIbaselines} pero se decidió cambiar a las \textit{Stable Baselines} por la limpieza del código y la facilidad para realizar experimentos con diversos algoritmos e hiperparámetros.
+\\
+
+\tb{¿hablo un poco sobre transfer learning?}
+
+\section{Pruebas Reales}
+
+Para las pruebas reales se han empleado
+
+Ademas se ha empleado ROS Melodic para conectar este entorno con el dron real.
+
+\section{Descripción del equipo}
+Para el desarrollo del trabajo se ha empleado un portatil MSI-GE62 empleando Windows 10 para el desarrollo CAD y Ubuntu 18.04 LTS para el resto de las tareas. El equipo cuenta con 16GB de RAM DDR4, un procesador Intel i7-6700HQ de 8 núcleos a 2.60GHz y una GPU GeForce GTX 970M con 3GB de memoria dedicada.
+

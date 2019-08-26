@@ -1,13 +1,14 @@
 \chapter{Metodología (\tb{Problem Formulation})}
+
 El objetivo del trabajo es estabilizar un UAV usando algoritmos de control basados en una red neuronal entrenada empleando algoritmos de aprendizaje automático. Los principales componentes que intervienen en el agente son el estado, las acciones y la recompensa, para cada problema hay un conjunto que estados, acciones y funciones de recompensa que pueden llevar a que el agente aprenda.
 
 \section{Diseño del estado}
- El UAV cuenta con 2 IMUs para poder obtener datos sobre su estado. Se quiere estabilizar el dron en una orientación concreta, por lo tanto el estado que se ha diseñado consta de 6 parámetros:
+ El autopiloto cuenta con 2 IMUs para poder obtener datos sobre su estado. Se quiere estabilizar el dron en una orientación concreta, por lo tanto el estado que se ha diseñado consta de 6 parámetros:
 \begin{equation}
 	S=(\varphi,\theta,\psi,\dot\varphi,\dot\theta,\dot\psi) \qquad\qquad \varphi,\theta,\psi,\dot\varphi,\dot\theta,\dot\psi \in [-1,1]
 \end{equation} 
 
-Siendo $\varphi,\theta$ y $\psi$ los ángulos de alabeo, cabezeo y guiñada del dron  y $\dot\varphi,\dot\theta$ y $\dot\psi$ sus respectivas velocidades. Para favorecer la convergencia del aprendizaje, se ha normalizado el estado para que todas sus componentes estén comprendidas dentro del intervalo $[-1,1]$.
+Siendo $\varphi,\theta$ y $\psi$ los ángulos de alabeo (\textit{roll}), cabezeo (\textit{pitch}) y guiñada (\textit{yaw}) del dron  y $\dot\varphi,\dot\theta$ y $\dot\psi$ sus respectivas velocidades. Para favorecer la convergencia del aprendizaje, se ha normalizado el estado para que todas sus componentes estén comprendidas dentro del intervalo $[-1,1]$.
 
 Los ángulos proporcionan información sobre el estado actual y la velocidad angular sobre los estados pasados, es decir, proporciona cierta información temporal. 
 

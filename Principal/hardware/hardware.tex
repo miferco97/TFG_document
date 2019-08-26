@@ -3,40 +3,62 @@ Un cuadricóptero o cuadrirrotor es una aeronave no tripulada (UAV) que está pr
 
 Un cuadricóptero convencional cuenta con: un chasis o \textit{frame} que lo sustenta, cuatro motores y la electrónica necesaria para controlarlos, una controladora de vuelo que lo comanda y baterías que le proporcionan energía.
 
-A continuación se detallará como són las distintas partes del dron que se ha fabricado.
+A continuación se detallará como son las distintas partes del dron que se ha fabricado.
+
 \section{Cuadro}
-El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabricadas mediante impresión 3D. Cuenta con un nivel para alojar los motores, la receptora de radio y la controladora de vuelo y otro nivel para la batería. Todas las piezas de PLA son de diseño propio y se han realizado mediante software CAD.\\
+El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabricadas mediante impresión 3D de diseño propio. La estructura básica está formada por 5 conjuntos de piezas distintos:
+\begin{itemize}
+	\item[$\bullet$] \textbf{Portamotores}: son las piezas donde se alojan los motores. Para conseguir una buena fijacion los motores se atornillan a los portamotores empleando 4 tornillos dispuestos seǵun los vértices de un rombo.
+	
+	\tb{Imagen}
+	
+	\item [$\bullet$] \textbf{Brazos}: se encargan de unir los portamotores con el \textit{núcleo} de la estructura. En este diseño, los brazos consisten en perfiles de aluminio de sección cuadrada de 8mm de lado.
+	
+	\item [$\bullet$] \textbf{Núcleo}: Es la pieza principal del diseño, en la que se anclan el resto de las partes y donde se alojan los componentes electrónicos. Esta pieza sustenta los brazos y el porta-baterias de la aeronave. Cuenta con agujeros a medida para poder situar el autopiloto y los variadores.
+	
+	\tb{Imagen}
+	 
+	\item [$\bullet$] \textbf{Separadores}: su propósito es mantener unidos el \textit{núcleo} y el porta-baterías manteniendo una separación fija entre ellas.
+	
+	\tb{Imagen}
+	
+	\item [$\bullet$] \textbf{Porta-baterías}: Es la parte inferior del cuadricóptero. En ella se apoya la batería Li-Po que alimenta al dron y se mantiene anclada durante el vuelo. Además posee unas protuberancias cuya función se asemejaría a las de un tren de aterrizaje.  
+	
+	\tb{Imagen}
+	
+	  
+\end{itemize} 
 
-
-\tb{\tb{\huge imagenes modelo CAD}}.
 \section{Motores y variadores(ESC)}
 El dron cuenta con 4 motores sin escobillas (\textit{brushless}) LHI MT2204 II de 2300KV con una tensión de alimentación entre 7.2 V y 11.1 V (2s -3s en una batería LiPo) y una corriente continua máxima de 16A.
 
-
 Estos motores son trifásicos, es decir, se alimentan con 3 corrientes alternas monofásicas de igual frecuencia y amplitud, desfasadas 120\grad \;eléctricos. Para obtener estás formas de ondas a partir de la corriente continua de las baterias, se utilizan los variadores o \textit{ESC}.\\
 
-
-\newpage
 \begin{figure}[htb!]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
-		\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/motores.jpg}
+		\includegraphics[height=0.2\textheight]{hardware/motores.jpg}
 		\caption{Motores LHI MT2204 II empleados}
 		\label{hardware:motores}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
 		\centering
-		\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/esc.jpg}
+		\includegraphics[height=0.2\textheight]{hardware/esc.jpg}
 		\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
 		\label{hardware:esc}
 	\end{subfigure}
 \end{figure}
 
 
-Un variador o \textit{ESC (Electronic speed control)} es un circuito electrónico que controla y regula la velocidad de un motor eléctrico. \\
+Un variador o \textit{ESC (Electronic Speed Control)} es un circuito electrónico que controla y regula la velocidad de un motor eléctrico. \\
+
+
+\tb{https://howtomechatronics.com/how-it-works/how-brushless-motor-and-esc-work/}
+\\
 
 \tb{\Huge Profundicar en las ondas generada por el ESC}
+
 \section{Baterias}
 Para alimentar al dron, se han elegido baterias tipo LiPo por su alta tasa de descarga (la batería que se ha escogido es capaz de entregar hasta 130 A) y la su estabilidad en la tensión mientras están cargadas.
 
@@ -127,9 +149,7 @@ El microcontrolador por el que se ha optado para este Autopiloto es el ESP32, un
 \par Para poder programar el microcontrolador se utiliza un convertidor USB (Bus Serie Universal) a UART (Transmisor-Receptor Asíncrono Universal) que permite conectar por USB el microcontrolador para poder programarlo y hacer depuración utilizando comunicaciones Serial. El chip que realiza esta funcion es el CP2104.
 
 \subsection{Sensores}
-La principal fuente de información procedente del exterior que recibe una controladora de vuelo se la proporcionan las unidades de medición inercial (IMU). Las IMUs son dispositivos electrónicos que son capaces de medir aceleraciones, velocidades y detectar la orientación de un sistema. El principal problema de estos sensores es que suelen sufrir error acumulativo.
-\tb{¿profundizo en los sensores MEMS (imus electrónicas )?}\\
-
+La principal fuente de información procedente del exterior que recibe una controladora de vuelo se la proporcionan las unidades de medición inercial (IMU). Las IMUs son dispositivos electrónicos que son capaces de medir aceleraciones, velocidades y detectar la orientación de un sistema. El principal problema de estos sensores es que sufren error acumulativo a la hora de estimar posición y velocidad. Para corregir este error acumulativo en los drones, se suelen fusionar estas medidas con otras provenientes de mediciones absolutas tales como GPS o Láser, aunque en este autopiloto unicamente emplearemos las medidas de las IMUs.
 
 \par Otros sensores utilizados frecuentemente en los autopilotos son brújulas (se encuentran integrados en la IMU para corregir errores de orientación) y barómetros (para estimar la altitud a la que se encuentra el dron).\\
 \medskip
@@ -137,29 +157,103 @@ La principal fuente de información procedente del exterior que recibe una contr
 Nuestro autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para conseguir una mejor estimación del estado del cuadricóptero:
 
 \begin{enumerate}
-	\item \textbf{BNO 055 (BOSCH)}: El circuito integrado de Bosch es un sensor "inteligente" que incluye los sensores y la fusión de las lecturas de los distintos sensores en un único componente.
-	Este sensor nos proporciona estimaciones del estado con muy poca deriva. \tb {argumentar un poco mejor}
+	\item \textbf{BNO 055 (BOSCH)}: El circuito integrado de Bosch es un sensor ``inteligente'' que incluye los sensores y la fusión de las lecturas de los distintos sensores en un único componente. Este encapsulado cuenta con: un acelerómetro, un giróscopo y un magnetómetro triaxial. Además integra un microcontrolador de 32 bits en el que se ejecuta el algoritmo de fusión integrado. El sensor se encuentra en un encapsulado LGA de 28 pines con una huella (\textit{footprint}) de $3,8$ x $5.2\; mm^2$.
 	
-	\item \textbf{MPU 9250 (TDK InvenSense)}: El sensor inercial de TDK tiene una mejor respuesta dinámica, aunque la fusión de las lecturas del sensor se realiza externamente en el microcontrolador del dron.
+	Este sensor nos proporciona estimaciones del estado completo de la aeronave con una frecuencia de refresco de 100Hz. 
 	
-	\item \textbf{BMP388 (BOSCH)}:
+	\item \textbf{MPU 9250 (TDK InvenSense)}: El sensor inercial de TDK es un módulo multichip compuesto por un MPU6050 (Contiene un accelerómetro y un giróscopo triaxial con un \textit{procesador digital de movimiento} (DMP)) y un  AK8963 (un magnetómetro digital triaxial). El sensor posee un encapsulado QFN de 3x3x1 $mm$ con 24 pines.
+	
+	Este dispositivo nos proporciona medidas del accelerometro y el giróscopo a una frecuencia superior al BNO055 pero con una estimación peor de los angúlos que el dispositivo de BOSCH.
+	
+	\item \textbf{BMP388 (BOSCH)}: El BMP388 es un barómetro digital de 24 bits con bajo consumo y bajo ruido. Se encuentra en un encapsulado LGA de 10 pines de dimensiones 2 x 2 x 0,75 $mm3$.
+	
+	Aunque el autopiloto cuenta con este sensor, éste no se ha utilizado en este trabajo debido a que no se tiene en cuenta la altitud en los controladores.
+	
 \end{enumerate}
 
+	
+\begin{figure}[htb!]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[height=0.5\textwidth]{hardware/bno055.jpeg}
+		\caption{Sensor BNO055}
+		\label{BNO055}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[height=0.5\textwidth]{hardware/bmp388.jpeg}
+		\caption{Sensor BMP388}
+		\label{BMP388}
+	\end{subfigure}
+\end{figure}
+
+
+ 
 %\section{Otros (Receptora radio)}
 
 \section{Banco de pruebas}
-Para poder realizar la experimentación real de forma segura, se ha diseñado una base para sujetar al drone permitiendo que rote en roll pitch y yaw de forma restringida.
+Para poder realizar la experimentación real de forma segura, se han diseñado distintas estructuras para poder sujetar al cuadricóptero permitiéndole rotar con distintos grados de libertad (GdL) en función de la estructura. Estas uniones han permitido poder probar distintos controladores de forma segura y controlada.
 
-La estructura de sujección esta formado por 2 juntas esféricas acopladas una a continuación de la otra, para permitir la rotación en el espacio. 
-\\
+
+Se pueden distinguir 2 tipos de estructuras en función de sus grados de libertad:
+
+\begin{itemize}
+	\item \textbf{Rótulas con 1 único grado de libertad}: Para las primeras pruebas de los reguladores es fundamental poder descomponer el control en problemas más sencillos, en este caso permitiendo al sistema rotar en 1 grado de libertad. Se han construido 2 versiones de la misma rótula, una permite el movimiento en Pitch y la otra lo permite en Roll. Esto permite desacoplar los bucles de control y poder probar distintos algoritmos de control.
+	
+	
+	\begin{figure}[htb!]
+		\centering
+		\begin{subfigure}{0.4\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
+			\caption{Motores LHI MT2204 II empleados}
+			\label{a}
+		\end{subfigure}
+		\begin{subfigure}{0.4\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
+			\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
+			\label{b}
+		\end{subfigure}
+	\end{figure}
+
+	Estas uniones son sencillas y robustas lo que nos da seguridad a la hora de poder probar y ajustar los reguladores.
+	Las restricciones de movimiento de estas uniones permiten rotaciones de $\pm 60\degree$ en el angulo permitido.
+	
+	
+	\item \textbf{Rótula con múltiples grados de libertad}: Después de conseguir estabilizar al cuadricóptero en pitch y en roll de forma individual la siguiente aproximación consiste en emplear rotulas con 3 GdL. Sobre estas uniones también se han realizado 2 versiones. La primera consta de una única rotula con sus 3 grados de libertad con restricciones de movimiento de:
+	
+	\begin{align*}
+	-60 \degree &\le \varphi \le 60\degree \quad \;\;\;  \text{Roll}\\ 
+	-60 \degree&\le \theta \le 60\degree \qquad  \text{Pitch} \\
+	-180 \degree&\le \psi \le 180\degree\quad \;  \text{Yaw}
+	\end{align*}
+	
+	
+	La segunda consta de acoplar 2 juntas esféricas como las anteriores una a continuación de la otra, lo que permite, además de disminuir las restricciones de movimiento en las rotaciones, pequeños desplazamientos en el espacio tridimensional.
+	
+	\begin{figure}[htb!]
+		\centering
+		\begin{subfigure}{0.4\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
+			\caption{Motores LHI MT2204 II empleados}
+			\label{c}
+		\end{subfigure}
+		\begin{subfigure}{0.4\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
+			\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
+			\label{d}
+		\end{subfigure}
+	\end{figure}
+	
+	
+	
+\end{itemize}
+
 
 \tb{\huge imagen rotulas y/o CAD }
-\\
 
-Los límites físicos de las rótulas permiten que el dron tome orientaciones comprendidas entre:
-\begin{align*}
-	 -60 \degree &\le \varphi \le 60\degree \quad \;\;\;  \text{Roll}\\ 
-	 -60 \degree&\le \theta \le 60\degree \qquad  \text{Pitch} \\
-	 -180 \degree&\le \psi \le 180\degree\quad \;  \text{Yaw}
-\end{align*}
 

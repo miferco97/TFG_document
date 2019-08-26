@@ -28,7 +28,10 @@
 \usepackage{booktabs}
 \usepackage[hyphens]{url}
 \usepackage[document]{ragged2e}
-\usepackage{subcaption}
+\usepackage{caption}
+\DeclareCaptionListFormat{myfmt}{#1.#2}
+\usepackage[list=true,listformat=myfmt]{subcaption}
+
 
 \usepackage{tikz}
 \usepackage[cuteinductors,americanvoltages,americancurrents,american]{circuitikz}
@@ -66,7 +69,8 @@
 \newcommand{\refFigura}[1]{(Figura \ref{#1})}
 \newcommand{\refApartado}[1]{(Apartado \ref{#1})}
 
-\title{\textbf{Control de drones mediante Reinforcement Learning en plataformas reales}}
+%\title{\textbf{Control de drones mediante Reinforcement Learning en plataformas reales}}
+\title{\textbf{Plataforma hardware y software para el desarrollo y validación de algoritmos de control de actitud para cuadricópteros}}
 \author{Miguel Fernández Cortizas}
 \date{}
 
@@ -84,16 +88,19 @@
 	\input{introduccion/introduccion}
 	\input{estadodelarte/estadodelarte}
 	\input{background/background}
-	\input{metodologia/metodologia}
 	\input{hardware/hardware}
+	\input{software/software}
+	\input{metodologia/metodologia}
 	\input{experimentos/experimentos}
 	\input{discusion/discusion}
 	\input{conclusiones/conclusiones}
 	
 	\cfoot{\thepage}
 	\pagenumbering{arabic}
-	
+	\listoffigures
+	\listoftables
 	\nocite{*}
 	\bibliographystyle{IEEEtran}
 	\bibliography{IEEEabrv,workBibliography}
+	
 \end{document}
