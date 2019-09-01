@@ -3,10 +3,9 @@
 \section{Control clásico}
 
 
-Una vez conseguida una estimación del estado en el instante $t$ ,  $S_t$ se necesita emplear un algoritmo de control que genere	las acciones $A_t$ correspondientes para llegar al estado $S_{t'}$ deseado de forma óptima.
+%Una vez conseguida una estimación del estado en el instante $t$ ,  $S_t$ se necesita emplear un algoritmo de control que genere	las acciones $A_t$ correspondientes para llegar al estado $S_{t'}$ deseado de forma óptima.
 
-
-\tb{BUCLE DE CONTROL}
+%\tb{BUCLE DE CONTROL}
 
 
 Existe una gran cantidad de controladores clásicos que se pueden emplear para generar estos comandos, por ejemplo: PID o LQR.
@@ -34,22 +33,71 @@ La salida del controlador PID se contruye sumando la contribución de 3 término
 \end{enumerate}	
 
 
-\section{Redes neuronales}
+\section{Redes neuronales artificiales} 
+ Una red neuronal artificial (ANN) esta compuesta por un conjunto de nodos o perceptrones interconectados entre sí. Estos perceptrones se agrupan en capas ``ocultas'', se les atribuye este nombre debido a que todos los nodos de una capa se interconectan con todos los nodos de la capa anterior, por lo que después del aprendizaje de la red no se sabe cuales son los perceptrones de la capa anterior que influyen en un nodo.
+ \\
+ \tb{imagen}
+\\
+ Cada perceptron es la unidad mínima de computación de una ANN, estas unidades se dividen en dos partes, una parte lineal y una parte de activación o no lineal. En la parte lineal o parte ``Z'' se computa una regresión lineal de las salidas de los nodos anteriores.
+ \begin{align}
+ 	z^{[l]}_i &= \sum_{j=0}^{n^{[l-1]}} {w_{ij}\cdot a^{[l-1]}_j} + b_i  \qquad &i=0,..,n^{[l]} \\
+ 	a^{[l]}_i &= g\left(z^{[l]}_i\right) \qquad  &i=0,..,n^{[l]}
+ \end{align}
+ El superíndice $[l]$ hace referencia a la capa en la que se encuentra el elemento. Siendo $n^{[l]}$ el número de nodos de la capa $l$-ésima.
+ 
+ 
+ A los coeficientes $w_{ij}$ se les denomina los pesos del perceptrón y $b_i$ es el término independiente de la regresión. 
+ 
+ La función $g(z)$ es la función de activación del nodo. Estas funciones proporcionan no linearidad a la red neuronal, permitiendo a estas la capacidad de generar modelos con grandes no linealidades. Las funciones de activación más frecuentes en la literatura son:
+ 
+ \begin{itemize}
+ 	\item Función sigmoide: 
+ 	\begin{equation}
+ 	\sigma(z) = \frac{1}{1+e^{-z}} \qquad\qquad \sigma(z):\mathbb{R} \rightarrow [0,1]
+ 	\end{equation}
+
+	\item Tangente hiperbólica: 
+	\begin{equation}
+	\tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}} \qquad\qquad \tanh(z):\mathbb{R} \rightarrow [-1,1]
+	\end{equation}
+	
+	\item ReLu (del inglés \textit{Rectified Linear Unit}): 
+	\begin{equation}
+		g(z) = \text{max}(0,z) \qquad\qquad g(z):\mathbb{R} \rightarrow [0,+\infty]
+	\end{equation}
+	
+
+\end{itemize} 
+  
+ Para conseguir que la red neuronal realice predicciones precisas es necesario ajustar los pesos de la red, a este proceso es al que se denomina entrenamiento o aprendizaje. En el paradigma del aprendizaje supervisado este entrenamiento se realiza sometiendo a la red a ejemplos cuya salida es conocida. El objetivo de la red es minimizar la diferencia de su salida con la salida real del ejemplo. Formalmente, se define una función de coste $\mathcal{J}$ la cúal se quiere minimizar. Por ejemplo, una función de coste típica para problemas de clasificación binaria es:
+ 
+ \begin{align}
+ \mathcal{L}(\hat{y},y)&=-\big(y\log\hat{y} + (1-y)\log(1-\hat{y})\big)\\ 
+ \mathcal{J}(w,b)&=\frac{1}{m}\sum_{i=1}^{m}{\mathcal{L}\big(\hat{y}^{(i)},{y}^{(i)}\big)}
+ \end{align}
+ donde $\hat{y}$ denota la estimación de la salida realizada por parte de la red, $y$ la salida conocida y $m$ el número de ejemplos. 
+ 
+ Para minimizar esta función de coste, que depende de los pesos de la red, existen distintos métodos, uno de los más usados es el método del descenso de gradiente. Este método emplea la ``propagación hacia atrás'' (del inglés \textit{back propagation}) de la red neuronal, esto consiste en obtener las derivadas parciales de la función de coste con respecto a los pesos de cada nodo y actualizar estos pesos en la dirección opuesta al máximo gradiente.
+ 
+ \begin{align}
+ 	w:= w - \alpha\; &\frac{\partial\mathcal{J}(w,b)}{\partial w}\\
+ 	b:= b - \alpha\; &\frac{\partial\mathcal{J}(w,b)}{\partial b}
+ \end{align}
+ 
+ donde $\alpha$ denota la tasa de aprendizaje, es decir, lo rápido que varian estos pesos.
+
+ 
+
+
 
 \section{Aprendizaje por refuerzo}
 
-El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018reinforcement} es un área del aprendizaje 
-automático o \textit{Machine Learning} en el que un agente interactúa con un entorno buscando la mejor acción a realizar en función de su estado actual.
+El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018reinforcement} es un área del aprendizaje automático o \textit{Machine Learning} en el que un agente interactúa con un entorno buscando la mejor acción a realizar en función de su estado actual.
 
 Se diferencia de otras técnicas de aprendizaje automático es su enfoque orientado a la interacción directa con el entorno, sin basarse en un modelo completo del entorno o en un conjunto de ejemplos supervisados.
 
-El aprendizaje por refuerzo emplea el marco formal de los procesos de decisión de Markov (\textit{MDP}) en los cuales para definir la interacción entre en agente y el entorno en términos de estados, acciones y recompensas.
-
-Un proceso de decisión de Markov (\textit{MDP}) 
-
-Estos procesos de decisión incluyen causalidad, la existencia de recompensas explícitas \tb{a sense of uncertanty and nondeterminism}
-
-Además del agente y el entorno se pueden identificar cuatro elementos principales más en un sistema de aprendizaje con refuerzo:
+\subsubsection{Elementos del aprendizaje por refuerzo}
+Además del agente y el entorno se pueden identificar tres elementos principales más en un sistema de aprendizaje con refuerzo:
 
 \begin{itemize}
 	\item[$\bullet$] \textbf{Política} (Proveniente del termino anglosajón \textit{policy}, el cual es el término empleado en el estado del arte). Define el conjunto de acciones que debe realizar el agente para conseguir maximizar su recompensa en función su estado, el cuál es percibido a través del entorno. La \textit{policy} constituye el núcleo del agente y nos permite determinar su comportamiento. Estas políticas pueden ser estocásticas.
@@ -57,13 +105,44 @@ Además del agente y el entorno se pueden identificar cuatro elementos principal
 	\item[$\bullet$] \textbf{Recompensa}. 
 	Define el objetivo del agente en un problema de aprendizaje por refuerzo. En cada salto de tiempo (\textit{step}) el agente recibe una recompensa por parte del entorno (un número). 
 	
-	El objetivo del agente es maximizar su recompensa a largo plazo.
-	
-	\item[$\bullet$] \textbf{Función de valor}. Define el comportamiento que va 
-	
-	\item[$\bullet$] \textbf{Policy}. Define el comportamiento que va 
-	
+	\item[$\bullet$] \textbf{Función de valor}. Representa la máxima recompensa que puede esperar obtener un agente desde un estado concreto, es decir, tiene en cuenta la recompensa a largo plazo, no solo la inmediata. 
+		
 \end{itemize}
+Algunos algoritmos de aprendizaje por refuerzo requieren de la definición de un \textbf{modelo del entorno}. Este modelo permite predecir el comportamiento que va a tener el entorno a lo largo del tiempo.
+
+\subsubsection{Procesos de decisión de Markov}
+
+El aprendizaje por refuerzo emplea el marco formal de los procesos de decisión de Markov (\textit{MDP}) en los cuales para definir la interacción entre en agente y el entorno en términos de estados, acciones y recompensas.
+
+Un proceso de decisión de Markov está compuesto por la 4-tupla $(S,A,P_a,R_a)$ donde:
+
+\begin{itemize}
+	\item \textbf{S} representa el estado del agente.
+	\item \textbf{A} es el conjunto de acciones que puede realizar el agente. $A_s$ denota las acciones que puede realizar el agente desde un estado $s$.
+	\item \textbf{$\boldsymbol{P_a(s,s')}$} = $Pr\big(s_{t+1} = s' \;|\; s_t = s , a_t = a  \big)$. Partiendo de un estado $s$, $P_a$ representa la probabilidad de pasar al estado $s'$ tomando la acción $a$.
+	\item \textbf{$\boldsymbol{R_a(s,s')}$} denota la recompensa inmediata que recibiría el agente al realizar la transicion de $s$ a $s'$ mediante la acción $a$.
+\end{itemize}
+
+Estos procesos cumplen la propiedad de Markov, es decir, que el pasado no influye en el agente, lo único relevante es el estado actual.
+
+El problema principal de los MDP es encontrar la secuencia de acciones que debe realizar el agente para maximizar la recompensa a largo plazo, es decir, encontrar la política $\pi$ 
+óptima, que permita maximizar la recompensa. Una vez encontrada la política $\pi$ óptima el problema se reduce a una cadena de Markov, dado que la acción $a$ a realizar en un estado $s$ viene completamente definida por el estado $s$ y la probabilidad $P_a$. 
+
+La política $\pi$ óptima es aquella que maximize la recompensa acumulada, es decir, la suma decontada de las recompensas instantáneas percibidas por el entorno:
+
+\begin{equation}
+	\sum_{t_0}^{\infty}\gamma^t R_{a_t}(s_t,s_{t+1}) \qquad \text{las acciones $a_t$ vienen dadas por $\pi(s_t)$}
+\end{equation}
+
+donde $\gamma$ es el factor de descuento, el cual debe cumplir $0 \le \gamma \le 1$, cuanto mayor sea este factor menos importante es la recompensa inmediata. 
+
+En los casos en los las probabilidades $P_a$ o las recompensas $R_a$ no se conocen a priori, es necesario emplear técnicas de aprendizaje por refuerzo para obtener esa política.
+
+En estos problemas es util definir el Q-valor
+
+\begin{equation}
+Q(s,a) = \sum_{s'}P_a(s,s')\big(R_a(s,s')+\gamma V(s') \big)
+\end{equation}
 
 \subsection{DQN}
 \subsection{DDPG}

@@ -1,9 +1,10 @@
 \chapter{Hardware}
-Un cuadricóptero o cuadrirrotor es una aeronave no tripulada (UAV) que está propulsada por cuatro motores cuyas hélices están orientadas verticalmente.Se ha diseñado y construido un cuadrirrotor casero para poder probar en la realidad el control del dron. 
 
-Un cuadricóptero convencional cuenta con: un chasis o \textit{frame} que lo sustenta, cuatro motores y la electrónica necesaria para controlarlos, una controladora de vuelo que lo comanda y baterías que le proporcionan energía.
+Con el ánimo de tener una plataforma real sobre la que probar el rendimiento de los algoritmos de control diseñados, se ha diseñado y construido un cuadrirrotor \textit{ad hoc} para este propósito.
 
-A continuación se detallará como son las distintas partes del dron que se ha fabricado.
+Un cuadricóptero convencional cuenta con: un chasis o cuadro que lo sustenta, cuatro motores y la electrónica necesaria para controlarlos, una controladora de vuelo que lo comanda y baterías que le proporcionan energía.
+
+A continuación se detallará como son las distintas partes físicas del dron que se ha fabricado.
 
 \section{Cuadro}
 El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabricadas mediante impresión 3D de diseño propio. La estructura básica está formada por 5 conjuntos de piezas distintos:
@@ -29,35 +30,62 @@ El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabri
 	  
 \end{itemize} 
 
-\section{Motores y variadores(ESC)}
+\section{Motores y hélices}
 El dron cuenta con 4 motores sin escobillas (\textit{brushless}) LHI MT2204 II de 2300KV con una tensión de alimentación entre 7.2 V y 11.1 V (2s -3s en una batería LiPo) y una corriente continua máxima de 16A.
-
-Estos motores son trifásicos, es decir, se alimentan con 3 corrientes alternas monofásicas de igual frecuencia y amplitud, desfasadas 120\grad \;eléctricos. Para obtener estás formas de ondas a partir de la corriente continua de las baterias, se utilizan los variadores o \textit{ESC}.\\
 
 \begin{figure}[htb!]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
 		\includegraphics[height=0.2\textheight]{hardware/motores.jpg}
-		\caption{Motores LHI MT2204 II empleados}
-		\label{hardware:motores}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[height=0.2\textheight]{hardware/esc.jpg}
-		\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
-		\label{hardware:esc}
-	\end{subfigure}
+	\centering
+	\includegraphics[height=0.2\textheight]{hardware/motoresPlanos}
+\end{subfigure}
+	\caption{Motores LHI MT2204 II empleados}
+\label{hardware:motores}
 \end{figure}
 
+Se ha estimado que el peso aproximado de la aeronave se encuentra entorno a los 800 gramos. La literatura recomienda que los motores que se escojan deben tener empuje suficiente para poder levantar el doble del peso de la aeronave. Observando la tabla de especificaciones de los motores, se observa que, la hélice HQ5040 proporciona empuje suficiente con un ratio empuje/potencia bastante elevado, como se puede observar en la \cref{hardware:motoresTabla}.
 
-Un variador o \textit{ESC (Electronic Speed Control)} es un circuito electrónico que controla y regula la velocidad de un motor eléctrico. \\
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{hardware/MT2203_Table.jpeg}
+	\caption{Tabla de especificaciones motor MT2204 II. }
+	\label{hardware:motoresTabla}
+\end{figure}
+
+Es por esto que se han empleado hélices tripala HQ5040 de policarbonato y fibra de vidrio (\cref{hardware:helice}).
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{hardware/helices.jpeg}
+	\caption{Hélices tripala HQ5040}
+	\label{hardware:helice}
+\end{figure}
+
+\section{Variadores (ESC)}
 
 
-\tb{https://howtomechatronics.com/how-it-works/how-brushless-motor-and-esc-work/}
-\\
+Los motores  que se han escogido son trifásicos, es decir, se alimentan con 3 corrientes alternas monofásicas de igual frecuencia y amplitud, desfasadas 120\grad \;eléctricos. Para obtener estás formas de ondas a partir de la corriente continua de las baterias, se utilizan los variadores.
 
-\tb{\Huge Profundicar en las ondas generada por el ESC}
+Un variador o \textit{ESC (Electronic Speed Control)} es un circuito electrónico que se encarga de generar las ondas eléctricas necesarias para controlar y regular la velocidad de un motor eléctrico. Cuenta con un microcontrolador, el cual se encarga de conmutar los interruptores de potencia, con el ánimo de alimentar las distintas fases del motor de forma sincronizada, haciendo que gire a la velocidad deseada, veáse la \cref{hardware:esc_explicacion}.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.6\textheight]{hardware/howtomecatronics}
+	\caption{Funcionamiento ESC (www.howtomechatronics.com)}
+	\label{hardware:esc_explicacion}
+\end{figure}
+
+Para el cuadricóptero se ha optado por emplear un variador BLHeli Multistar Race (\cref{hardware:esc}) que integra 4 variadores en uno, es decir se pueden alimentar 4 motores trifasicos con él. Estos variadores soportan una corriente de hasta 30 A cada uno.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=0.2\textheight]{hardware/esc.jpg}
+	\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
+	\label{hardware:esc}
+\end{figure}
 
 \section{Baterias}
 Para alimentar al dron, se han elegido baterias tipo LiPo por su alta tasa de descarga (la batería que se ha escogido es capaz de entregar hasta 130 A) y la su estabilidad en la tensión mientras están cargadas.
