@@ -4,23 +4,30 @@
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Autopiloto comercial Pixhawk 4\relax }}{3}{figure.caption.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema de una red neuronal artificial\relax }}{7}{figure.caption.3}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Esquema de un perceptr\IeC {\'o}n\relax }}{8}{figure.caption.4}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Funci\IeC {\'o}n sigmoide\relax }}{8}{figure.caption.5}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Funci\IeC {\'o}n tangente hiperb\IeC {\'o}lica\relax }}{9}{figure.caption.6}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Funci\IeC {\'o}n ReLu\relax }}{9}{figure.caption.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{11}{figure.caption.5}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Tabla de especificaciones motor MT2204 II. \relax }}{11}{figure.caption.6}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces H\IeC {\'e}lices tripala HQ5040\relax }}{12}{figure.caption.7}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Funcionamiento ESC (www.howtomechatronics.com)\relax }}{12}{figure.caption.8}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{13}{figure.caption.9}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Curva t\IeC {\'\i }pica de descarga de una bateria LiPo (fuente: ProtoTalk.net)\relax }}{13}{figure.caption.10}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Autopiloto CaRL (\textit {Cuadcopter with autopilot based on Reinforcement Learning}).\relax }}{14}{figure.caption.11}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Esquema de un convertidor Buck\relax }}{15}{figure.caption.14}
-\contentsline {subfigure}{\numberline {4.9.a}{\ignorespaces Sensor BNO055\relax }}{17}{figure.caption.15}
-\contentsline {subfigure}{\numberline {4.9.b}{\ignorespaces Sensor BMP388\relax }}{17}{figure.caption.15}
-\contentsline {subfigure}{\numberline {4.10.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{17}{figure.caption.16}
-\contentsline {subfigure}{\numberline {4.10.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{17}{figure.caption.16}
-\contentsline {subfigure}{\numberline {4.11.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{17}{figure.caption.17}
-\contentsline {subfigure}{\numberline {4.11.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{17}{figure.caption.17}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Tabla de especificaciones motor MT2204 II. \relax }}{13}{figure.caption.11}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces H\IeC {\'e}lices tripala HQ5040\relax }}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Funcionamiento ESC (www.howtomechatronics.com)\relax }}{14}{figure.caption.13}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{15}{figure.caption.14}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Bater\IeC {\'\i }a LiPo 3s 35C 5200 mah de la marca NZACE empleada \relax }}{15}{figure.caption.15}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Autopiloto CaRL (\textit {Cuadcopter with autopilot based on Reinforcement Learning}).\relax }}{16}{figure.caption.16}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Esquema de un convertidor Buck\relax }}{17}{figure.caption.19}
+\contentsline {subfigure}{\numberline {4.9.a}{\ignorespaces Sensor BNO055\relax }}{19}{figure.caption.20}
+\contentsline {subfigure}{\numberline {4.9.b}{\ignorespaces Sensor BMP388\relax }}{19}{figure.caption.20}
+\contentsline {subfigure}{\numberline {4.10.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{19}{figure.caption.21}
+\contentsline {subfigure}{\numberline {4.10.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{19}{figure.caption.21}
+\contentsline {subfigure}{\numberline {4.11.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{19}{figure.caption.22}
+\contentsline {subfigure}{\numberline {4.11.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{19}{figure.caption.22}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Esquema interfaz Estacion-Autopiloto\relax }}{23}{figure.caption.23}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Formas de onda que recibe un variador\relax }}{25}{figure.caption.24}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

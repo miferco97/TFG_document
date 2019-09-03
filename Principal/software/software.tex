@@ -74,29 +74,28 @@ Para acercar la simulación a la configuración de los experimentos que se reali
 %Para acercar la simulación a la configuración de los experimentos que se realizarían posteriormente en la plataforma real, se ha situado una articulación en su centro de gravedad que fija la posición de su centro pero permite rotar el numero de grados de libertad que se predefina.
 
 
+ \subsection{Agente (generación de comandos)}
  
-
-
-
-\subsection{Agente (generación de comandos)}
-Siguiendo con la terminología del aprendizaje por refuerzo se va a denominar agente al encargado de generar las acciones de control. En el caso de los reguladores PID clásicos el agente hace la función de los reguladores.
-
-
-
+ Siguiendo con la terminología del aprendizaje por refuerzo se va a denominar agente al encargado de generar las acciones de control. En el caso de los reguladores PID clásicos el agente hace la función de los reguladores.
 
 Para probar distintos agentes con distintos algoritmos se han empleado la implementación de los algoritmos \textit{state of the art}, del repositorio de GitHub \textit{Stable-Baselines} \cite{stable-baselines}. Inicialmente se comenzó empleando las \textit{Baselines} de OpenAI \cite{OpenAIbaselines} pero se decidió cambiar a las \textit{Stable Baselines} por la limpieza del código y la facilidad para realizar experimentos con diversos algoritmos e hiperparámetros.
-
 
 \tb{¿hablo un poco sobre transfer learning?}
 
 
-
-
 \subsection{Interfaz Estación-Autopiloto}
 
-Para las pruebas reales se han empleado
+Para las pruebas reales se ha empleado ROS (Robotic Operative System) Melodic para gestionar la comunicación WiFi con la aeronave y la comunicación con el agente. Para esto se emplea la estructura de \textit{topics}: un \textit{topic} se emplea para enviar datos a la aeronave y otro \textit{topic} publica los datos recibidos por ésta. De esta manera se pueden utilizar las herramientas de ROS para poder monitorizar el proceso además de aprovechar la estructura de \textit{topics} para poder intregrar código escrito en distintos lenguajes de forma sencilla.
 
-Ademas se ha empleado ROS Melodic para conectar este entorno con el dron real.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{software/Arquitectura}
+	\caption{Esquema interfaz Estacion-Autopiloto}
+	\label{hardware:esc_explicacion}
+\end{figure}
+
+
+
 
 
 \section{Descripción del equipo}

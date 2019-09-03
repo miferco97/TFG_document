@@ -1,6 +1,6 @@
 \chapter{Fundamentos teóricos}
 
-\section{Control clásico}
+%\section{Control clásico}
 
 
 %Una vez conseguida una estimación del estado en el instante $t$ ,  $S_t$ se necesita emplear un algoritmo de control que genere	las acciones $A_t$ correspondientes para llegar al estado $S_{t'}$ deseado de forma óptima.
@@ -8,37 +8,67 @@
 %\tb{BUCLE DE CONTROL}
 
 
-Existe una gran cantidad de controladores clásicos que se pueden emplear para generar estos comandos, por ejemplo: PID o LQR.
-En este trabajo se han explorado 2 controladores: el primero de ellos se trata de un controlador clásico PID y el segundo consiste en un controlador no lineal modelizado por una red neuronal.
+%Existe una gran cantidad de controladores clásicos que se pueden emplear para generar estos comandos, por ejemplo: PID o LQR.
+%En este trabajo se han explorado 2 controladores: el primero de ellos se trata de un controlador clásico PID y el segundo consiste en un controlador no lineal modelizado por una red neuronal.
 
-\subsection{Controlador PID}
+\section{Controlador PID}
 
-El controlador PID es un método de control clásico basado en generar una salida $A_t$ basada en el error $e_t$, es decir, la diferencia entre el estado deseado $S_{ref}$ y el estado actual $S_t$.
 
+
+
+Un regulador PID es un controlador lineal realimentado. Matemáticamente se expresa como 
 \begin{equation}
-e_t= S_{ref} - S_t
+	u(t) = \overbrace{\raisebox{0ex}[2.2\height]{$K_p e(t)$}}^\text{P} +\overbrace{K_i \int_{0}^{t}e(\tau)d\tau}^\text{I} + \overbrace{ K_d \frac{de(t)}{dt}}^\text{D}\;
 \end{equation}
 
-La salida del controlador PID se contruye sumando la contribución de 3 términos:
-\begin{enumerate}
-	\item \textbf{Parte proporcional (P)}
-	La parte proporcional, como su propio nombre indica, crece de forma proporcional con el error $e_t$, según la constante de proporcionalidad $K_p$
-	
-	\begin{equation}
-	P_{out}=K_p \cdot e_t
-	\end{equation} 
-	\item \textbf{Parte integral (I)}
-	La parte integral	
-	
-\end{enumerate}	
 
 
+
+donde $e(t)$ es la señal de control, $u(t)$ representa la salida del regulador y $K_p,K_i,K_d$ son parámetros ajustables de los cuales depende la dinámica y la estabilidad del sistema. Como se puede observar, el regulador consta de tres partes: la parte proporcional (P) tiene en cuenta el error actual, la parte integral (I) tiene en cuenta el histórico de los errores y la parte derivativa (D) tiene en cuenta la estimación del error futuro.
 \section{Redes neuronales artificiales} 
  Una red neuronal artificial (ANN) esta compuesta por un conjunto de nodos o perceptrones interconectados entre sí. Estos perceptrones se agrupan en capas ``ocultas'', se les atribuye este nombre debido a que todos los nodos de una capa se interconectan con todos los nodos de la capa anterior, por lo que después del aprendizaje de la red no se sabe cuales son los perceptrones de la capa anterior que influyen en un nodo.
- \\
- \tb{imagen}
-\\
- Cada perceptron es la unidad mínima de computación de una ANN, estas unidades se dividen en dos partes, una parte lineal y una parte de activación o no lineal. En la parte lineal o parte ``Z'' se computa una regresión lineal de las salidas de los nodos anteriores.
+ 
+ 
+ 
+ \begin{figure}[htb!]
+ 	\centering
+ 	\begin{tikzpicture}[]
+ 	\def\nodedist{35pt}
+ 	\def\layerdist{80pt}
+ 	\def\pindist{20pt}
+ 	
+ 	\tikzstyle{every pin edge}=[signal]
+ 	\tikzstyle{annot} = [text width=4em, text centered]
+ 	
+ 	\foreach \y in {1,...,3}
+ 	\node[inputnode, pin={[pin edge={latex-}, pin distance=\pindist]left:Entrada \y: $x_\y$}] 
+ 	(I\y) at (0,-\y*\nodedist) {$a_\y^{[0]}$};  
+ 	
+ 	\foreach \y in {1,...,4}
+ 	\node[hiddennode] 
+ 	(H\y) at ($(\layerdist,-\y*\nodedist) +(0, 0.5*\nodedist)$) {$a_\y^{[1]}$};
+ 	
+ 	\foreach \y in {1,...,1}
+ 	\node[outputnode, pin={[pin edge={-latex}, pin distance=\pindist]right:\Large$\hat y$}]
+ 	(O\y) at ($(I2) + (2*\layerdist, 0)$) {$a_\y^{[2]}$};
+ 	
+ 	\foreach \dest in {1,...,4}
+ 	\foreach \source in {1,...,3}
+ 	\draw[signal] (I\source) -- (H\dest);
+ 	
+ 	\foreach \dest in {1,...,1}
+ 	\foreach \source in {1,...,4}
+ 	\draw[signal] (H\source) edge (O\dest);
+ 	
+ 	\node[annot, above=4pt of H1] (hl) {Capa oculta};
+ 	\node[annot] at (I1 |- hl) {Capa de entrada};
+ 	\node[annot] at (O1 |- hl) {Capa de salida};
+ 	\end{tikzpicture}
+ 	\caption{Esquema de una red neuronal artificial}
+ \end{figure}
+ 
+
+Cada perceptron es la unidad mínima de computación de una ANN, estas unidades se dividen en dos partes, una parte lineal y una parte de activación o no lineal. En la parte lineal o parte ``Z'' se computa una regresión lineal de las salidas de los nodos anteriores.
  \begin{align}
  	z^{[l]}_i &= \sum_{j=0}^{n^{[l-1]}} {w_{ij}\cdot a^{[l-1]}_j} + b_i  \qquad &i=0,..,n^{[l]} \\
  	a^{[l]}_i &= g\left(z^{[l]}_i\right) \qquad  &i=0,..,n^{[l]}
@@ -48,28 +78,143 @@ La salida del controlador PID se contruye sumando la contribución de 3 término
  
  A los coeficientes $w_{ij}$ se les denomina los pesos del perceptrón y $b_i$ es el término independiente de la regresión. 
  
- La función $g(z)$ es la función de activación del nodo. Estas funciones proporcionan no linearidad a la red neuronal, permitiendo a estas la capacidad de generar modelos con grandes no linealidades. Las funciones de activación más frecuentes en la literatura son:
+ 
+ \begin{figure}[htb!]
+ 	
+ 	\centering
+ 	\begin{tikzpicture}[
+ 	% define styles    
+ 	init/.style={ 
+ 		draw, 
+ 		circle, 
+ 		inner sep=2pt,
+ 		font=\Huge,
+ 		join = by -latex
+ 	},
+ 	squa/.style={ 
+ 		font=\Large,
+ 		join = by -latex
+ 	}
+ 	]
+ 	% Top chain x1 to w1
+ 	\begin{scope}[start chain=1]
+ 	\node[on chain=1] at (0,1.5cm)  (x1) {$a_1^{[l-1]}$};
+ 	\node[on chain=1,,label=above:\parbox{1cm}{pesos},join=by o-latex] (w1) {$w_1$};
+ 	\end{scope}
+ 	% Middle chain x2 to output
+ 	\begin{scope}[start chain=2]
+ 	\node[on chain=2] (x2) {$a_2^{[l-1]}$};
+ 	\node[on chain=2,join=by o-latex] {$w_2$};
+ 	\node[on chain=2,init] (sigma) {$\displaystyle\Sigma$};
+ 	\node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Regresión lineal}}]   {$z_i^{[l]}$};
+ 	\node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Función de\\ activacion}}]   {$a_i^{[l]}= g(z_i^{[l]})$};
+ 	\node[on chain=2,squa,label=above:Salida,join=by -latex] {$y_{out}$};
+ 	\end{scope}
+ 	% Bottom chain x3 to w3
+ 	\begin{scope}[start chain=3]
+ 	\node[on chain=3] at (0,-1.5cm) 
+ 	(x3) {$a_3^{[l-1]}$};
+ 	\node[on chain=3,join=by o-latex]
+ 	(w3) {$w_3$};
+ 	\end{scope}
+ 	% Bias
+ 	\node[label=above:\parbox{2cm}{\centering \text{$\;$} \\ $b$}] at (sigma|-w1) (b) {};
+ 	% Arrows joining w1, w3 and b to sigma
+ 	\draw[-latex] (w1) -- (sigma);
+ 	\draw[-latex] (w3) -- (sigma);
+ 	\draw[o-latex] (b) -- (sigma);
+ 	% left hand side brace
+ 	\draw[decorate,decoration={brace,mirror}] (x1.north west) -- node[left=10pt] {Entrada} (x3.south west);
+ 	
+ 	\end{tikzpicture}
+ 	\caption{Esquema de un perceptrón}
+ 	\label{esquema_perceptron}
+ 	
+ \end{figure}
+ 
+ La función $g(z)$ es la función de activación del nodo. Estas funciones proporcionan no linealidad a la red neuronal, permitiendo a estas la capacidad de generar modelos con grandes no linealidades. Las funciones de activación más frecuentes en la literatura son:
  
  \begin{itemize}
  	\item Función sigmoide: 
  	\begin{equation}
  	\sigma(z) = \frac{1}{1+e^{-z}} \qquad\qquad \sigma(z):\mathbb{R} \rightarrow [0,1]
  	\end{equation}
+	\begin{figure}[htb!]
+		\centering
+		\begin{tikzpicture}[]
+		\begin{axis}[ 
+		%title=$\tanh(x)$,
+		axis x line=middle, xmin=-4, xmax=4, xtick={-3,...,3}, xlabel=$x$,
+		axis y line=middle, ymin=-2, ymax=2, ytick={-1,...,1}, ylabel=$f(x)$,
+		legend pos=north west,
+		legend style={empty legend, draw=none},
+		scale only axis=true,
+		width=8cm, height=4cm,
+		thick,
+		samples=101] 
+		\addplot[blue, very thick] {1/(1+exp(-x))};
+		%\addlegendentry{$\tanh(x)$}
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Función sigmoide}
+	\end{figure}
 
 	\item Tangente hiperbólica: 
 	\begin{equation}
 	\tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}} \qquad\qquad \tanh(z):\mathbb{R} \rightarrow [-1,1]
 	\end{equation}
 	
+	\begin{figure}[htb!]
+		\centering
+		\begin{tikzpicture}[]
+		\begin{axis}[ 
+		%title=$\tanh(x)$,
+		axis x line=middle, xmin=-4, xmax=4, xtick={-3,...,3}, xlabel=$x$,
+		axis y line=middle, ymin=-2, ymax=2, ytick={-1,...,1}, ylabel=$f(x)$,
+		legend pos=north west,
+		legend style={empty legend, draw=none},
+		scale only axis=true,
+		width=8cm, height=4cm,
+		thick,
+		samples=101] 
+		\addplot[blue, very thick] {tanh(x))};
+		%\addlegendentry{$\tanh(x)$}
+		\end{axis}
+		\end{tikzpicture}
+		
+		\caption{Función tangente hiperbólica}
+	\end{figure}
+
 	\item ReLu (del inglés \textit{Rectified Linear Unit}): 
+	
 	\begin{equation}
 		g(z) = \text{max}(0,z) \qquad\qquad g(z):\mathbb{R} \rightarrow [0,+\infty]
 	\end{equation}
+\\
+	\begin{figure}[htb!]
+		\centering
+		\begin{tikzpicture}[]
+		\begin{axis}[ 
+		%title=$\tanh(x)$,
+		axis x line=middle, xmin=-4, xmax=4, xtick={-3,...,3}, xlabel=$x$,
+		axis y line=middle, ymin=-2, ymax=2, ytick={-1,...,1}, ylabel=$f(x)$,
+		legend pos=north west,
+		legend style={empty legend, draw=none},
+		scale only axis=true,
+		width=8cm, height=4cm,
+		thick,
+		samples=101] 
+		\addplot[blue, very thick] {(\x < 0) * (0) + (\x > 0) * (\x)};
+		%\addlegendentry{$\tanh(x)$}
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Función ReLu}
+	\end{figure}
 	
 
 \end{itemize} 
   
- Para conseguir que la red neuronal realice predicciones precisas es necesario ajustar los pesos de la red, a este proceso es al que se denomina entrenamiento o aprendizaje. En el paradigma del aprendizaje supervisado este entrenamiento se realiza sometiendo a la red a ejemplos cuya salida es conocida. El objetivo de la red es minimizar la diferencia de su salida con la salida real del ejemplo. Formalmente, se define una función de coste $\mathcal{J}$ la cúal se quiere minimizar. Por ejemplo, una función de coste típica para problemas de clasificación binaria es:
+ Para conseguir que la red neuronal realice predicciones precisas es necesario ajustar los pesos de la red, a este proceso es al que se denomina entrenamiento o aprendizaje. En el paradigma del aprendizaje supervisado este entrenamiento se realiza sometiendo a la red a ejemplos cuya salida es conocida. El objetivo de la red es minimizar el error de la esperanza de la estimación con respecto a la salida real del ejemplo. Formalmente, se define una función de coste $\mathcal{J}$ la cúal se quiere minimizar. Por ejemplo, una función de coste típica para problemas de clasificación binaria es la \textit{binary cross-entropy}:
  
  \begin{align}
  \mathcal{L}(\hat{y},y)&=-\big(y\log\hat{y} + (1-y)\log(1-\hat{y})\big)\\ 

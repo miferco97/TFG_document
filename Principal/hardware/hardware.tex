@@ -82,20 +82,19 @@ Para el cuadricóptero se ha optado por emplear un variador BLHeli Multistar Rac
 
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[height=0.2\textheight]{hardware/esc.jpg}
+	\includegraphics[width=0.5\textwidth]{hardware/esc.jpg}
 	\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
 	\label{hardware:esc}
 \end{figure}
 
-\section{Baterias}
-Para alimentar al dron, se han elegido baterias tipo LiPo por su alta tasa de descarga (la batería que se ha escogido es capaz de entregar hasta 130 A) y la su estabilidad en la tensión mientras están cargadas.
-
+\section{Baterías}
+Para alimentar al dron, se han elegido baterías de litio-polímero (LiPo) de 3 celdas, lo que supone una tensión nominal de 11.1V (cada celda proporciona 2.7V). La tensión máxima que puede subministrar la batería es de 12.6V y la tensión mínima es de 9.6V. Si la tensión de alguna celda desciende de 3.2V la batería se puede dañar permanentemente. La batería escogida es una ZNACE de 3 celdas, con una capacidad de 5200mah y una tasa de descarga de 35C, por lo que es capaz de proporcionar una corriente de salida máxima de 5.2Ah $\cdot$ 35C = 182 A. La batería empleada cuenta con un conector XT60, por lo que el máximo de corriente que soporta en régimen continuo es de 60 A.
 
 \begin{figure}[htb!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{hardware/curvaLipo}
-		\caption{Curva típica de descarga de una bateria LiPo (fuente: ProtoTalk.net)}
-		\label{hardware:curvaLipo}
+		\includegraphics[width=0.5\textwidth]{hardware/bateriaNZACE}
+		\caption{Batería LiPo 3s 35C 5200 mah de la marca NZACE empleada  }
+		\label{hardware:Lipo}
 
 \end{figure}
 
@@ -118,13 +117,13 @@ En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hace
 
 \subsection{Fase de Potencia}
 
-Con el fin de poder gestionar la potencia entregada por las baterias a la placa y a los motores se ha diseñado una etapa de potencia en la que se debe mencionar dos partes: el interruptor de potencia y el regulador a 3.3 Voltios.
+Con el fin de poder gestionar la potencia entregada por las baterías a la placa y a los motores se ha diseñado una etapa de potencia en la que se debe mencionar dos partes: el interruptor de potencia y el regulador a 3.3 Voltios.
 
 \subsubsection{Interruptor de potencia}
 
-Los motores del dron pueden llegar a consumir 12 Amperios cada uno, lo que los cuatro motores pueden llegar a consumir 48 Amperios. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de canal P por el que pueden circular hasta 100 Amperios, con el fin de abrir o cerrar el paso de corriente desde las baterías al resto de la placa. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.\\
+Los motores del dron pueden llegar a consumir 12 Amperios cada uno, lo que los cuatro motores pueden llegar a consumir 48 Amperios. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de canal P por el que pueden circular hasta 100 Amperios, con el fin de abrir o cerrar el paso de corriente desde las baterías al resto de la placa. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.Cuando se cierra el interruptor se alimenta directamente al ESC y al regulador de tensión.
 
-Cuando se cierra el interruptor se alimenta directamente al ESC y al regulador de tensión.
+Adicionalmente, a continuación del MOSFET se encuentra un divisor de tensión para poder medir la tensión de la batería a través del conversor analógico digital (ADC) del microcontrolador.   
 
 
 \subsubsection{Regulador a 3.3V}
@@ -182,7 +181,7 @@ La principal fuente de información procedente del exterior que recibe una contr
 \par Otros sensores utilizados frecuentemente en los autopilotos son brújulas (se encuentran integrados en la IMU para corregir errores de orientación) y barómetros (para estimar la altitud a la que se encuentra el dron).\\
 \medskip
 
-Nuestro autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para conseguir una mejor estimación del estado del cuadricóptero:
+El autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para conseguir una mejor estimación del estado del cuadricóptero:
 
 \begin{enumerate}
 	\item \textbf{BNO 055 (BOSCH)}: El circuito integrado de Bosch es un sensor ``inteligente'' que incluye los sensores y la fusión de las lecturas de los distintos sensores en un único componente. Este encapsulado cuenta con: un acelerómetro, un giróscopo y un magnetómetro triaxial. Además integra un microcontrolador de 32 bits en el que se ejecuta el algoritmo de fusión integrado. El sensor se encuentra en un encapsulado LGA de 28 pines con una huella (\textit{footprint}) de $3,8$ x $5.2\; mm^2$.

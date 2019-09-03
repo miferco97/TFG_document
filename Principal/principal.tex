@@ -33,7 +33,7 @@
 \usepackage[list=true,listformat=myfmt]{subcaption}
 
 
-\usepackage{tikz}
+%\usepackage{tikz}
 \usepackage[cuteinductors,americanvoltages,americancurrents,american]{circuitikz}
 
 \newcommand{\newItemUrl}[1]{\href{#1}{#1}}
@@ -78,13 +78,27 @@
 
 
 \usepackage{dtk-logos} % for BibTeX stylized logo
+\usetikzlibrary{babel}
+\usepackage{tikz}
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
+
+\usepackage{pgfplots}
+\usepackage{ifthen}
+
+\usepackage{amsmath}
+\DeclareMathOperator{\sigm}{sigm}
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+
+
 \begin{document}
-	
 	\maketitle
 	\tableofcontents
+
 	\justify
 	
+	
 	\input{abstract/abstract}
+	\input{tikzinit}
 	\input{introduccion/introduccion}
 	\input{estadodelarte/estadodelarte}
 	\input{background/background}
