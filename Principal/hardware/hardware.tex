@@ -2,9 +2,29 @@
 
 Con el ánimo de tener una plataforma real sobre la que probar el rendimiento de los algoritmos de control diseñados, se ha diseñado y construido un cuadrirrotor \textit{ad hoc} para este propósito.
 
+
+
+
 Un cuadricóptero convencional cuenta con: un chasis o cuadro que lo sustenta, cuatro motores y la electrónica necesaria para controlarlos, una controladora de vuelo que lo comanda y baterías que le proporcionan energía.
 
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{hardware/droneImg}
+	\caption{Cuadricóptero diseñado con el autopiloto incoporado. }
+	\label{hardware:droneImg}
+\end{figure}
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{hardware/Drones_side}
+	\caption{Cuadricóptero diseñado con el autopiloto incoporado.}
+	\label{hardware:droneImg}
+\end{figure}
+
+
 A continuación se detallará como son las distintas partes físicas del dron que se ha fabricado.
+
+
 
 \section{Cuadro}
 El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabricadas mediante impresión 3D de diseño propio. La estructura básica está formada por 5 conjuntos de piezas distintos:
@@ -104,15 +124,32 @@ Para alimentar al dron, se han elegido baterías de litio-polímero (LiPo) de 3 
 En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hacerlo pilotable se denomina la controladora de vuelo o el Autopiloto. Existe una gran variedad de controladoras en el mercado, pero para este trabajo se ha diseñado una controladora propia con el fin de poder tener acceso a todos los sensores y a implementar el algoritmo de control de forma óptima. El autopiloto consta de 3 partes diferenciadas: la electrónica de potencia, el microcontrolador y los sensores. A continuación \tb{se tratará} sobre estas partes con más detalle.\\
 
 
-\tb{Estaría bien un par de imágenes de la PCB (anverso y reverso)}\\
+
+\begin{figure}[htb!]
+	
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[height=1.2\textwidth]{hardware/AutopilotoFront}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[height=1.2\textwidth]{hardware/AutopilotoBack}
+	\end{subfigure}
+	
+	\caption{PCB autopiloto CaRL, anverso y reverso.}
+	\label{PCB}
+	
+	
+\end{figure}
+
 
 \begin{figure}[htb!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{hardware/carl_board}
+	\includegraphics[height=0.8\textwidth]{hardware/carl_board}
 	\caption{Autopiloto CaRL (\textit{Cuadcopter with autopilot based on Reinforcement Learning}).}
 	\label{hardware:carl_board}	
 \end{figure}
-
 
 
 \subsection{Fase de Potencia}
