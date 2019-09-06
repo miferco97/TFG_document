@@ -4,6 +4,7 @@ Debido a que el trabajo tiene dos partes principales claramente diferenciadas, s
 Con el ánimo de probar los distintos algoritmos de control basados en aprendizaje por refuerzo, se han diseñado diversos experimentos para comparar el rendimiento de estos algoritmos con el de un PID clásico. 
 \subsubsection{Control en 1 GdL (\textit{Roll})}
 
+En este experimento se comparan en rendimiento de los algoritmos PPO, DDPG , TRPO y PID para estabilizar la aeronave en \textit{roll}, restringiendo el movimiento de los otros ejes. 
 
 \begin{figure}[htb!]
 	\centering
@@ -12,7 +13,12 @@ Con el ánimo de probar los distintos algoritmos de control basados en aprendiza
 	\label{mat_lab_graph}	
 \end{figure}
 
+En este experimento, se observa como el TRPO consigue una mejor respuesta que el resto de los algoritmos. El PPO y el DDPG generan comportamientos similares.
+\newpage
 \subsubsection{Control en 1 GdL (\textit{Pitch})}
+
+En este experimento se comparan en rendimiento de los algoritmos PPO, DDPG , TRPO y PID para estabilizar la aeronave en \textit{pitch}, restringiendo el movimiento de los otros ejes. 
+
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=\textwidth]{experimentos/sim_onlypitch}
@@ -20,8 +26,12 @@ Con el ánimo de probar los distintos algoritmos de control basados en aprendiza
 	\label{mat_lab_graph}	
 \end{figure}
 
+En este experimento, se observa como el PPO consigue una mejor respuesta que el resto de los algoritmos. En este entrenamiento el TRPO consigue un peor rendimiento frente a los demás.
+
+
 \subsubsection{Control en los 3 GdL}
 
+En este experimento se comparan en rendimiento de los algoritmos PPO, DDPG , TRPO y PID para controlar la estabilización completa en los 3 ejes. 
 
 \begin{figure}[htb!]
 	\centering
@@ -30,6 +40,8 @@ Con el ánimo de probar los distintos algoritmos de control basados en aprendiza
 	\caption{Estabilización en \textit{roll}, \textit{pitch y \textit{yaw}} simultáneamente}
 	\label{tl_pr}	
 \end{figure}
+
+En este experimento, se observa como el TRPO consigue una mejor respuesta que el resto de los algoritmos, mostrando una salida mucho más rápida . El PPO sobreoscila demasiado en \textit{roll} y presenta un error de posición. 
 
 \section{Experimentos en real}
 Para la evaluación de la plataforma de vuelo , el diseño del cuadricóptero y del autopiloto, se han realizado distintos experimentos para intentar controlar la aeronave con algoritmos PID en cascada a una frecuencia de 70Hz.
@@ -93,8 +105,6 @@ En este experimento observamos que aumenta el ruido que encontramos en el régim
 	\caption{\tb{cambiar}}
 	\label{mat_lab_graph}	
 \end{figure}
-
-
 
 %\begin{figure}[htb!]
 %	\centering

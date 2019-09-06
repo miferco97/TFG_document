@@ -54,11 +54,11 @@
 \contentsline {chapter}{\numberline {7}Experimentos}{39}{chapter.7}
 \contentsline {section}{\numberline {7.1}Experimentos en simulaci\IeC {\'o}n}{39}{section.7.1}
 \contentsline {subsubsection}{Control en 1 GdL (\textit {Roll})}{39}{subsubsection*.48}
-\contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{39}{subsubsection*.50}
-\contentsline {subsubsection}{Control en los 3 GdL}{39}{subsubsection*.52}
-\contentsline {section}{\numberline {7.2}Experimentos en real}{39}{section.7.2}
+\contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{40}{subsubsection*.50}
+\contentsline {subsubsection}{Control en los 3 GdL}{40}{subsubsection*.52}
+\contentsline {section}{\numberline {7.2}Experimentos en real}{40}{section.7.2}
 \contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{40}{subsubsection*.54}
 \contentsline {subsubsection}{Control en 1 Gdl (\textit {Roll})}{40}{subsubsection*.57}
-\contentsline {subsubsection}{Control en los 3 Gdl}{40}{subsubsection*.60}
-\contentsline {chapter}{\numberline {8}Discusi\IeC {\'o}n}{45}{chapter.8}
-\contentsline {chapter}{\numberline {9}Conclusiones y trabajo futuro}{1}{chapter.9}
+\contentsline {subsubsection}{Control en los 3 Gdl}{42}{subsubsection*.60}
+\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{1}{chapter.8}
+\contentsline {section}{\numberline {8.1}Conclusiones}{1}{section.8.1}
