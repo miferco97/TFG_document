@@ -4,11 +4,19 @@ Durante el transcurso de este proyecto se ha conseguido desarrollar una platafor
 
 \section{Conclusiones}
 
-Los objetivos principales que se plantearon al comienzo del proyecto consistían en: desarrollar un autopiloto propio capaz de ejecutar distintos algoritmos de control para cuadricópteros, desarrollar una plataforma para poder probar este autopiloto y los algoritmos de forma segura e investigar sobre la posibilidad de emplear distintos algoritmos de aprendizaje por refuerzo para el control de actitud de la aeronave.
+Los objetivos principales que se plantearon al comienzo del proyecto consistían en: desarrollar un autopiloto propio capaz de ejecutar distintos algoritmos de control para cuadricópteros, desarrollar una plataforma de vuelo para poder probar este autopiloto y los algoritmos de forma segura e investigar sobre la posibilidad de emplear distintos algoritmos de aprendizaje por refuerzo para el control de actitud de la aeronave. A continuación desgranaremos las conclusiones que se han extraído de cada uno de estos objetivos y las posibles mejoras que se pueden realizar de cada uno.
+
+\subsubsection{Autopiloto}
+Se ha conseguido desarrollar un autopiloto funcional, capaz de estimar el estado de la aeronave y estabilizarse, cerrando un bucle interno de control y generando los comandos necesarios para controlar los motores. En este autopiloto se ha integrado la etapa de potencia necesaria para que sea posible alimentar al mismo directamente desde la batería, por lo que integra en una única PCB una gran cantidad de funcionalidades que no son habituales en los autopilotos comerciales, como por ejemplo la conexion WiFi, lo que ha permitido recabar los datos en tiempo real de forma sencilla. Sin embargo, las pistas que alimentan los motores a través de placa no se encuentran lo suficientemente ventiladas, por lo que se calientan demasiado.
+
+\subsubsection{Plataforma de vuelo}
+La plataforma de vuelo, ha permitido llevar a cabo los experimentos realizados de una forma segura y controlada. Debido a que la inmensa mayoría de las piezas han sido fabricadas mediante técnicas de impresión 3D, ha sido posible realizar variaciones de la plataforma de forma rápida y sencilla. Es por ésto que ,  se han diseñado varios componentes intercambiables, para poder modificar la configuración de los experimentos, lo que ha sido crucial para poder realizar el ajuste los parámetros del PID en las pruebas reales. El inconveniente que tiene la impresión 3D empleando PLA, es la fragilidad de algunas piezas, como por ejemplo, la unión esférica del banco de pruebas.
+
+\subsubsection{Algoritmos basados en aprendizaje por refuerzo}
+
+Uno de los retos que más tiempo han requerido, ha sido conseguir que los algoritmos propuestos, convergieran a una política óptima. Ha sido un proceso iterativo que ha tomado mucho tiempo hasta que se consiguió la convergencia del primer algoritmo. Posteriormente se realizaron muchas modificaciones de los hiperparámetros con el ánimo de mejorar el comportamiento del agente. Finalmente se ha conseguido aplicar varios algoritmos del estado del arte, consiguiendo , en algunos casos como en el del TRPO, buenos rendimientos.
 
 
+\section{Trabajo futuro}
 
-
-
-
-
+	

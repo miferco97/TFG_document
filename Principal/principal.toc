@@ -60,5 +60,9 @@
 \contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{40}{subsubsection*.54}
 \contentsline {subsubsection}{Control en 1 Gdl (\textit {Roll})}{40}{subsubsection*.57}
 \contentsline {subsubsection}{Control en los 3 Gdl}{42}{subsubsection*.60}
-\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{1}{chapter.8}
-\contentsline {section}{\numberline {8.1}Conclusiones}{1}{section.8.1}
+\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{45}{chapter.8}
+\contentsline {section}{\numberline {8.1}Conclusiones}{45}{section.8.1}
+\contentsline {subsubsection}{Autopiloto}{45}{subsubsection*.63}
+\contentsline {subsubsection}{Plataforma de vuelo}{45}{subsubsection*.64}
+\contentsline {subsubsection}{Algoritmos basados en aprendizaje por refuerzo}{1}{subsubsection*.65}
+\contentsline {section}{\numberline {8.2}Trabajo futuro}{1}{section.8.2}
