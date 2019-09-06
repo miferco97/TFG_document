@@ -2,40 +2,43 @@
 \BOOKMARK [1][-]{section.1.1}{Motivaci\363n}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Soluci\363n propuesta}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Objetivos}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.4}{Estructura de la memoria}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Estado del arte}{}% 6
-\BOOKMARK [1][-]{section.2.1}{Plataformas de control de cuadric\363pteros}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.2}{Aprendizaje por refuerzo}{chapter.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Fundamentos te\363ricos}{}% 9
-\BOOKMARK [1][-]{section.3.1}{Controlador PID}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.2}{Redes neuronales artificiales}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.3}{Aprendizaje por refuerzo}{chapter.3}% 12
-\BOOKMARK [2][-]{subsection.3.3.1}{Algoritmos de Q-learning}{section.3.3}% 13
-\BOOKMARK [2][-]{subsection.3.3.2}{Algoritmos de gradiente de pol\355ticas}{section.3.3}% 14
-\BOOKMARK [0][-]{chapter.4}{Hardware}{}% 15
-\BOOKMARK [1][-]{section.4.1}{Cuadro}{chapter.4}% 16
-\BOOKMARK [1][-]{section.4.2}{Motores y h\351lices}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.3}{Variadores \(ESC\)}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.4}{Bater\355as}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.5}{Autopiloto}{chapter.4}% 20
-\BOOKMARK [2][-]{subsection.4.5.1}{Fase de Potencia}{section.4.5}% 21
-\BOOKMARK [2][-]{subsection.4.5.2}{El microcontrolador \(ESP32\)}{section.4.5}% 22
-\BOOKMARK [2][-]{subsection.4.5.3}{Sensores}{section.4.5}% 23
-\BOOKMARK [1][-]{section.4.6}{Banco de pruebas}{chapter.4}% 24
-\BOOKMARK [0][-]{chapter.5}{Software}{}% 25
-\BOOKMARK [1][-]{section.5.1}{Software del Autopiloto}{chapter.5}% 26
-\BOOKMARK [2][-]{subsection.5.1.1}{Estimaci\363n del Estado}{section.5.1}% 27
-\BOOKMARK [2][-]{subsection.5.1.2}{Interfaz WiFi}{section.5.1}% 28
-\BOOKMARK [2][-]{subsection.5.1.3}{Generacion de comandos on-board}{section.5.1}% 29
-\BOOKMARK [1][-]{section.5.2}{Software de la estaci\363n}{chapter.5}% 30
-\BOOKMARK [2][-]{subsection.5.2.1}{Entorno de simulaci\363n}{section.5.2}% 31
-\BOOKMARK [2][-]{subsection.5.2.2}{Agente \(generaci\363n de comandos\)}{section.5.2}% 32
-\BOOKMARK [2][-]{subsection.5.2.3}{Interfaz Estaci\363n-Autopiloto}{section.5.2}% 33
-\BOOKMARK [1][-]{section.5.3}{Descripci\363n del equipo}{chapter.5}% 34
-\BOOKMARK [0][-]{chapter.6}{Metodolog\355a \(Problem Formulation\)}{}% 35
-\BOOKMARK [1][-]{section.6.1}{Dise\361o del estado}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{Dise\361o de las acciones}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.3}{Dise\361o de la funci\363n de recompensa}{chapter.6}% 38
-\BOOKMARK [0][-]{chapter.7}{Experimentos}{}% 39
-\BOOKMARK [0][-]{chapter.8}{Discusi\363n}{}% 40
-\BOOKMARK [0][-]{chapter.9}{Conclusiones y trabajo futuro}{}% 41
+\BOOKMARK [0][-]{chapter.2}{Estado del arte}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Plataformas de control de cuadric\363pteros}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{Plataformas tipo gimbal}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{Plataformas con uni\363n esf\351rica}{section.2.1}% 8
+\BOOKMARK [1][-]{section.2.2}{Aprendizaje por refuerzo}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Fundamentos te\363ricos}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Controlador PID}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Redes neuronales artificiales}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{Aprendizaje por refuerzo}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.3.1}{Algoritmos de Q-learning}{section.3.3}% 14
+\BOOKMARK [2][-]{subsection.3.3.2}{Algoritmos de gradiente de pol\355tica}{section.3.3}% 15
+\BOOKMARK [0][-]{chapter.4}{Hardware}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Cuadro}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.2}{Motores y h\351lices}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.3}{Variadores \(ESC\)}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.4}{Bater\355as}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.5}{Autopiloto}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.5.1}{Fase de Potencia}{section.4.5}% 22
+\BOOKMARK [2][-]{subsection.4.5.2}{El microcontrolador \(ESP32\)}{section.4.5}% 23
+\BOOKMARK [2][-]{subsection.4.5.3}{Sensores}{section.4.5}% 24
+\BOOKMARK [1][-]{section.4.6}{Banco de pruebas}{chapter.4}% 25
+\BOOKMARK [0][-]{chapter.5}{Software}{}% 26
+\BOOKMARK [1][-]{section.5.1}{Software del Autopiloto}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.1.1}{Estimaci\363n del Estado}{section.5.1}% 28
+\BOOKMARK [2][-]{subsection.5.1.2}{Interfaz WiFi}{section.5.1}% 29
+\BOOKMARK [2][-]{subsection.5.1.3}{Generacion de comandos on-board}{section.5.1}% 30
+\BOOKMARK [1][-]{section.5.2}{Software de la estaci\363n}{chapter.5}% 31
+\BOOKMARK [2][-]{subsection.5.2.1}{Entorno de simulaci\363n}{section.5.2}% 32
+\BOOKMARK [2][-]{subsection.5.2.2}{Agente \(generaci\363n de comandos\)}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.3}{Interfaz Estaci\363n-Autopiloto}{section.5.2}% 34
+\BOOKMARK [1][-]{section.5.3}{Descripci\363n del equipo}{chapter.5}% 35
+\BOOKMARK [0][-]{chapter.6}{Metodolog\355a \(Problem Formulation\)}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Dise\361o del estado}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{Dise\361o de las acciones}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{Dise\361o de la funci\363n de recompensa y ajuste de hiperpar\341metros}{chapter.6}% 39
+\BOOKMARK [0][-]{chapter.7}{Experimentos}{}% 40
+\BOOKMARK [1][-]{section.7.1}{Experimentos en simulaci\363n}{chapter.7}% 41
+\BOOKMARK [1][-]{section.7.2}{Experimentos en real}{chapter.7}% 42
+\BOOKMARK [0][-]{chapter.8}{Discusi\363n}{}% 43
+\BOOKMARK [0][-]{chapter.9}{Conclusiones y trabajo futuro}{}% 44

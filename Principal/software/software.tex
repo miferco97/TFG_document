@@ -47,7 +47,7 @@ A continuación se profundizará con más detalle en la implementación de estas
 
 \subsection{Entorno de simulación}
 
-En cualquier proyecto de robótica es conveniente contar con un entorno de simulación que permita realizar pruebas en distintas situación de forma sencilla y rápida, sin necesidad de tener ni modelo real, ni el entorno concreto en el que quieras probar tu robot. Cuando se trabaja con drones, la simulación pasa de ser conveniente a ser muy necesaria. Ésto es debido a la peligrosidad intrínseca de estas aeronaves, ya que, cuentan con hélices afiladas que giran a gran velocidad.
+En cualquier proyecto de robótica es conveniente contar con un entorno de simulación que permita realizar pruebas en distintas situación de forma sencilla y rápida, sin necesidad de tener ni modelo real, ni el entorno concreto en el que quieras probar tu robot. Cuando se trabaja con drones, la simulación pasa de ser conveniente a ser muy necesaria. Ésto es debido a la peligrosidad intrínseca de estas aeronaves, ya que, cuentan con hélices que giran a gran velocidad.
 
 %Es por esto que es necesario contar con un entorno de simulación en el que se puedan probar los algoritmos de control antes de llevarlos a la realidad, con el objetivo de minimizar los riesgos de estas pruebas.Si a todo esto se le añade la experimentación con algoritmos de aprendizaje por refuerzo e inteligencia artificial, la simulación y entrenamiento previos se hacen imprescindibles 
 
@@ -67,7 +67,7 @@ Este entorno de simulación utiliza Gazebo 9, un entorno de simulación 3D de c�
 Para acercar la simulación a la configuración de los experimentos que se realizarían posteriormente en la plataforma real, se han realizado algunas modificaciones sobre el modelo predeterminado de la aeronave:
 
 \begin{enumerate}
-	\item Se ha modificado la forma de anclaje del dron. Originalmente el dron se encontraba anclado entorno a una articulación situada en su centro de gravedad. Esto permitía que el peso de la aeronave apenas tuviera influencia a la hora de rotar la aeronave, todo el peso estaba sustentado por la articulación, lo cual no se asemeja con los bancos de pruebas que se han diseñado. En estos bancos de prueba el anclaje se encuentra desplazado con respecto al centro de gravedad, por lo que cuanto mayor sea el valor de los ángulos $\varphi$ y $\theta$ mayor es la influencia del peso en el par necesario para estabilizar la aeronave. Es por esto que se ha desplazado la articulación del centro de gravedad y se ha conectado a la aeronave mediante una unión rígida, asemejando así el entorno de simulación al entorno de pruebas real.
+	\item Se ha modificado la forma de anclaje del cuadricóptero. Originalmente el dron se encontraba anclado entorno a una articulación situada en su centro de gravedad. Esto permitía que el peso de la aeronave apenas tuviera influencia a la hora de rotar la aeronave, todo el peso estaba sustentado por la articulación, lo cual no se asemeja con los bancos de pruebas que se han diseñado. En estos bancos de prueba el anclaje se encuentra desplazado con respecto al centro de gravedad, por lo que cuanto mayor sea el valor de los ángulos $\varphi$ y $\theta$ mayor es la influencia del peso en el par necesario para estabilizar la aeronave. Es por esto que se ha desplazado la articulación del centro de gravedad y se ha conectado a la aeronave mediante una unión rígida, asemejando así el entorno de simulación al entorno de pruebas real.
 	\item Se ha modificado parámetros dinámicos de la aeronave. Los parámetros que mayor discrepancia tenían entre la simulación y el mundo real eran principalmente los parámetros inerciales. Tanto la masa como los momentos de inercia del cuadricóptero eran mucho inferiores a los de la aeronave real. Esto se manifestaba principalmente cuando al hacer pruebas con los algoritmos PID el comportamiento simulado no se parecía con el real, por ejemplo en simulación un regulador P era capaz de estabilizar al sistema, mientras que en la realidad un regulador P era inestable de por sí y requería de las acciones derivativa e integral para conseguir estabilizarlo.
 \end{enumerate}
 
@@ -76,11 +76,19 @@ Para acercar la simulación a la configuración de los experimentos que se reali
 
  \subsection{Agente (generación de comandos)}
  
- Siguiendo con la terminología del aprendizaje por refuerzo se va a denominar agente al encargado de generar las acciones de control. En el caso de los reguladores PID clásicos el agente hace la función de los reguladores.
+ Siguiendo con la terminología del aprendizaje por refuerzo se va a denominar agente al encargado de generar las acciones de control. Dependiendo del algoritmo de control que se use, se dispone de distintos tipos de agente.
+ 
+ \subsubsection{Agente con algoritmos PID}
+ En este caso, el agente recibe las observaciones del entorno a través del estado y en función de éste, produce la salida a los motores. Este agente es el más sencillo, ya que , una vez ajustadas las ganancias, éste solamente debe enviar los comandos de control a la aeronave.
+ 
+ \subsubsection{Agente con algoritmos de RL}
+ Este agente, se encarga, tanto de generar las acciones como de optimizar la política que las genera.
+ 
+ 
+ El agente, basado en el estado observado $s_t$ y la política $\pi$ actual, genera una acción $a_t$, tras realizarla, el entorno le proporciona un estado $s_{t+1}$ y una recompensa $r_t$.
+ Con esta tupla $[s_t,a_t,r_t,s_{t+1}]$ el agente emplea el algoritmo de aprendizaje por refuerzo definido para actualizar la política $\pi$ y así intentar mejorarla con cada iteración. 
 
-Para probar distintos agentes con distintos algoritmos se han empleado la implementación de los algoritmos \textit{state of the art}, del repositorio de GitHub \textit{Stable-Baselines} \cite{stable-baselines}. Inicialmente se comenzó empleando las \textit{Baselines} de OpenAI \cite{OpenAIbaselines} pero se decidió cambiar a las \textit{Stable Baselines} por la limpieza del código y la facilidad para realizar experimentos con diversos algoritmos e hiperparámetros.
-
-\tb{¿hablo un poco sobre transfer learning?}
+Para probar distintos distintos algoritmos se han empleado la implementación de los algoritmos del estado del arte, del repositorio de GitHub \textit{Stable-Baselines} \cite{stable-baselines}. Inicialmente se comenzó empleando las \textit{Baselines} de OpenAI \cite{OpenAIbaselines} pero se decidió cambiar a las \textit{Stable Baselines} por la limpieza del código y la facilidad para realizar experimentos con diversos algoritmos e hiperparámetros. Con esta herramienta se ha podido experimentar con distintos algoritmos para comparar el rendimiento conseguido de cada uno.
 
 
 \subsection{Interfaz Estación-Autopiloto}

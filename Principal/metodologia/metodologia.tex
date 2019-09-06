@@ -1,6 +1,6 @@
 \chapter{Metodología (\tb{Problem Formulation})}
 
-El objetivo del trabajo es estabilizar un UAV usando algoritmos de control basados en una red neuronal entrenada empleando algoritmos de aprendizaje automático. Los principales componentes que intervienen en el agente son el estado, las acciones y la recompensa, para cada problema hay un conjunto que estados, acciones y funciones de recompensa que pueden llevar a que el agente aprenda.
+Además del desarrollo de la plataforma de la aeronave, otro objetivo del trabajo es intentar estabilizar un UAV usando algoritmos de control basados algoritmos de aprendizaje automático. Los principales componentes que intervienen en el agente son el estado, las acciones y la recompensa, para cada problema hay un conjunto que estados, acciones y funciones de recompensa que pueden llevar a que el agente aprenda.
 
 \section{Diseño del estado}
  El autopiloto cuenta con 2 IMUs para poder obtener datos sobre su estado. Se quiere estabilizar el dron en una orientación concreta, por lo tanto el estado que se ha diseñado consta de 6 parámetros:
@@ -36,12 +36,88 @@ Las señales de control que admiten los variadores es una señal PWM de 50Hz cuy
 \end{equation}\\
 siendo $P_i$ el ancho del pulso enviado al ESC, $\alpha \in [0,1]$  es el porcentaje de la potencia total que puede manejar el controlador y $\beta \in [0,2000]$ es la velocidad base que tienen los motores. Esta velocidad base permite que el dron pueda variar su altura y que se pueda autosustentar. 
 
-\section{Diseño de la función de recompensa}
-La función de recompensa rige la forma en la que la red va a configurar sus pesos, por lo tanto, cómo se va a comportar el agente en un estado determinado.
-Para conseguir que el agente responda de la forma deseada se han probado una gran variedad de funciones de \textit{reward}, optando finalmente por:
+\section{Diseño de la función de recompensa y ajuste de hiperparámetros}
+
+La búsqueda de la función de recompensa y la elección de los hiperparámetros que aseguraban la convergencia de los distintos algoritmos, se ha realizado mediante un proceso cíclico, en el que, se realizaba una hipótesis sobre la posible forma de la función de recompensa o el posible valor de un hiperparámetro que podría mejorar el algoritmo. Posteriormente se ejecutaba el algoritmo y se comparaban los resultados de este entrenamiento con los resultados previos. Para disminuir el tiempo de los entrenamientos, se simplificaba el problema del control del cuadricóptero a un único eje de giro. Con esto se redujo el tiempo que se tardaba en completar el ciclo.
+
+\tb{diagrama ciclo}
+
+
+\subsubsection{Función de recompensa}
+La función de recompensa rige la forma en la que la red va a configurar sus pesos, por lo tanto, cómo se va a comportar el agente en un estado determinado. Para conseguir que el agente responda de la forma deseada se han probado una gran variedad de funciones de \textit{reward}, optando finalmente por:
 \begin{equation}
 	%R_t = \left( 1-\frac{|\varphi - \varphi_{ref}| + |\theta-\theta_{ref}| + |\psi- \psi_{ref}|}{3}\right)^3
-	R_t = \left( 1-\frac{|\varphi|  + |\theta| + |\psi|}{3}\right)^3
+	R_t = \left( 1-\frac{|\varphi|  + |\theta| + |\psi|}{3}\right)^n
 \end{equation}
-Con esta funcion de recompensa \tb{BLA BLA BLA}
+Sea $\gamma= \frac{|\varphi|  + |\theta| + |\psi|}{3} $ entonces $R_t = (1- \gamma)^n$, con $n \in \mathbb{N}$. Aumentando el valor de $n$ podemos conseguir funciones de recompensa con pendientes más pronunciadas.
+
+	\begin{figure}[htb!]
+\centering
+	
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\begin{tikzpicture}[]
+		\begin{axis}[ 
+		%title=$\tanh(x)$,
+		domain=0:1, restrict y to domain=-10:10,
+		axis x line=middle, xmin=0, xmax=1, xtick={0,0.5,...,1}, xlabel=$\gamma$,
+		axis y line=middle, ymin=0, ymax=1, ytick={0,...,1}, ylabel=$r_t$,
+		y label style={at={(current axis.below origin)},anchor=south east},
+		scale only axis=true,
+		width=0.7\textwidth, height=3.5cm,
+		samples=40] 
+		\addplot[blue, very thick] {(1-(\x))^4};		\end{axis}
+		
+		%\addlegendentry{$\tanh(x)$}	
+		\end{tikzpicture}
+	\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+	\centering
+	\begin{tikzpicture}[]
+	\begin{axis}[ 
+	%title=$\tanh(x)$,
+	domain=0:1, restrict y to domain=-10:10,
+	axis x line=middle, xmin=0, xmax=1, xtick={0,0.5,...,1}, xlabel=$\gamma$,
+	axis y line=middle, ymin=0, ymax=1, ytick={0,...,1}, ylabel=$r_t$,
+	y label style={at={(current axis.below origin)},anchor=south east},
+	scale only axis=true,
+	width=0.7\textwidth, height=3.5cm,
+	samples=40] 
+	\addplot[blue, very thick] {(1-(\x))^4};
+	\end{axis}
+	
+	%\addlegendentry{$\tanh(x)$}	
+	\end{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+	\centering
+	\begin{tikzpicture}[]
+	\begin{axis}[ 
+	%title=$\tanh(x)$,
+	domain=0:1, restrict y to domain=-10:10,
+	axis x line=middle, xmin=0, xmax=1, xtick={0,0.5,...,1}, xlabel=$\gamma$,
+	axis y line=middle, ymin=0, ymax=1, ytick={0,...,1}, ylabel=$r_t$,
+	y label style={at={(current axis.below origin)},anchor=south east},
+	scale only axis=true,
+	width=0.7\textwidth, height=3.5cm,
+	samples=40] 
+	\addplot[blue, very thick] {(1-(\x))^10};
+	\end{axis}
+	
+	%\addlegendentry{$\tanh(x)$}	
+	\end{tikzpicture}
+	
+\end{subfigure}
+	\caption{Funciones $R_t$ para distintos valores de $n = 2,4,10$ respectivamente}
+\end{figure}
+
+Esta función $R_t:[0,1]\rightarrow [0,1] \;\; \forall n \in \mathbb{N} > 0$ por lo que al proporcionar valores entre 0 y 1, favorece la velocidad del entrenamiento. Además toda la recompensa es positiva, por lo que el agente intentará mantenerse la mayor cantidad de tiempo posible sin reiniciar el episodio, esto es muy importante para conseguir la convergencia del entrenamiento en los escenarios en los que se desea que el cuadricoptero se encuentre siempre dentro de una región concreta del espacio. 
+
+\subsubsection{Ajuste de hiperparámetros}
+
+Debido a las diferentes naturalezas de cada uno de cada uno de los algoritmos que se han empleado: DDPG, TRPO y PPO , cada uno cuenta con un conjunto distinto de hiperparámetros que ajustar. La implementación de estos algoritmos que se ha empleado (\textit{stable-baselines}) contiene unos hiperparámetros por defecto, los cuales suelen hacer que los algoritmos converjan.
+
+Por lo general, no ha sido necesario modificar mucho estos parámetros por defecto, a excepción del valor de la constante $\epsilon$ en el algoritmo PPO. Este parámetro modifica el tamaño de la región de confianza del algoritmo, acotando el tamaño de los pasos que se toman en el curso de cada actualización de la política. Se observó que el valor por defecto de este parámetro $\epsilon_{defecto} = 0.2$ era demasiado grande, por lo que la política divergía. A medida que este parámetro se disminuye, se aumenta la estabilidad del aprendizaje, sin embargo, también se ralentiza mucho. Es por esto que el valor de éste hiperpaŕametro se ha ido modificando a lo largo de los experimentos, para poder conseguir el entrenamiento más rápido, capaz de converger de forma estable. 
+
+
 

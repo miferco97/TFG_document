@@ -13,15 +13,92 @@
 
 \section{Controlador PID}
 
-
-
-
 Un regulador PID es un controlador lineal realimentado. Matemáticamente se expresa como 
 \begin{equation}
 	u(t) = \overbrace{\raisebox{0ex}[2.2\height]{$K_p e(t)$}}^\text{P} +\overbrace{K_i \int_{0}^{t}e(\tau)d\tau}^\text{I} + \overbrace{ K_d \frac{de(t)}{dt}}^\text{D}\;
 \end{equation}
 
-donde $e(t)$ es la señal de control, $u(t)$ representa la salida del regulador y $K_p,K_i,K_d$ son parámetros ajustables de los cuales depende la dinámica y la estabilidad del sistema. Como se puede observar, el regulador consta de tres partes: la parte proporcional (P) tiene en cuenta el error actual, la parte integral (I) tiene en cuenta el histórico de los errores y la parte derivativa (D) tiene en cuenta la estimación del error futuro.
+donde $e(t)$ es la señal de control, $u(t)$ representa la salida del regulador y $K_p,K_i,K_d$ son parámetros ajustables de los cuales depende la dinámica y la estabilidad del sistema. Como se puede observar, el regulador consta de tres partes: la parte proporcional (P) tiene en cuenta el error actual, la parte integral (I) tiene en cuenta el histórico de los errores y la parte derivativa (D) tiene en cuenta el ``futuro'' del error.
+
+En este trabajo se han empleado controladores PID en dos tipos de bucles de control con topologías diferentes. Para el bucle de control más sencillo, se aplica el regulador PID sobre el error obtenido al realimentar la salida del bucle, veáse \cref{PID_loop}.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{background/PID_loop}
+	\caption{Bucle de control realimentado con regulador PID}
+	\label{PID_loop}
+\end{figure}
+
+La otra variante emplea un bucle de control en cascada, el cual consta de dos bucles cerrados de control. El bucle externo emplea un regulador P, este bucle genera la señal de referencia, para otro bucle de control interno, basado en la salida del sistema. El bucle interno emplea un regulador PID para controlar la magnitud de una variable interna. En el caso particular de este trabajo, el bucle externo intenta alcanzar una referencia de posición angular $\theta_{ref}$, para ello el regulador P, envía una referencia de velocidad angular $\dot \theta_{ref}$ a un controlador de velocidad con un regulador PID, vease \cref{PID_cascade_loop}.
+
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{background/PID_cascade_loop}
+	\caption{Bucle de control en cascada}
+	\label{PID_cascade_loop}
+\end{figure}
+
+
+\subsubsection{Control de la aeronave }
+Para el control de la aeronave es necesario cerrar simultáneamente los 3 bucles de control, uno para cada ángulo. Cada bucle de control produce una salida $u_(t)$ a la planta, en este caso, a la aeronave. Para traducir estas señales a los comandos que se le envían a los motores, es necesario realizar una transformación. 
+
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.3\textwidth]{introduccion/cuadrirrotorX.jpeg}
+	\caption{Esquema cuadrirrotor en X}
+	\label{Drone_en_X_Q}
+\end{figure}
+
+
+Intuitivamente, si se desea que el dron incline el morro hacia delante, la velocidad de los 2 motores traseros deberá aumentar, mientras que la velocidad de los motores delanteros deberá disminuirse. Si consideramos que inclinar el morro hacia delante implica que la nave tenga un ángulo $\theta > 0$ y que los motores estan dispuestos según la figura \ref{Drone_en_X_Q}, entonces 
+\begin{align*}
+	w_1 &= -\; u_\theta(t)\\
+	w_2 &= +\; u_\theta(t)\\
+	w_3 &= -\; u_\theta(t)\\
+	w_4 &= +\; u_\theta(t)
+\end{align*}
+
+Si lo expresamos matricialmente:
+\begin{equation}
+	\left[\begin{array}{c}
+		w_1\\
+	w_2\\
+	w_3\\
+	w_4
+	\end{array}\right] =\left[\begin{array}{c}
+	-1 \\
+	 +1 \\
+	  -1 \\
+	   +1
+	\end{array}\right] u_\theta(t) 
+\end{equation}
+
+siendo $w_i$ la velocidad del motor i y $u_\theta(t)$ la salida del controlador de \textit{pitch}. Si se cierran los 3 bucles de control de forma simultánea y se suman las contribuciones de cada bucle sobre las acciones de control de forma similar
+
+
+\begin{equation}
+\left[\begin{array}{c}
+w_1\\
+w_2\\
+w_3\\
+w_4
+\end{array}\right] =\underbrace{\left[\begin{array}{ccc}
+-1 & -1 & +1 \\
++1 & +1 & +1 \\
+-1 & +1 & -1 \\
++1 & -1 & -1
+\end{array}\right]}_{\text{Matriz de transformación}}
+\left[\begin{array}{c}
+u_\varphi(t)\\
+u_\theta(t)\\
+u_\psi(t)
+\end{array}\right]
+\end{equation}
+
+Esta matriz de transformación relaciona las salidas de los controladores con los comandos de los motores, modificando estos valores se puede aumentar la influencia de un bucle con respecto a otro.
+
 \section{Redes neuronales artificiales} 
  Una red neuronal artificial (ANN) esta compuesta por un conjunto de nodos o perceptrones interconectados entre sí. Estos perceptrones se agrupan en capas ``ocultas'', se les atribuye este nombre debido a que todos los nodos de una capa se interconectan con todos los nodos de la capa anterior, por lo que después del aprendizaje de la red no se sabe cuales son los perceptrones de la capa anterior que influyen en un nodo.
  
@@ -234,14 +311,14 @@ Cada perceptron es la unidad mínima de computación de una ANN, estas unidades 
 
 \section{Aprendizaje por refuerzo}
 
-El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018reinforcement} es un área del aprendizaje automático o \textit{Machine Learning} en el que un agente interactúa con un entorno buscando la mejor acción a realizar en función de su estado actual.
+El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018reinforcement} es un área del aprendizaje automático o \textit{Machine Learning} en el que un agente interactúa con un entorno buscando la mejor acción a realizar en función de su estado actual, de manera que maximice las recompensas acumuladas en el tiempo.
 
 
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=0.8\textwidth]{background/RL_diagram}
 	\caption{Diagrama canónico del bucle de interacción entorno-agente}
-	\label{hardware:droneImg}
+	\label{Rl-diagram}
 \end{figure}
 
 
@@ -253,8 +330,8 @@ Además del agente y el entorno se pueden identificar tres elementos principales
 \begin{itemize}
 	\item[$\bullet$] \textbf{Política ($\pi$)}  (Proveniente del termino anglosajón \textit{policy}, el cual es el término empleado en el estado del arte). Define el conjunto de acciones que debe realizar el agente para conseguir maximizar su recompensa en función su estado, el cuál es percibido a través del entorno. La \textit{policy} constituye el núcleo del agente y nos permite determinar su comportamiento. Estas políticas pueden ser estocásticas.
 	
-	\item[$\bullet$] \textbf{Recompensa} ($Rt$). 
-	Define el objetivo del agente en un problema de aprendizaje por refuerzo. En cada salto de tiempo (\textit{step}) el agente recibe una recompensa por parte del entorno (un número). 
+	\item[$\bullet$] \textbf{Recompensa} ($R_t$). 
+	Define el objetivo del agente en un problema de aprendizaje por refuerzo. En cada salto de tiempo (\textit{step}) el agente recibe una recompensa por parte del entorno. 
 	
 	\item[$\bullet$] \textbf{Función de valor} ($V^\pi_s$). Representa la máxima recompensa que puede esperar obtener un agente desde un estado concreto, empleando una política concreta, es decir, tiene en cuenta la recompensa a largo plazo, no solo la inmediata.
 	\begin{equation}
@@ -262,7 +339,7 @@ Además del agente y el entorno se pueden identificar tres elementos principales
 	\end{equation}
 		
 \end{itemize}
-Algunos algoritmos de aprendizaje por refuerzo requieren de la definición de un \textbf{modelo del entorno}. Este modelo permite predecir el comportamiento que va a tener el entorno a lo largo del tiempo.
+Algunos algoritmos de aprendizaje por refuerzo requieren de la definición de un \textbf{modelo del entorno}. Este modelo permite predecir el comportamiento que va a tener el entorno a lo largo del tiempo. Los algoritmos que emplean un modelo se les denomina \textit{model-based}, mientras que, a los algoritmos que no requieren de un modelo del entorno se les denomina \textit{model-free}.
 
 \subsubsection{Procesos de decisión de Markov}
 
@@ -282,7 +359,7 @@ Estos procesos cumplen la propiedad de Markov, es decir, que el pasado no influy
 El problema principal de los MDP es encontrar la secuencia de acciones que debe realizar el agente para maximizar la recompensa a largo plazo, es decir, encontrar la política $\pi$ 
 óptima, que permita maximizar la recompensa. Una vez encontrada la política $\pi$ óptima el problema se reduce a una cadena de Markov, dado que la acción $a$ a realizar en un estado $s$ viene completamente definida por el estado $s$ y la probabilidad $P_a$. 
 
-La política $\pi$ óptima es aquella que maximice la recompensa acumulada, es decir, la suma decontada de las recompensas instantáneas percibidas por el entorno:
+La política $\pi$ óptima es aquella que maximice la recompensa acumulada, es decir, la suma descontada de las recompensas instantáneas percibidas por el entorno:
 
 \begin{equation}
 	G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{k=0}^{\infty}\gamma^k R_{
@@ -291,16 +368,18 @@ La política $\pi$ óptima es aquella que maximice la recompensa acumulada, es d
 
 donde $\gamma$ es el factor de descuento, el cual debe cumplir $0 \le \gamma \le 1$, cuanto mayor sea este factor menos importante es la recompensa inmediata. 
 
-En este trabajo se han trabajado con 2 tipos de algoritmos de aprendizaje por refuerzo: métodos basados en \textit{Q-learning} y métodos de gradiente de las políticas.
 
 \subsection{Algoritmos de \textit{Q-learning}}
-Los algoritmos de Q-learning se basan en la función estado-acción, también conocida como función Q, de ahí el nombre de estos algoritmos. Esta función denota el valor de tomar una acción en un estado siguiendo una política $\pi$. Formalmente, la función Q se define como
+En este trabajo se han trabajado con 2 tipos de algoritmos de aprendizaje por refuerzo: métodos basados en \textit{Q-learning} y métodos de gradiente de las políticas.
+
+
+Los algoritmos de Q-learning se basan en la función estado-acción, también conocida como función Q, de ahí el nombre de estos algoritmos. Esta función denota el valor de tomar una acción para un estado concreto, siguiendo una política $\pi$. Formalmente, la función Q se define como
 
 \begin{equation}
 	Q^\pi(s,a) =  \mathbb{E}_\pi\left[\sum_{k=0}^{\infty}{\gamma^k r_{t+k+1}}\Big|s_t=s,a_t = a\right]
 \end{equation}
 
-La diferencia entre la función Q y la función de valor radica en que la función de valor cuantifica lo ``bueno'' que es un estado concreto, mientras que la función Q evalúa la conveniencia de tomar una acción concreta en un estado determinado. Este matiz se empleará posteriormente para definir la función de ventaja en el apartado \ref{ALG_GRAD_POL}.
+La diferencia entre la función Q y la función de valor radica en que la función de valor cuantifica el valor, en términos de recompensa acumulada, que posee un estado concreto, mientras que la función Q evalúa la conveniencia de tomar una acción concreta en un estado determinado. Este matiz se empleará posteriormente para definir la función de ventaja en el apartado \ref{ALG_GRAD_POL}.
 
 El objetivo de estos algoritmos se basa en obtener la función óptima $Q^*$, esta función cumple la ecuación de Bellman 
 	\begin{equation}
@@ -353,11 +432,18 @@ Este algoritmo introduce, principalmente, dos modificaciones sobre los algoritmo
 	
 \end{enumerate}
 
+En este algoritmo, la política $\pi$ que dicta que acción $a$ es la más conveniente en un estado $s$ determinado se obtiene a partir de la función Q de forma inmediata
+
+\begin{equation}		
+		a_t(s) = \text{argmax}_a\;Q(s,a|\theta) 
+\end{equation}
+
+es decir, se escoge la acción $a$ que maximice la función Q en ese estado.
 \subsubsection{DDPG}
 
-El algoritmo DDPG (\textit{Deep Deterministic Policy Gradient}), creado por Lillicrap et al. \tb{citar} en 2016, adapta las ideas del DQN a un dominio de acciones continuo. Este algoritmo emplea la filosofía actor-crítico, en la que una parte evalúa la bondad de una accion en un estado (crítico) y  otra define la política que debe realizar el agente (actor).
+El algoritmo DDPG (\textit{Deep Deterministic Policy Gradient}), creado por Lillicrap et al. \tb{citar} en 2016, adapta las ideas del DQN a un dominio de acciones continuo. Este algoritmo emplea la filosofía \textit{actor-critic}, en la que una parte evalúa el valor de una accion en un estado (crítico) y  otra define la política que debe realizar el agente (actor).
 
-La función actor $\mu(s|\theta^\mu)$ devuelve la acción que se debe realizar en el estado $s$, es decir, la política $\pi$ que debe seguir el agente. El crítico $Q(s,a)$ se entrena empleando la identidad de Bellman al igual que en los algoritmos de aprendizaje-Q.
+La función actor $\mu(s|\theta^\mu)$ devuelve la acción que se debe realizar en el estado $s$, es decir, la política $\pi$ que debe seguir el agente. El crítico $Q(s,a)$ se entrena empleando la identidad de Bellman al igual que en los algoritmos de \textit{Q-learning}.
 
 Para actualizar los pesos de la función actor se emplea el gradiente de la función de coste empleados por Silver et al. \tb{citar DPG paper} 
 
@@ -373,15 +459,84 @@ Para favorecer la exploración del algoritmo se genera una política de explorac
 
 este ruido se puede generar de varias formas, en el artículo se emplea ruido generado mediante el proceso de Ornstein-Uhlenbeck \tb{(citar)} para generar ruido correlado temporalmente.
 
-Este algoritmo mantiene el contenedor de repeticiones y el empleo de redes objetivo del DQN aunque añade alguna modificación en esta última. En vez de reiniciar el valor de la red $R$ con el valor de la red objetivo $\hat R$ cada $C$ épocas, en el DDPG, esta actualización de las redes $Q$ y $\mu$ se realiza de forma suave mediante una media ponderada móvil (\textit{Weighted Moving Average})
-
+Este algoritmo mantiene el contenedor de repeticiones y el empleo de redes objetivo del DQN aunque añade alguna modificación en esta última. En vez de reiniciar el valor de la red  con el valor de la red objetivo cada $C$ épocas, en el DDPG, esta actualización de las redes $Q$ y $\mu$ se realiza de forma suave mediante una media ponderada móvil.
 \begin{align}
 \theta ^{\hat Q} &\leftarrow \tau \theta ^ Q + (1 - \tau)\theta^{\hat Q}\\
 \theta ^{\hat \mu} &\leftarrow \tau \theta ^ \mu + (1 - \tau)\theta^{\hat \mu}
 \end{align}
 con $\tau \ll  1$. De esta forma los pesos de la red cambian de forma suave, lo que favorece la estabilidad del entrenamiento. 
 
-\subsection{Algoritmos de gradiente de políticas} \label{ALG_GRAD_POL}
+\subsection{Algoritmos de gradiente de política} \label{ALG_GRAD_POL}
+
+En los algoritmos de \textit{Q-learning} es objetivo es encontrar una función $Q(s,a|\theta)$ que se aproxime lo máximo a la función $Q^*$, para a partir de esta función extraer la política óptima.
+En cambio, en los algoritmos de gradiente de política (\textit{policy gradients}) lo que se parametriza, es una política $\pi_\theta$, por lo que el objetivo  de estos algoritmos es encontrar los parámetros que maximizan la recompensa acumulada . La función de coste a maximizar de estos algoritmos es directamente
+
+\begin{equation}
+J(\theta)=\mathbb{E}_\pi[r(\tau)]	
+\end{equation}
+siendo $r(\tau)$ la recompensa total obtenida al realizar una trayectoria $\tau$. Si se emplea un algoritmo de optimización basado en el descenso de gradientes los pesos se actualizarían de la siguiente forma
+\begin{equation}
+	\theta_{t+1} = \theta_t + \alpha \nabla J (\theta_t)
+\end{equation}
+por lo que el objetivo es encontrar el gradiente $\nabla J (\theta_t)$ e iterar en el tiempo para obtener la política optima. El teorema del gradiente de política \tb{citar} se obtiene que 
+
+\begin{equation}\label{eq:2}
+	\nabla J (\theta_t) = \mathbb{E}_\pi\left[\sum_{t=0}^{\infty}\gamma^t  \nabla_\theta \log \pi_\theta(a_t|s_t) A^{\pi_\theta}(s_t,a_t)\right]
+\end{equation} 
+
+	Siendo $A^\pi$ la función de ventaja, definida como 
+	\begin{equation}
+	A^\pi(s_t,a_t)=Q^\pi(s_t,a_t) - V^\pi(s_t)
+	\end{equation}
+intuitivamente, la función de ventaja representa el beneficio o perjuicio de elegir la acción $a_t$ en lugar de seguir la política $\pi$ en un estado determinado. Al emplear esta función en la expresión \ref{eq:2} la política evoluciona hacia las acciones que consiguen una recompensa mayor que la acción media.
 
 \subsubsection{TRPO}
+
+El algoritmo TRPO \textit{(Trust Region Policy Optimization)} es un algortimo desarrollado por Schulman et al. \tb{citar} en 2017, que emplea el concepto de la región de confianza (\textit{Trust Region}) para favorecer la convergencia del entrenamiento.
+
+La región de confianza limita el cambio que puede sufrir la política en cada iteración, de esta forma, primero se establece el tamaño máximo del paso y posteriormente se localiza el punto óptimo dentro de esta región.
+
+En este algoritmo se intenta
+\begin{align}\label{eq:3}
+	\underset{\theta}{\text{Maximizar}}\qquad&{\mathbb{\hat E}_t} \left[ \frac{\pi_\theta (a_t|s_t)}{\pi_{\theta_{old}} (a_t|s_t)} \hat{A}_t\right]\\\label{eq:4}
+	\text{Sujeto a}\qquad& {\mathbb{\hat E}_t} \left[ \text{KL}[\pi_{\theta_{old}}(\cdot|s_t),\pi_{\theta}(\cdot|s_t)]\right] \le \delta
+\end{align}
+
+La expresión \ref{eq:3} es una función límite inferior a $J(\theta^*)$, es decir, para cualquier valor de $\theta \neq \theta^*$, todos los puntos de la expresión \ref{eq:3} se encuentran por debajo de la función $J(\theta^*)$. Esto implica que se pueden emplear métodos de minorización-maximización (algoritmos MM), los cuales van aproximando una función limite inferior, a otra, límite superior mediante iteraciones (\cref{MM_fig}).
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{background/MM}
+	\caption{Evolución de una función limite inferior con un algoritmo MM.}
+	\label{MM_fig}
+\end{figure}
+
+Al emplear este método, junto con las limitaciones impuestas con la región de confianza, se consigue mejorar la convergencia del entrenamiento a la solución óptima.
+
 \subsubsection{PPO}
+El algoritmo PPO (\textit{Proximal Policy Optimization}), fue desarrollado por Schulman et al. \tb{cite} en 2017, como una mejora del algoritmo TRPO explicado anteriormente. El algoritmo TRPO tiene una complejidad de implementación muy elevada, el objetivo PPO era simplifica esta complejidad y consigue mejorar el rendimiento de su predecesor.
+
+Este algoritmo tiene dos variantes, aunque, en este trabajo, solamente se tratará sobre la variante que ``recorta'' el objetivo (\textit{Clipped Surrogate Objetive}).
+
+Sea $r_t(\theta)$ el radio de probabilidad $r_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}(a_t|s_t)}}$, empleando esto en la expresión de la función objetivo del TRPO (eq. \ref{eq:3})
+
+\begin{equation}
+	L^{\text{CPI}}	(\theta)={\mathbb{\hat E}_t} \left[ \frac{\pi_\theta (a_t|s_t)}{\pi_{\theta_{old}} (a_t|s_t)} \hat{A}_t\right]
+	= 	{\mathbb{\hat E}_t} \left[ r_t(\theta)\hat{A}_t\right]
+\end{equation}
+
+Si no hubiera ninguna limitación, al maximizar $L^{\text{CPI}}$, se realizarían cambios muy grandes de la política. Es por esto que Schulman et al. se plantean como modificar esta función para penalizar cambios grandes en las políticas, los cuales distancian $r_t(\theta)$ de 1. La función objetivo que proponen
+
+\begin{equation}
+	L^{\text{CLIP}}	(\theta) = 	{\mathbb{\hat E}_t} \left[ \text{min} \left(r_t(\theta)\hat{A}_t \;,\; \text{clip}(r_t(\theta),1-\epsilon,1+\epsilon )\;\hat{A}_t \right) \right]
+\end{equation}
+
+donde $\epsilon$ es un hiperparámetro, por ejemplo, $\epsilon = 0.2$. De esta forma, se limita que se potencien mucho las acciones realizadas, cuando la ventaja es positiva y que , cuando la ventaja sea negativa, no se rechacen de forma permantente las acciones realizadas, véase \cref{ppo_clip}.
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{background/ppo_clip}
+	\caption{Gráficas de la función objetivo $L^{\text{CLIP}}(\theta)$ para distintos valores de $r$, dependiendo del signo de la ventaja $A$}
+	\label{ppo_clip}
+\end{figure}
+
+De esta manera, la función objetivo se puede optimizar con un un optimizador de primer order, por lo que, aunque a veces se tomen algunas acciones erroneas, se consigue obtener un mejor rendimiento de una forma mucho mas sencilla al TRPO.
