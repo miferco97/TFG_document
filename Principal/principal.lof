@@ -23,36 +23,40 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Cuadric\IeC {\'o}ptero dise\IeC {\~n}ado con el autopiloto incoporado. \relax }}{24}{figure.caption.27}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Cuadric\IeC {\'o}ptero dise\IeC {\~n}ado con el autopiloto incoporado.\relax }}{25}{figure.caption.28}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{26}{figure.caption.29}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Tabla de especificaciones motor MT2204 II. \relax }}{26}{figure.caption.30}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces H\IeC {\'e}lices tripala HQ5040\relax }}{26}{figure.caption.31}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Funcionamiento ESC (www.howtomechatronics.com)\relax }}{27}{figure.caption.32}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{27}{figure.caption.33}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Bater\IeC {\'\i }a LiPo 3s 35C 5200 mah de la marca NZACE empleada \relax }}{28}{figure.caption.34}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces PCB autopiloto CaRL, anverso y reverso.\relax }}{29}{figure.caption.35}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Esquema de un convertidor Buck\relax }}{29}{figure.caption.38}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Sensores BNO055 y BMP388 respectivamente\relax }}{31}{figure.caption.39}
-\contentsline {subfigure}{\numberline {4.12.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{32}{figure.caption.40}
-\contentsline {subfigure}{\numberline {4.12.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{32}{figure.caption.40}
-\contentsline {subfigure}{\numberline {4.13.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{32}{figure.caption.41}
-\contentsline {subfigure}{\numberline {4.13.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{32}{figure.caption.41}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Portamotores en CAD \relax }}{25}{figure.caption.29}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces N\IeC {\'u}cleo en CAD\relax }}{26}{figure.caption.30}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Separadores en CAD\relax }}{26}{figure.caption.31}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Porta-bater\IeC {\'\i }as en CAD\relax }}{27}{figure.caption.32}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{27}{figure.caption.33}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Tabla de especificaciones motor MT2204 II. \relax }}{28}{figure.caption.34}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces H\IeC {\'e}lices tripala HQ5040\relax }}{28}{figure.caption.35}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Funcionamiento ESC (www.howtomechatronics.com)\relax }}{29}{figure.caption.36}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{29}{figure.caption.37}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Bater\IeC {\'\i }a LiPo 3s 35C 5200 mah de la marca NZACE empleada \relax }}{30}{figure.caption.38}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces PCB autopiloto CaRL, anverso y reverso.\relax }}{30}{figure.caption.39}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Esquema de un convertidor Buck\relax }}{31}{figure.caption.42}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Sensores BNO055 y BMP388 respectivamente\relax }}{33}{figure.caption.43}
+\contentsline {subfigure}{\numberline {4.16.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{33}{figure.caption.44}
+\contentsline {subfigure}{\numberline {4.16.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{33}{figure.caption.44}
+\contentsline {subfigure}{\numberline {4.17.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{33}{figure.caption.45}
+\contentsline {subfigure}{\numberline {4.17.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{33}{figure.caption.45}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Esquema interfaz Estacion-Autopiloto\relax }}{36}{figure.caption.44}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Esquema interfaz Estacion-Autopiloto\relax }}{38}{figure.caption.48}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Formas de onda que recibe un variador\relax }}{39}{figure.caption.45}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Funciones $R_t$ para distintos valores de $n = 2,4,10$ respectivamente\relax }}{40}{figure.caption.47}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Formas de onda que recibe un variador\relax }}{41}{figure.caption.49}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Funciones $R_t$ para distintos valores de $n = 2,4,10$ respectivamente\relax }}{42}{figure.caption.51}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll} en un entorno simulado.\relax }}{41}{figure.caption.50}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {pitch} en un entorno simulado.\relax }}{42}{figure.caption.52}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll}, \textit {pitch y \textit {yaw}} simult\IeC {\'a}neamente\relax }}{43}{figure.caption.54}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {pitch}. Las flechas marcan los tiempos en los que se perturb\IeC {\'o} al sistema.\relax }}{44}{figure.caption.56}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {pitch}\relax }}{44}{figure.caption.57}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll}. Las flechas marcan los tiempos en los que se perturb\IeC {\'o} al sistema.\relax }}{44}{figure.caption.59}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces \leavevmode {\color {blue}cambiar}\relax }}{44}{figure.caption.60}
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll}, \textit {pitch y \textit {yaw}} simult\IeC {\'a}neamente\relax }}{45}{figure.caption.62}
-\contentsline {figure}{\numberline {7.9}{\ignorespaces \leavevmode {\color {blue}cambiar}\relax }}{46}{figure.caption.63}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll} en un entorno simulado.\relax }}{43}{figure.caption.54}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {pitch} en un entorno simulado.\relax }}{44}{figure.caption.56}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll}, \textit {pitch y \textit {yaw}} simult\IeC {\'a}neamente\relax }}{45}{figure.caption.58}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {pitch}. Las flechas marcan los tiempos en los que se perturb\IeC {\'o} al sistema.\relax }}{46}{figure.caption.60}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {pitch}\relax }}{46}{figure.caption.61}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll}. Las flechas marcan los tiempos en los que se perturb\IeC {\'o} al sistema.\relax }}{46}{figure.caption.63}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces \leavevmode {\color {blue}cambiar}\relax }}{46}{figure.caption.64}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Estabilizaci\IeC {\'o}n en \textit {roll}, \textit {pitch y \textit {yaw}} simult\IeC {\'a}neamente\relax }}{47}{figure.caption.66}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces \leavevmode {\color {blue}cambiar}\relax }}{48}{figure.caption.67}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Diagrama de Gantt\relax }}{51}{figure.caption.71}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Diagrama EDP\relax }}{51}{figure.caption.72}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Diagrama de Gantt\relax }}{53}{figure.caption.75}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Diagrama EDP\relax }}{53}{figure.caption.76}
 \addvspace {10\p@ }
