@@ -1,38 +1,38 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{4}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivaci\IeC {\'o}n}{4}{section.1.1}
-\contentsline {section}{\numberline {1.2}Soluci\IeC {\'o}n propuesta}{5}{section.1.2}
-\contentsline {section}{\numberline {1.3}Objetivos}{6}{section.1.3}
-\contentsline {chapter}{\numberline {2}Estado del arte}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Plataformas de control de cuadric\IeC {\'o}pteros}{8}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Plataformas tipo gimbal}{8}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Plataformas con uni\IeC {\'o}n esf\IeC {\'e}rica}{9}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Aprendizaje por refuerzo}{11}{section.2.2}
-\contentsline {chapter}{\numberline {3}Fundamentos te\IeC {\'o}ricos}{12}{chapter.3}
-\contentsline {section}{\numberline {3.1}Controlador PID}{12}{section.3.1}
-\contentsline {subsubsection}{Control de la aeronave }{13}{subsubsection*.10}
-\contentsline {section}{\numberline {3.2}Redes neuronales artificiales}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}Aprendizaje por refuerzo}{16}{section.3.3}
-\contentsline {subsubsection}{Elementos del aprendizaje por refuerzo}{16}{subsubsection*.18}
-\contentsline {subsubsection}{Procesos de decisi\IeC {\'o}n de Markov}{17}{subsubsection*.19}
-\contentsline {subsection}{\numberline {3.3.1}Algoritmos de \textit {Q-learning}}{18}{subsection.3.3.1}
-\contentsline {subsubsection}{DQN}{19}{subsubsection*.20}
-\contentsline {subsubsection}{DDPG}{20}{subsubsection*.21}
-\contentsline {subsection}{\numberline {3.3.2}Algoritmos de gradiente de pol\IeC {\'\i }tica}{20}{subsection.3.3.2}
-\contentsline {subsubsection}{TRPO}{21}{subsubsection*.22}
-\contentsline {subsubsection}{PPO}{21}{subsubsection*.24}
-\contentsline {chapter}{\numberline {4}Hardware}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Cuadro}{24}{section.4.1}
-\contentsline {section}{\numberline {4.2}Motores y h\IeC {\'e}lices}{24}{section.4.2}
-\contentsline {section}{\numberline {4.3}Variadores (ESC)}{26}{section.4.3}
-\contentsline {section}{\numberline {4.4}Bater\IeC {\'\i }as}{27}{section.4.4}
-\contentsline {section}{\numberline {4.5}Autopiloto}{27}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Fase de Potencia}{27}{subsection.4.5.1}
-\contentsline {subsubsection}{Interruptor de potencia}{27}{subsubsection*.36}
-\contentsline {subsubsection}{Regulador a 3.3V}{28}{subsubsection*.37}
-\contentsline {subsection}{\numberline {4.5.2}El microcontrolador (ESP32)}{28}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{6}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivaci\IeC {\'o}n}{6}{section.1.1}
+\contentsline {section}{\numberline {1.2}Soluci\IeC {\'o}n propuesta}{7}{section.1.2}
+\contentsline {section}{\numberline {1.3}Objetivos}{8}{section.1.3}
+\contentsline {chapter}{\numberline {2}Estado del arte}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Plataformas de control de cuadric\IeC {\'o}pteros}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Plataformas tipo gimbal}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Plataformas con uni\IeC {\'o}n esf\IeC {\'e}rica}{10}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Aprendizaje por refuerzo}{12}{section.2.2}
+\contentsline {chapter}{\numberline {3}Fundamentos te\IeC {\'o}ricos}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Controlador PID}{13}{section.3.1}
+\contentsline {subsubsection}{Control de la aeronave }{14}{subsubsection*.11}
+\contentsline {section}{\numberline {3.2}Redes neuronales artificiales}{15}{section.3.2}
+\contentsline {section}{\numberline {3.3}Aprendizaje por refuerzo}{17}{section.3.3}
+\contentsline {subsubsection}{Elementos del aprendizaje por refuerzo}{17}{subsubsection*.19}
+\contentsline {subsubsection}{Procesos de decisi\IeC {\'o}n de Markov}{18}{subsubsection*.20}
+\contentsline {subsection}{\numberline {3.3.1}Algoritmos de \textit {Q-learning}}{19}{subsection.3.3.1}
+\contentsline {subsubsection}{DQN}{20}{subsubsection*.21}
+\contentsline {subsubsection}{DDPG}{21}{subsubsection*.22}
+\contentsline {subsection}{\numberline {3.3.2}Algoritmos de gradiente de pol\IeC {\'\i }tica}{21}{subsection.3.3.2}
+\contentsline {subsubsection}{TRPO}{22}{subsubsection*.23}
+\contentsline {subsubsection}{PPO}{22}{subsubsection*.25}
+\contentsline {chapter}{\numberline {4}Hardware}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}Cuadro}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Motores y h\IeC {\'e}lices}{25}{section.4.2}
+\contentsline {section}{\numberline {4.3}Variadores (ESC)}{27}{section.4.3}
+\contentsline {section}{\numberline {4.4}Bater\IeC {\'\i }as}{28}{section.4.4}
+\contentsline {section}{\numberline {4.5}Autopiloto}{28}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Fase de Potencia}{28}{subsection.4.5.1}
+\contentsline {subsubsection}{Interruptor de potencia}{28}{subsubsection*.36}
+\contentsline {subsubsection}{Regulador a 3.3V}{29}{subsubsection*.37}
+\contentsline {subsection}{\numberline {4.5.2}El microcontrolador (ESP32)}{30}{subsection.4.5.2}
 \contentsline {subsection}{\numberline {4.5.3}Sensores}{30}{subsection.4.5.3}
-\contentsline {section}{\numberline {4.6}Banco de pruebas}{30}{section.4.6}
+\contentsline {section}{\numberline {4.6}Banco de pruebas}{31}{section.4.6}
 \contentsline {chapter}{\numberline {5}Software}{33}{chapter.5}
 \contentsline {section}{\numberline {5.1}Software del Autopiloto}{33}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Estimaci\IeC {\'o}n del Estado}{33}{subsection.5.1.1}

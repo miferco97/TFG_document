@@ -1,41 +1,41 @@
 \babel@toc {spanish}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces Autopiloto CaRL (\textit {Cuadcopter with autopilot based on Reinforcement Learning}).\relax }}{1}{figure.caption.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Esquema cuadrirrotor en X\relax }}{4}{figure.caption.2}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Autopiloto comercial Pixhawk 4\relax }}{5}{figure.caption.3}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Esquema cuadrirrotor en X\relax }}{6}{figure.caption.3}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Autopiloto comercial Pixhawk 4\relax }}{7}{figure.caption.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Esquema estructura gimbal\relax }}{8}{figure.caption.4}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Plataforma FFT Gyro de Eureka Dynamics\relax }}{9}{figure.caption.5}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Esquema de una union esf\IeC {\'e}rica\relax }}{10}{figure.caption.6}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Plataforma 3 DOF Hover de la empresa Quanser\relax }}{10}{figure.caption.7}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Esquema estructura gimbal\relax }}{9}{figure.caption.5}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Plataforma FFT Gyro de Eureka Dynamics\relax }}{10}{figure.caption.6}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Esquema de una union esf\IeC {\'e}rica\relax }}{11}{figure.caption.7}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Plataforma 3 DOF Hover de la empresa Quanser\relax }}{11}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Bucle de control realimentado con regulador PID\relax }}{12}{figure.caption.8}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Bucle de control en cascada\relax }}{12}{figure.caption.9}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema cuadrirrotor en X\relax }}{13}{figure.caption.11}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Esquema de una red neuronal artificial\relax }}{14}{figure.caption.12}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Esquema de un perceptr\IeC {\'o}n\relax }}{14}{figure.caption.13}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Funci\IeC {\'o}n sigmoide\relax }}{15}{figure.caption.14}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Funci\IeC {\'o}n tangente hiperb\IeC {\'o}lica\relax }}{15}{figure.caption.15}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Funci\IeC {\'o}n ReLu\relax }}{16}{figure.caption.16}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama can\IeC {\'o}nico del bucle de interacci\IeC {\'o}n entorno-agente\relax }}{17}{figure.caption.17}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Evoluci\IeC {\'o}n de una funci\IeC {\'o}n limite inferior con un algoritmo MM.\relax }}{22}{figure.caption.23}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Gr\IeC {\'a}ficas de la funci\IeC {\'o}n objetivo $L^{\text {CLIP}}(\theta )$ para distintos valores de $r$, dependiendo del signo de la ventaja $A$\relax }}{22}{figure.caption.25}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Bucle de control realimentado con regulador PID\relax }}{13}{figure.caption.9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Bucle de control en cascada\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema cuadrirrotor en X\relax }}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Esquema de una red neuronal artificial\relax }}{15}{figure.caption.13}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Esquema de un perceptr\IeC {\'o}n\relax }}{15}{figure.caption.14}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Funci\IeC {\'o}n sigmoide\relax }}{16}{figure.caption.15}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Funci\IeC {\'o}n tangente hiperb\IeC {\'o}lica\relax }}{16}{figure.caption.16}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Funci\IeC {\'o}n ReLu\relax }}{17}{figure.caption.17}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama can\IeC {\'o}nico del bucle de interacci\IeC {\'o}n entorno-agente\relax }}{18}{figure.caption.18}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Evoluci\IeC {\'o}n de una funci\IeC {\'o}n limite inferior con un algoritmo MM.\relax }}{23}{figure.caption.24}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Gr\IeC {\'a}ficas de la funci\IeC {\'o}n objetivo $L^{\text {CLIP}}(\theta )$ para distintos valores de $r$, dependiendo del signo de la ventaja $A$\relax }}{23}{figure.caption.26}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Cuadric\IeC {\'o}ptero dise\IeC {\~n}ado con el autopiloto incoporado. \relax }}{23}{figure.caption.26}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Cuadric\IeC {\'o}ptero dise\IeC {\~n}ado con el autopiloto incoporado.\relax }}{24}{figure.caption.27}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{25}{figure.caption.28}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Tabla de especificaciones motor MT2204 II. \relax }}{25}{figure.caption.29}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces H\IeC {\'e}lices tripala HQ5040\relax }}{25}{figure.caption.30}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Funcionamiento ESC (www.howtomechatronics.com)\relax }}{26}{figure.caption.31}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{26}{figure.caption.32}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Bater\IeC {\'\i }a LiPo 3s 35C 5200 mah de la marca NZACE empleada \relax }}{27}{figure.caption.33}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces PCB autopiloto CaRL, anverso y reverso.\relax }}{28}{figure.caption.34}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Autopiloto CaRL (\textit {Cuadcopter with autopilot based on Reinforcement Learning}).\relax }}{29}{figure.caption.35}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Esquema de un convertidor Buck\relax }}{29}{figure.caption.38}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Sensores BNO055 y BMP388 respectivamente\relax }}{31}{figure.caption.39}
-\contentsline {subfigure}{\numberline {4.13.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{31}{figure.caption.40}
-\contentsline {subfigure}{\numberline {4.13.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{31}{figure.caption.40}
-\contentsline {subfigure}{\numberline {4.14.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{31}{figure.caption.41}
-\contentsline {subfigure}{\numberline {4.14.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{31}{figure.caption.41}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Cuadric\IeC {\'o}ptero dise\IeC {\~n}ado con el autopiloto incoporado. \relax }}{24}{figure.caption.27}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Cuadric\IeC {\'o}ptero dise\IeC {\~n}ado con el autopiloto incoporado.\relax }}{25}{figure.caption.28}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{26}{figure.caption.29}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Tabla de especificaciones motor MT2204 II. \relax }}{26}{figure.caption.30}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces H\IeC {\'e}lices tripala HQ5040\relax }}{26}{figure.caption.31}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Funcionamiento ESC (www.howtomechatronics.com)\relax }}{27}{figure.caption.32}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{27}{figure.caption.33}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Bater\IeC {\'\i }a LiPo 3s 35C 5200 mah de la marca NZACE empleada \relax }}{28}{figure.caption.34}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces PCB autopiloto CaRL, anverso y reverso.\relax }}{29}{figure.caption.35}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Esquema de un convertidor Buck\relax }}{29}{figure.caption.38}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Sensores BNO055 y BMP388 respectivamente\relax }}{31}{figure.caption.39}
+\contentsline {subfigure}{\numberline {4.12.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{32}{figure.caption.40}
+\contentsline {subfigure}{\numberline {4.12.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{32}{figure.caption.40}
+\contentsline {subfigure}{\numberline {4.13.a}{\ignorespaces Motores LHI MT2204 II empleados\relax }}{32}{figure.caption.41}
+\contentsline {subfigure}{\numberline {4.13.b}{\ignorespaces ESC Multistar Race 4 in 1 30A BLHeli empleado\relax }}{32}{figure.caption.41}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Esquema interfaz Estacion-Autopiloto\relax }}{36}{figure.caption.44}
 \addvspace {10\p@ }
