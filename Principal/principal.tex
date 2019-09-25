@@ -1,5 +1,5 @@
 %\documentclass[]{dinel-upm}
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,twoside,12pt]{report}
 %\setlength{\columnsep}{0.7cm} % space between columns
 \usepackage{filecontents}
 \usepackage{gensymb}
@@ -24,7 +24,7 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{rotating}
-%\usepackage{pdfpages}
+\usepackage{pdfpages}
 \usepackage{pdflscape}
 \usepackage{booktabs}
 \usepackage[hyphens]{url}
@@ -65,6 +65,8 @@
 \newcommand{\tb}[1]{\textcolor{blue}{#1}}
 \usepackage[english]{cleveref} %con este paquete si usas \cref{label} te pone automáticamente figura,ecuacion..
 
+\Crefname{figure}{Fig.}{Figs.}% {<type>}{<singular>}{<plural>}
+
 \newcommand{\refAnexo}[1]{(Anexo \ref{#1})}
 \newcommand{\refFigura}[1]{(Figura \ref{#1})}
 \newcommand{\refApartado}[1]{(Apartado \ref{#1})}
@@ -91,15 +93,93 @@
 \DeclareMathOperator{\sigm}{sigm}
 \newcommand{\diff}{\mathop{}\!\mathrm{d}}
 
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead{}     
+\fancyhead[RE]{\nouppercase{\rightmark}}     
+\fancyhead[LO]{\nouppercase{\leftmark}}     
+\fancyhead[RO]{\thepage}     
+\fancyhead[LE]{\thepage}
+
+\newenvironment{dedication}
+{%\clearpage           % we want a new page          %% I commented this
+	\thispagestyle{empty}% no header and footer
+	\vspace*{\stretch{1}}% some space at the top
+	\itshape             % the text is in italics
+	\raggedleft          % flush to the right margin
+}
+{\par % end the paragraph
+	\vspace{\stretch{3}} % space at bottom is three times that at the top
+	\clearpage           % finish off the page
+}
 
 \begin{document}
-	\maketitle
 	
+
+
+	\begin{landscape}
+	\includepdf[page=-,angle=90]{PORTADA_Trabajo_Fin_de_Grado.pdf}
+	\end{landscape}
+
+
+\pagestyle{empty}
+
+\begin{center}
+	\textbf{ UNIVERSIDAD POLITÉCNICA DE MADRID }\\
+	ESCUELA TÉCNICA SUPERIOR DE INGENIEROS INDUSTRIALES\\
+	GRADO EN INGENIERÍA EN TECNOLOGÍAS INDUSTRIALES
+	
+	
+	\vspace{1cm}
+	
+	\includegraphics[height = 10cm]{logoupm}
+	
+	\vspace{1cm}
+	
+	{\LARGE KIT DE DESARROLLO Y VALIDACIÓN DE} 
+	\\
+	
+	\vspace{0.2cm}
+	{\LARGE	ALGORITMOS DE\ CONTROL DE ACTITUD}
+		 \vspace{0.2cm}
+		 {\LARGE PARA CUADRICÓPTEROS.}
+	
+	\vspace{2cm}
+	
+	
+	
+	{\Large Miguel Fernández Cortizas}\\
+	
+	
+	
+	
+	\vspace{2cm}
+	
+	Tutor académico:\\
+	
+	{\Large D. Pascual Campoy Cervera }\\
+	{\Large D. Alejandro Rodríguez Ramos }\\
+	
+	
+	\vfill{\Large Madrid - Espa\~{n}a\\
+		2019}
+	
+\end{center}
+\newpage
+	%\maketitle
+	\begin{dedication}
+		En memoria de mi padrino Juan, \\
+		seguiré trabajando hasta alcanzar las metas\\
+		que me hubiese gustado celebrar contigo. 
+	\end{dedication}
+	
+	\input{agradecimientos.tex}			
 	\input{abstract/abstract}
 	
 	\tableofcontents
 
 	\justify
+	\pagestyle{fancy}
 	
 	\input{tikzinit}
 	\input{introduccion/introduccion}
@@ -118,8 +198,8 @@
 	\pagenumbering{arabic}
 	
 	\listoffigures
-	\listoftables
-	\nocite{*}
+	
+		\nocite{*}
 	\bibliographystyle{IEEEtran}
 	\bibliography{IEEEabrv,workBibliography}
 	

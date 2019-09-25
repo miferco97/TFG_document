@@ -21,10 +21,21 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{andrychowicz2018learning}
+M.~Andrychowicz, B.~Baker, M.~Chociej, R.~Jozefowicz, B.~McGrew, J.~Pachocki,
+  A.~Petron, M.~Plappert, G.~Powell, A.~Ray \emph{et~al.}, ``Learning dexterous
+  in-hand manipulation,'' \emph{arXiv preprint arXiv:1808.00177}, 2018.
+
 \bibitem{kim2004autonomous}
 H.~J. Kim, M.~I. Jordan, S.~Sastry, and A.~Y. Ng, ``Autonomous helicopter
   flight via reinforcement learning,'' in \emph{Advances in neural information
   processing systems}, 2004, pp. 799--806.
+
+\bibitem{ng2000pegasus}
+A.~Y. Ng and M.~Jordan, ``Pegasus: A policy search method for large mdps and
+  pomdps,'' in \emph{Proceedings of the Sixteenth conference on Uncertainty in
+  artificial intelligence}.\hskip 1em plus 0.5em minus 0.4em\relax Morgan
+  Kaufmann Publishers Inc., 2000, pp. 406--415.
 
 \bibitem{ng2006autonomous}
 A.~Y. Ng, A.~Coates, M.~Diel, V.~Ganapathi, J.~Schulte, B.~Tse, E.~Berger, and
@@ -47,9 +58,37 @@ W.~Koch, R.~Mancuso, R.~West, and A.~Bestavros, ``Reinforcement learning for
   uav attitude control,'' \emph{ACM Transactions on Cyber-Physical Systems},
   vol.~3, no.~2, p.~22, 2019.
 
+\bibitem{koch2019neuroflight}
+W.~Koch, R.~Mancuso, and A.~Bestavros, ``Neuroflight: Next generation flight
+  control firmware,'' \emph{arXiv preprint arXiv:1901.06553}, 2019.
+
 \bibitem{sutton2018reinforcement}
 R.~S. Sutton and A.~G. Barto, \emph{Reinforcement learning: An
   introduction}.\hskip 1em plus 0.5em minus 0.4em\relax MIT press, 2018.
+
+\bibitem{mnih2015human}
+V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~A. Rusu, J.~Veness, M.~G. Bellemare,
+  A.~Graves, M.~Riedmiller, A.~K. Fidjeland, G.~Ostrovski \emph{et~al.},
+  ``Human-level control through deep reinforcement learning,'' \emph{Nature},
+  vol. 518, no. 7540, p. 529, 2015.
+
+\bibitem{lillicrap2015continuous}
+T.~P. Lillicrap, J.~J. Hunt, A.~Pritzel, N.~Heess, T.~Erez, Y.~Tassa,
+  D.~Silver, and D.~Wierstra, ``Continuous control with deep reinforcement
+  learning,'' \emph{arXiv preprint arXiv:1509.02971}, 2015.
+
+\bibitem{silver2014deterministic}
+D.~Silver, G.~Lever, N.~Heess, T.~Degris, D.~Wierstra, and M.~Riedmiller,
+  ``Deterministic policy gradient algorithms,'' 2014.
+
+\bibitem{uhlenbeck1930theory}
+G.~E. Uhlenbeck and L.~S. Ornstein, ``On the theory of the brownian motion,''
+  \emph{Physical review}, vol.~36, no.~5, p. 823, 1930.
+
+\bibitem{schulman2017proximal}
+J.~Schulman, F.~Wolski, P.~Dhariwal, A.~Radford, and O.~Klimov, ``Proximal
+  policy optimization algorithms,'' \emph{arXiv preprint arXiv:1707.06347},
+  2017.
 
 \bibitem{ESP32TechnicalReference}
 \BIBentryALTinterwordspacing
@@ -63,6 +102,10 @@ R.~S. Sutton and A.~G. Barto, \emph{Reinforcement learning: An
 ``Esp32 datasheet,'' Espressif Systems, 2019. [Online]. Available:
   \url{https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf}
 \BIBentrySTDinterwordspacing
+
+\bibitem{brockman2016openai}
+G.~Brockman, V.~Cheung, L.~Pettersson, J.~Schneider, J.~Schulman, J.~Tang, and
+  W.~Zaremba, ``Openai gym,'' \emph{arXiv preprint arXiv:1606.01540}, 2016.
 
 \bibitem{stable-baselines}
 A.~Hill, A.~Raffin, M.~Ernestus, A.~Gleave, R.~Traore, P.~Dhariwal, C.~Hesse,

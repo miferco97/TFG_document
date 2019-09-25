@@ -1,30 +1,30 @@
 \chapter{Hardware}
 
-Con el ánimo de tener una plataforma real sobre la que probar el rendimiento de los algoritmos de control diseñados, se ha diseñado y construido un cuadrirrotor \textit{ad hoc} para este propósito. Un cuadricóptero convencional cuenta con: un chasis o cuadro que lo sustenta, cuatro motores y la electrónica necesaria para controlarlos, una controladora de vuelo que lo comanda y baterías que le proporcionan energía.
+Con el ánimo de tener una plataforma real sobre la que probar el rendimiento de los algoritmos de control diseñados, se ha diseñado y construido un cuadrcóptero \textit{ad hoc} para este propósito. Un cuadricóptero convencional cuenta con: un chasis o cuadro que lo sustenta, cuatro motores y la electrónica necesaria para controlarlos, una controladora de vuelo que lo comanda y baterías que le proporcionan energía.
 
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{hardware/droneImg}
-	\caption{Cuadricóptero diseñado con el autopiloto incoporado. }
+	\caption{Cuadricóptero diseñado con el autopiloto incorporado. }
 	\label{hardware:droneImg}
 \end{figure}
 
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{hardware/Drones_side}
-	\caption{Cuadricóptero diseñado con el autopiloto incoporado.}
+	\caption{Cuadricóptero diseñado con el autopiloto incorporado.}
 	\label{hardware:droneImg}
 \end{figure}
 
 
-A continuación se detallará como son las distintas partes físicas del dron que se ha fabricado.
+A continuación se detallará como son las distintas partes físicas del cuadricóptero que se ha fabricado.
 
 
 
 \section{Cuadro}
 El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabricadas mediante impresión 3D de diseño propio. La estructura básica está formada por 5 conjuntos de piezas distintos:
 \begin{itemize}
-	\item[$\bullet$] \textbf{Portamotores}: son las piezas donde se alojan los motores. Para conseguir una buena fijacion los motores se atornillan a los portamotores empleando 4 tornillos dispuestos seǵun los vértices de un rombo.
+	\item[$\bullet$] \textbf{Portamotores}: son las piezas donde se alojan los motores. Para conseguir una buena fijación los motores se atornillan a los portamotores empleando 4 tornillos dispuestos según los vértices de un rombo.
 	
 	\begin{figure}[htb!]
 		\centering
@@ -36,7 +36,7 @@ El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabri
 	
 	\item [$\bullet$] \textbf{Brazos}: se encargan de unir los portamotores con el \textit{núcleo} de la estructura. En este diseño, los brazos consisten en perfiles de aluminio de sección cuadrada de 8mm de lado.
 	
-	\item [$\bullet$] \textbf{Núcleo}: Es la pieza principal del diseño, en la que se anclan el resto de las partes y donde se alojan los componentes electrónicos. Esta pieza sustenta los brazos y el porta-baterias de la aeronave. Cuenta con agujeros a medida para poder situar el autopiloto y los variadores.
+	\item [$\bullet$] \textbf{Núcleo}: Es la pieza principal del diseño, en la que se anclan el resto de las partes y donde se alojan los componentes electrónicos. Esta pieza sustenta los brazos y el portabaterías de la aeronave. Cuenta con agujeros a medida para poder situar el autopiloto y los variadores.
 	
 	\begin{figure}[htb!]
 		\centering
@@ -45,7 +45,7 @@ El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabri
 		\label{portam}
 	\end{figure}
 	 
-	\item [$\bullet$] \textbf{Separadores}: su propósito es mantener unidos el \textit{núcleo} y el porta-baterías manteniendo una separación fija entre ellas.
+	\item [$\bullet$] \textbf{Separadores}: su propósito es mantener unidos el \textit{núcleo} y el portabaterías manteniendo una separación fija entre ellas.
 	
 	\begin{figure}[htb!]
 		\centering
@@ -54,12 +54,12 @@ El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabri
 		\label{portam}
 	\end{figure}
 	
-	\item [$\bullet$] \textbf{Porta-baterías}: Es la parte inferior del cuadricóptero. En ella se apoya la batería Li-Po que alimenta al dron y se mantiene anclada durante el vuelo. Además posee unas protuberancias cuya función se asemejaría a las de un tren de aterrizaje.  
+	\item [$\bullet$] \textbf{Portabaterías}: Es la parte inferior del cuadricóptero. En ella se apoya la batería Li-Po que alimenta al cuadricóptero y se mantiene anclada durante el vuelo. Además posee unas protuberancias cuya función se asemejaría a las de un tren de aterrizaje.  
 	
 	\begin{figure}[htb!]
 		\centering
 		\includegraphics[width=0.8\textwidth]{hardware/lipo_support}
-		\caption{Porta-baterías en CAD}
+		\caption{Portabaterías en CAD}
 		\label{portam}
 	\end{figure}
 	
@@ -67,7 +67,7 @@ El \textit{frame} está compuesto por perfiles de aluminio y piezas de PLA fabri
 \end{itemize} 
 
 \section{Motores y hélices}
-El dron cuenta con 4 motores sin escobillas (\textit{brushless}) LHI MT2204 II de 2300KV con una tensión de alimentación entre 7.2 V y 11.1 V (2s -3s en una batería LiPo) y una corriente continua máxima de 16A.
+El cuadricóptero cuenta con 4 motores sin escobillas (\textit{brushless}) LHI MT2204 II de 2300KV con una tensión de alimentación entre 7.2 V y 11.1 V (2s -3s en una batería LiPo) y una corriente continua máxima de 16A.
 
 \begin{figure}[htb!]
 	\centering
@@ -106,7 +106,7 @@ Es por esto que se han empleado hélices tripala HQ5040 de policarbonato y fibra
 
 Los motores  que se han escogido son trifásicos, es decir, se alimentan con 3 corrientes alternas monofásicas de igual frecuencia y amplitud, desfasadas 120\grad \;eléctricos. Para obtener estás formas de ondas a partir de la corriente continua de las baterias, se utilizan los variadores.
 
-Un variador o \textit{ESC (Electronic Speed Control)} es un circuito electrónico que se encarga de generar las ondas eléctricas necesarias para controlar y regular la velocidad de un motor eléctrico. Cuenta con un microcontrolador, el cual se encarga de conmutar los interruptores de potencia, con el ánimo de alimentar las distintas fases del motor de forma sincronizada, haciendo que gire a la velocidad deseada, veáse la \cref{hardware:esc_explicacion}.
+Un variador o \textit{ESC (Electronic Speed Control)} es un circuito electrónico que se encarga de generar las ondas eléctricas necesarias para controlar y regular la velocidad de un motor eléctrico. Cuenta con un microcontrolador, el cual se encarga de conmutar los interruptores de potencia, con el ánimo de alimentar las distintas fases del motor de forma sincronizada, haciendo que gire a la velocidad deseada, véase la \cref{hardware:esc_explicacion}.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=0.6\textheight]{hardware/howtomecatronics}
@@ -114,7 +114,7 @@ Un variador o \textit{ESC (Electronic Speed Control)} es un circuito electrónic
 	\label{hardware:esc_explicacion}
 \end{figure}
 
-Para el cuadricóptero se ha optado por emplear un variador BLHeli Multistar Race (\cref{hardware:esc}) que integra 4 variadores en uno, es decir se pueden alimentar 4 motores trifasicos con él. Estos variadores soportan una corriente de hasta 30 A cada uno.
+Para el cuadricóptero se ha optado por emplear un variador BLHeli Multistar Race (\cref{hardware:esc}) que integra 4 variadores en uno, es decir se pueden alimentar 4 motores trifásicos con él. Estos variadores soportan una corriente de hasta 30 A cada uno.
 
 \begin{figure}[htb!]
 	\centering
@@ -124,12 +124,12 @@ Para el cuadricóptero se ha optado por emplear un variador BLHeli Multistar Rac
 \end{figure}
 
 \section{Baterías}
-Para alimentar al dron, se han elegido baterías de litio-polímero (LiPo) de 3 celdas, lo que supone una tensión nominal de 11.1V (cada celda proporciona 2.7V). La tensión máxima que puede subministrar la batería es de 12.6V y la tensión mínima es de 9.6V. Si la tensión de alguna celda desciende de 3.2V la batería se puede dañar permanentemente. La batería escogida es una ZNACE de 3 celdas, con una capacidad de 5200mah y una tasa de descarga de 35C, por lo que es capaz de proporcionar una corriente de salida máxima de 5.2Ah $\cdot$ 35C = 182 A. La batería empleada cuenta con un conector XT60, por lo que el máximo de corriente que soporta en régimen continuo es de 60 A.
+Para alimentar al cuadricóptero, se han elegido baterías de litio-polímero (LiPo) de 3 celdas, lo que supone una tensión nominal de 11.1 V (cada celda proporciona 2.7 V). La tensión máxima que puede subministrar la batería es de 12.6 V y la tensión mínima es de 9.6 V. Si la tensión de alguna celda desciende de 3.2 V la batería se puede dañar permanentemente. La batería escogida es una ZNACE de 3 celdas, con una capacidad de 5200 mAh y una tasa de descarga de 35 C, por lo que es capaz de proporcionar una corriente de salida máxima de 5.2 Ah $\cdot$ 35 C = 182 A. La batería empleada cuenta con un conector XT60, por lo que el máximo de corriente que soporta en régimen continuo es de 60 A.
 
 \begin{figure}[htb!]
 		\centering
 		\includegraphics[width=0.5\textwidth]{hardware/bateriaNZACE}
-		\caption{Batería LiPo 3s 35C 5200 mah de la marca NZACE empleada  }
+		\caption{Batería LiPo 3s 35C 5200 mAh de la marca NZACE empleada  }
 		\label{hardware:Lipo}
 
 \end{figure}
@@ -137,7 +137,7 @@ Para alimentar al dron, se han elegido baterías de litio-polímero (LiPo) de 3 
 
 \section{Autopiloto}
 
-En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hacerlo pilotable se denomina la controladora de vuelo o el Autopiloto. Existe una gran variedad de controladoras en el mercado, pero para este trabajo se ha diseñado una controladora propia con el fin de poder tener acceso a todos los sensores y a implementar el algoritmo de control de forma óptima. El autopiloto consta de 3 partes diferenciadas: la electrónica de potencia, el microcontrolador y los sensores. A continuación \tb{se tratará} sobre estas partes con más detalle.\\
+En los cuadricópteros, el sistema que se encarga de estabilizarlo y hacerlo pilotable se denomina la controladora de vuelo o el Autopiloto. Existe una gran variedad de controladoras en el mercado, pero para este trabajo se ha diseñado una controladora propia con el fin de poder tener acceso a todos los sensores y a implementar el algoritmo de control de forma óptima. El autopiloto consta de 3 partes diferenciadas: la electrónica de potencia, el microcontrolador y los sensores. A continuación se tratará sobre estas partes con más detalle.\\
 
 
 
@@ -162,18 +162,18 @@ En los drones, el sistema que se encarga de estabilizar al cuadricóptero y hace
 
 \subsection{Fase de Potencia}
 
-Con el fin de poder gestionar la potencia entregada por las baterías a la placa y a los motores se ha diseñado una etapa de potencia en la que se debe mencionar dos partes: el interruptor de potencia y el regulador a 3.3 Voltios.
+Con el fin de poder gestionar la potencia entregada por las baterías a la placa y a los motores se ha diseñado una etapa de potencia en la que se debe mencionar dos partes: el interruptor de potencia y el regulador a 3.3 V.
 
 \subsubsection{Interruptor de potencia}
 
-Los motores del dron pueden llegar a consumir 12 Amperios cada uno, lo que los cuatro motores pueden llegar a consumir 48 Amperios. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de canal P por el que pueden circular hasta 100 Amperios, con el fin de abrir o cerrar el paso de corriente desde las baterías al resto de la placa. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.Cuando se cierra el interruptor se alimenta directamente al ESC y al regulador de tensión.
+Los motores del cuadricóptero pueden llegar a consumir 12 A cada uno, lo que los cuatro motores pueden llegar a consumir 48 A. Un interruptor con tamaño reducido no puede manejar tanta corriente, por ello se ha empleado un transistor MOSFET de canal P por el que pueden circular hasta 100 A, con el fin de abrir o cerrar el paso de corriente desde las baterías al resto de la placa. El MOSFET se controla con un interruptor de poca potencia entre drenador y puerta.Cuando se cierra el interruptor se alimenta directamente al ESC y al regulador de tensión.
 
 Adicionalmente, a continuación del MOSFET se encuentra un divisor de tensión para poder medir la tensión de la batería a través del conversor analógico digital (ADC) del microcontrolador.   
 
 
 \subsubsection{Regulador a 3.3V}
 
-La eléctronica digital de la PCB se alimenta y emplea lógica a 3.3 Voltios, por lo que no la podemos conectar a las baterías de 11.1 Voltios.  Para adecuar la tensión se ha escogido un regulador Step-down de tipo Buck (Figura \ref{hardware:Buck}) \tb{(¿explico como funciona un convertidor Buck?)}. El circuito integrado que se encarga de conmutar la fuente es el chip AP3211.
+La electrónica digital de la PCB se alimenta y emplea lógica a 3.3 V, por lo que no la podemos conectar a las baterías de 11.1 V.  Para adecuar la tensión se ha escogido un regulador Step-down de tipo Buck (Figura \ref{hardware:Buck}). El circuito integrado que se encarga de conmutar la fuente es el chip AP3211.
 \begin{figure}[htb!]
 	\centering
 		\begin{circuitikz}[american voltages,european resistors,scale=1]	
@@ -213,17 +213,17 @@ La eléctronica digital de la PCB se alimenta y emplea lógica a 3.3 Voltios, po
 
 El microcontrolador por el que se ha optado para este Autopiloto es el ESP32, un microcontrolador de doble núcleo con dos CPUs XTensaL6 con arquitectura Harvard \cite{ESP32TechnicalReference}. El ESP32 tiene una frecuencia de reloj de hasta 240MHz ,y cuenta con una antena WiFi a 2,4 GHz y conexión Bluetooth 4.2 BLE \cite{ESP32DataSheet}. Los motivos por los que se ha decidido emplear este microcontrolador son:
 \begin{itemize}
-	\item Elevada frecuencia de procesamiento y dos nucleos de procesamiento.
+	\item Elevada frecuencia de procesamiento y dos núcleos de procesamiento.
 	\item Antena WiFi incorporada.
 	\item Bajo consumo de potencia.
 \end{itemize}
 
-\par Para poder programar el microcontrolador se utiliza un convertidor USB (Bus Serie Universal) a UART (Transmisor-Receptor Asíncrono Universal) que permite conectar por USB el microcontrolador para poder programarlo y hacer depuración utilizando comunicaciones Serial. El chip que realiza esta funcion es el CP2104.
+\par Para poder programar el microcontrolador se utiliza un convertidor USB (Bus Serie Universal) a UART (Transmisor-Receptor Asíncrono Universal) que permite conectar por USB el microcontrolador para poder programarlo y hacer depuración utilizando comunicaciones Serial. El chip que realiza esta función es el CP2104.
 
 \subsection{Sensores}
-La principal fuente de información procedente del exterior que recibe una controladora de vuelo se la proporcionan las unidades de medición inercial (IMU). Las IMUs son dispositivos electrónicos que son capaces de medir aceleraciones, velocidades y detectar la orientación de un sistema. El principal problema de estos sensores es que sufren error acumulativo a la hora de estimar posición y velocidad. Para corregir este error acumulativo en los drones, se suelen fusionar estas medidas con otras provenientes de mediciones absolutas tales como GPS o Láser, aunque en este autopiloto unicamente emplearemos las medidas de las IMUs.
+La principal fuente de información procedente del exterior que recibe una controladora de vuelo se la proporcionan las unidades de medición inercial (IMU). Las IMUs son dispositivos electrónicos que son capaces de medir aceleraciones lineales, velocidades angulares y detectar la orientación de un sistema. El principal problema de estos sensores es que sufren error acumulativo a la hora de estimar posición y velocidad. Para corregir este error acumulativo en los cuadricópteros, se suelen fusionar estas medidas con otras provenientes de mediciones absolutas tales como GPS o Láser, aunque en este autopiloto unicamente emplearemos las medidas de las IMUs.
 
-\par Otros sensores utilizados frecuentemente en los autopilotos son brújulas (se encuentran integrados en la IMU para corregir errores de orientación) y barómetros (para estimar la altitud a la que se encuentra el dron).\\
+\par Otros sensores utilizados frecuentemente en los autopilotos son brújulas (se encuentran integrados en la IMU para corregir errores de orientación) y barómetros (para estimar la altitud a la que se encuentra el cuadricóptero).\\
 \medskip
 
 El autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para conseguir una mejor estimación del estado del cuadricóptero:
@@ -235,7 +235,7 @@ El autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para c
 	
 	\item \textbf{MPU 9250 (TDK InvenSense)}: El sensor inercial de TDK es un módulo multichip compuesto por un MPU6050 (Contiene un accelerómetro y un giróscopo triaxial con un \textit{procesador digital de movimiento} (DMP)) y un  AK8963 (un magnetómetro digital triaxial). El sensor posee un encapsulado QFN de 3x3x1 $mm$ con 24 pines.
 	
-	Este dispositivo nos proporciona medidas del accelerometro y el giróscopo a una frecuencia superior al BNO055 pero con una estimación peor de los angúlos que el dispositivo de BOSCH.
+	Este dispositivo nos proporciona medidas del acelerómetro y el giróscopo a una frecuencia superior al BNO055 pero con una estimación peor de los ángulos que el dispositivo de BOSCH.
 	
 	\item \textbf{BMP388 (BOSCH)}: El BMP388 es un barómetro digital de 24 bits con bajo consumo y bajo ruido. Se encuentra en un encapsulado LGA de 10 pines de dimensiones 2 x 2 x 0,75 $mm3$.
 	
@@ -266,7 +266,7 @@ El autopiloto cuenta con dos IMUs de 9 Grados de Libertad y un barómetro para c
 %\section{Otros (Receptora radio)}
 
 \section{Banco de pruebas}
-Para poder realizar la experimentación real de forma segura, se han diseñado distintas estructuras para poder sujetar al cuadricóptero permitiéndole rotar con distintos grados de libertad (GdL) en función de la estructura. Estas uniones han permitido poder probar distintos controladores de forma segura y controlada.
+Para poder realizar la experimentación real de forma segura, se han diseñado distintas estructuras para poder sujetar al cuadricóptero, permitiéndole rotar con distintos grados de libertad (GdL) en función de la estructura. Estas uniones han permitido poder probar distintos controladores de forma segura y controlada.
 
 
 Se pueden distinguir 2 tipos de estructuras en función de sus grados de libertad:
@@ -274,28 +274,29 @@ Se pueden distinguir 2 tipos de estructuras en función de sus grados de liberta
 \begin{itemize}
 	\item \textbf{Rótulas con 1 único grado de libertad}: Para las primeras pruebas de los reguladores es fundamental poder descomponer el control en problemas más sencillos, en este caso permitiendo al sistema rotar en 1 grado de libertad. Se han construido 2 versiones de la misma rótula, una permite el movimiento en Pitch y la otra lo permite en Roll. Esto permite desacoplar los bucles de control y poder probar distintos algoritmos de control.
 	
-	
-	\begin{figure}[htb!]
+
+\begin{figure}[htb!]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
 		\centering
-		\begin{subfigure}{0.4\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
-			\caption{Motores LHI MT2204 II empleados}
-			\label{a}
-		\end{subfigure}
-		\begin{subfigure}{0.4\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
-			\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
-			\label{b}
-		\end{subfigure}
-	\end{figure}
+		\includegraphics[width=\textwidth]{hardware/rotulaPitch1.jpeg}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{hardware/roll_joint}
+	\end{subfigure}
+	\caption{Rotulas de 1GdL (\textit{pitch} y \textit{roll} respectivamente)}	
+\end{figure}
+
+
+
+
 
 	Estas uniones son sencillas y robustas lo que nos da seguridad a la hora de poder probar y ajustar los reguladores.
 	Las restricciones de movimiento de estas uniones permiten rotaciones de $\pm 60\degree$ en el angulo permitido.
 	
 	
-	\item \textbf{Rótula con múltiples grados de libertad}: Después de conseguir estabilizar al cuadricóptero en pitch y en roll de forma individual la siguiente aproximación consiste en emplear rotulas con 3 GdL. Sobre estas uniones también se han realizado 2 versiones. La primera consta de una única rotula con sus 3 grados de libertad con restricciones de movimiento de:
+	\item \textbf{Rótula con múltiples grados de libertad}: Después de conseguir estabilizar al cuadricóptero en \textit{pitch} y en \textit{roll} de forma individual la siguiente aproximación consiste en emplear rotulas con 3 GdL. Sobre estas uniones también se han realizado 2 versiones. La primera consta de una única rotula con sus 3 grados de libertad con restricciones de movimiento de:
 	
 	\begin{align*}
 	-60 \degree &\le \varphi \le 60\degree \quad \;\;\;  \text{Roll}\\ 
@@ -303,30 +304,25 @@ Se pueden distinguir 2 tipos de estructuras en función de sus grados de liberta
 	-180 \degree&\le \psi \le 180\degree\quad \;  \text{Yaw}
 	\end{align*}
 	
-	
-	La segunda consta de acoplar 2 juntas esféricas como las anteriores una a continuación de la otra, lo que permite, además de disminuir las restricciones de movimiento en las rotaciones, pequeños desplazamientos en el espacio tridimensional.
-	
 	\begin{figure}[htb!]
 		\centering
-		\begin{subfigure}{0.4\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
-			\caption{Motores LHI MT2204 II empleados}
-			\label{c}
-		\end{subfigure}
-		\begin{subfigure}{0.4\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth,height=0.2\textheight]{hardware/rotulaPitch1.jpeg}
-			\caption{ESC Multistar Race 4 in 1 30A BLHeli empleado}
-			\label{d}
-		\end{subfigure}
+		
+		
+		\includegraphics[width=0.7\textwidth]{hardware/spheric_union}
+		\caption{ Junta esférica antes de ensamblar}
+		\label{d}
 	\end{figure}
 	
 	
+	La segunda consta de acoplar 2 juntas esféricas como las anteriores una a continuación de la otra, lo que permite, además de disminuir las restricciones de movimiento en las rotaciones, pequeños desplazamientos en el espacio tridimensional.
+	
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.25\textwidth]{hardware/spheric_union_double}
+	\caption{ Junta esférica doble}
+	\label{d}
+\end{figure}
+
 	
 \end{itemize}
-
-
-\tb{\huge imagen rotulas y/o CAD }
-
 

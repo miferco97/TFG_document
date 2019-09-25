@@ -1,4 +1,16 @@
 \appendix
+\chapter {Esquemáticos del autopiloto}
+A continuación se adjuntan los esquemáticos del autopiloto diseñado.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[height=0.7\textheight]{CaRLv1}
+	\caption{\textit{Board} PCB Autopiloto.}
+	\label{gantt}	
+\end{figure}
+
+\includepdf[pages=-,angle=90]{DronEsp.pdf}
+ 
 \chapter{Presupuesto y Planificación}
 \section{Presupuesto}
 
@@ -36,7 +48,7 @@ Los costes de material del proyecto son debidos a la construcción del cuadricó
 		
 		\hline
 		
-		\textbf{Cuadrirrotor}& & &  \\
+		\textbf{Cuadrcóptero}& & &  \\
 		Bobina PLA 1Kg & 20 & 1.5 &  30 \\
 		Perfiles aluminio & 2 & 1 & 2\\
 		Pack 4 Motores MT2204 II & 25 &1& 25 \\
@@ -94,9 +106,9 @@ Añadiendo un coste de encuadernado de la memoria de unos 30 euros el presupuest
 
 
 \section{Planificación}
-La realización de este trabajo ha empleado un ritmo continuo de horas de trabajo desde su comienzo, siendo un poco menor en épocas de exámenes y un poco mayor al comienzo de los cuatrimestres y julio. La dedicación media diaria del trabajo ha sido de unas 4 horas semanales, durante un periodo de unos 10 meses (descontando agosto y septiembre), lo que da un total de unas 800 horas. La inmensa mayoría de estas horas se han dedicado en el Centro de Automática y Róbotica (CAR) de la Escuela Técnica Superior de Ingenieros Industriales (ETSII) de la Universidad Politécnica de Madrid (UPM), concretamente en el grupo de investigación de Visión por Computador y Robots Aereos (CVAR).
+La realización de este trabajo ha empleado un ritmo continuo de horas de trabajo desde su comienzo, siendo un poco menor en épocas de exámenes y un poco mayor al comienzo de los cuatrimestres y julio. La dedicación media diaria del trabajo ha sido de unas 4 horas semanales, durante un periodo de unos 10 meses (descontando agosto y septiembre), lo que da un total de unas 800 horas. La inmensa mayoría de estas horas se han dedicado en el Centro de Automática y Robótica (CAR) de la Escuela Técnica Superior de Ingenieros Industriales (ETSII) de la Universidad Politécnica de Madrid (UPM), concretamente en el grupo de investigación de Visión por Computador y Robots Aéreos (CVAR).
 
-En cuanto a la distribución del trabajo en este tiempo, el trabajo comenzó a realizarse en septiembre de 2018, durante los primeros meses se realizó el curso sobre redes neuronales y aprendizaje profundo, en la plataforma online Coursera. La duración del curso se extendió hasta finales de diciembre. Paralelamente, a partir de octubre se comenzó con el diseño de la aeronave, y en noviembre con el del autopiloto. A principios de febreró se finalizo con el diseño y construcción del cuadricóptero y con el diseño y montaje de la PCB del autopiloto. A partir de este punto, el resto del tiempo se ha dedicado al software, tanto el del autopiloto, como el de la estación de tierra , al diseño de los algoritmos de control y a la experimentación real. Se ha realizado un diagrama GANTT (\cref{gantt}) en el que se ha detallado más en profundidad la distribución temporal de las tareas. Asimismo, se ha esquematizado la organización del proyecto en un diagrama EDP (\cref{EDP}). 
+En cuanto a la distribución del trabajo en este tiempo, el trabajo comenzó a realizarse en septiembre de 2018, durante los primeros meses se realizó el curso sobre redes neuronales y aprendizaje profundo, en la plataforma online Coursera. La duración del curso se extendió hasta finales de diciembre. Paralelamente, a partir de octubre se comenzó con el diseño de la aeronave, y en noviembre con el del autopiloto. A principios de febrero se finalizo con el diseño y construcción del cuadricóptero y con el diseño y montaje de la PCB del autopiloto. A partir de este punto, el resto del tiempo se ha dedicado al software, tanto el del autopiloto, como el de la estación de tierra , al diseño de los algoritmos de control y a la experimentación real. Se ha realizado un diagrama GANTT (\cref{gantt}) en el que se ha detallado más en profundidad la distribución temporal de las tareas. Asimismo, se ha esquematizado la organización del proyecto en un diagrama EDP (\cref{EDP}). 
 
 \begin{figure}[htb!]
 	\centering
@@ -116,10 +128,10 @@ En cuanto a la distribución del trabajo en este tiempo, el trabajo comenzó a r
 
 \chapter{Impacto social y medioambiental}
 
-El impacto social que tiene este trabajo se ve reflejado en su posible empleo en la educación y la investigación. Actualmente las metodologías docentes están tendiendo hacia el aprendizaje práctico, hacia aprender haciendo. Esta plataforma podría emplearse en centros docentes debido a su montaje mecánico hecho casi en su totalidad con impresion 3D.
+El impacto social que tiene este trabajo se ve reflejado en su posible empleo en la educación y la investigación. Actualmente las metodologías docentes están tendiendo hacia el aprendizaje práctico, hacia aprender haciendo. Esta plataforma podría emplearse en centros docentes debido a su montaje mecánico hecho casi en su totalidad con impresión 3D.
 
-Desde el punto de vista de la investigación, tener la posibilidad de desarrollar y probar nuevos algoritmos para el control de drones puede mejorar la efectividad del uso de estas aeronaves en múltiples aplicaciones. Cuanto mejor sea el controlador, más fácil será utilizar estas aeronaves para tareas de inspección, seguridad y busqueda y rescate, entre otras.
+Desde el punto de vista de la investigación, tener la posibilidad de desarrollar y probar nuevos algoritmos para el control de cuadricópteros puede mejorar la efectividad del uso de estas aeronaves en múltiples aplicaciones. Cuanto mejor sea el controlador, más fácil será utilizar estas aeronaves para tareas de inspección, seguridad y búsqueda y rescate, entre otras.
 
-El impacto medioambiental de la plataforma es reducido, ya que, el PLA es un plástico biodegradable y las baterías de Litio, una vez descargadas, son sencillas de desechar. EL proceso de fabricación de los componentes requiere de recursos materiales y energéticos, cuyo proceso de obtención  puede povenir de fuentes no renovables. Sin embargo, los beneficios sociales que se pueden extraer de los resultados del proyecto hacen asumible este impacto medioambiental.
+El impacto medioambiental de la plataforma es reducido, ya que, el PLA es un plástico biodegradable y las baterías de Litio, una vez descargadas, son sencillas de desechar. EL proceso de fabricación de los componentes requiere de recursos materiales y energéticos, cuyo proceso de obtención  puede provenir de fuentes no renovables. Sin embargo, los beneficios sociales que se pueden extraer de los resultados del proyecto hacen asumible este impacto medioambiental.
 
 

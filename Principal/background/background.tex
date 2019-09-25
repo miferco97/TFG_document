@@ -5,7 +5,7 @@
 
 %Una vez conseguida una estimación del estado en el instante $t$ ,  $S_t$ se necesita emplear un algoritmo de control que genere	las acciones $A_t$ correspondientes para llegar al estado $S_{t'}$ deseado de forma óptima.
 
-%\tb{BUCLE DE CONTROL}
+
 
 
 %Existe una gran cantidad de controladores clásicos que se pueden emplear para generar estos comandos, por ejemplo: PID o LQR.
@@ -18,9 +18,9 @@ Un regulador PID es un controlador lineal realimentado. Matemáticamente se expr
 	u(t) = \overbrace{\raisebox{0ex}[2.2\height]{$K_p e(t)$}}^\text{P} +\overbrace{K_i \int_{0}^{t}e(\tau)d\tau}^\text{I} + \overbrace{ K_d \frac{de(t)}{dt}}^\text{D}\;
 \end{equation}
 
-donde $e(t)$ es la señal de control, $u(t)$ representa la salida del regulador y $K_p,K_i,K_d$ son parámetros ajustables de los cuales depende la dinámica y la estabilidad del sistema. Como se puede observar, el regulador consta de tres partes: la parte proporcional (P) tiene en cuenta el error actual, la parte integral (I) tiene en cuenta el histórico de los errores y la parte derivativa (D) tiene en cuenta el ``futuro'' del error.
+donde $e(t)$ es el error entre el valor de consigna y el valor actual de la variable a medir, $u(t)$ representa la variable de control y $K_p,K_i,K_d$ son parámetros ajustables de los cuales depende la dinámica y la estabilidad del sistema. Como se puede observar, el regulador consta de tres partes: la parte proporcional (P) tiene en cuenta el error actual, la parte integral (I) tiene en cuenta la acumulación histórica de los errores y la parte derivativa (D) tiene en cuenta el ``futuro'' del error.
 
-En este trabajo se han empleado controladores PID en dos tipos de bucles de control con topologías diferentes. Para el bucle de control más sencillo, se aplica el regulador PID sobre el error obtenido al realimentar la salida del bucle, veáse \cref{PID_loop}.
+En este trabajo se han empleado controladores PID en dos tipos de arquitecturas diferentes. La primera arquitectura consta de un bucle de control individual, donde el error de entrada de PID es calculado directamente con la diferencia de la variable a controlar y la medida. La \cref{PID_loop} presenta el diagrama de bloques de esta arquitectura. Esta estrategia es la más básica de las estructuras PID.
 
 \begin{figure}[htb!]
 	\centering
@@ -29,7 +29,7 @@ En este trabajo se han empleado controladores PID en dos tipos de bucles de cont
 	\label{PID_loop}
 \end{figure}
 
-La otra variante emplea un bucle de control en cascada, el cual consta de dos bucles cerrados de control. El bucle externo emplea un regulador P, este bucle genera la señal de referencia, para otro bucle de control interno, basado en la salida del sistema. El bucle interno emplea un regulador PID para controlar la magnitud de una variable interna. En el caso particular de este trabajo, el bucle externo intenta alcanzar una referencia de posición angular $\theta_{ref}$, para ello el regulador P, envía una referencia de velocidad angular $\dot \theta_{ref}$ a un controlador de velocidad con un regulador PID, vease \cref{PID_cascade_loop}.
+La otra variante emplea una arquitectura de control en cascada, la cuál está integrada mediante dos bucles cerrados de control, uno interno y uno externo. El bucle externo emplea un regulador P para generar la señal de referencia utilizada por el bucle interno de control. El bucle interno es diseñado con un regulador PID para controlar la magnitud de una variable interna. En el caso particular de este trabajo, el bucle externo intenta alcanzar una referencia de posición angular $\theta_{ref}$, para ello el regulador P es ajustado para generar una referencia de velocidad angular $\dot \theta_{ref}$ a un controlador de velocidad con un regulador PID, véase \cref{PID_cascade_loop}.
 
 
 \begin{figure}[htb!]
@@ -41,7 +41,7 @@ La otra variante emplea un bucle de control en cascada, el cual consta de dos bu
 
 
 \subsubsection{Control de la aeronave }
-Para el control de la aeronave es necesario cerrar simultáneamente los 3 bucles de control, uno para cada ángulo. Cada bucle de control produce una salida $u_(t)$ a la planta, en este caso, a la aeronave. Para traducir estas señales a los comandos que se le envían a los motores, es necesario realizar una transformación. 
+Para el control de la aeronave es necesario implementar 3 sistemas de control independientes, uno para cada ángulo. Cada bucle de control envía una señal $u_(t)$ a la planta, en este caso, a la aeronave. Para traducir estas señales a los comandos que se le envían a los motores, es necesario realizar una transformación. 
 
 
 \begin{figure}[htb!]
@@ -52,7 +52,7 @@ Para el control de la aeronave es necesario cerrar simultáneamente los 3 bucles
 \end{figure}
 
 
-Intuitivamente, si se desea que el dron incline el morro hacia delante, la velocidad de los 2 motores traseros deberá aumentar, mientras que la velocidad de los motores delanteros deberá disminuirse. Si consideramos que inclinar el morro hacia delante implica que la nave tenga un ángulo $\theta > 0$ y que los motores estan dispuestos según la figura \ref{Drone_en_X_Q}, entonces 
+Intuitivamente, si se desea que el cuadricóptero se incline hacia delante, la velocidad de los 2 motores traseros deberá aumentar, mientras que la velocidad de los motores delanteros deberá disminuirse. Si consideramos que inclinarse hacia delante implica que la nave tenga un ángulo $\theta > 0$ y que los motores están dispuestos según la figura \ref{Drone_en_X_Q}, entonces 
 \begin{align*}
 	w_1 &= -\; u_\theta(t)\\
 	w_2 &= +\; u_\theta(t)\\
@@ -75,7 +75,7 @@ Si lo expresamos matricialmente:
 	\end{array}\right] u_\theta(t) 
 \end{equation}
 
-siendo $w_i$ la velocidad del motor i y $u_\theta(t)$ la salida del controlador de \textit{pitch}. Si se cierran los 3 bucles de control de forma simultánea y se suman las contribuciones de cada bucle sobre las acciones de control de forma similar
+siendo $w_i$ la velocidad del motor i y $u_\theta(t)$ la salida del controlador de \textit{pitch}. Si se cierran los 3 sistemas de control de forma simultánea y se suman las contribuciones de cada bucle sobre las acciones de control resulta en
 
 
 \begin{equation}
@@ -94,10 +94,10 @@ w_4
 u_\varphi(t)\\
 u_\theta(t)\\
 u_\psi(t)
-\end{array}\right]
+\end{array}\right] 
 \end{equation}
 
-Esta matriz de transformación relaciona las salidas de los controladores con los comandos de los motores, modificando estos valores se puede aumentar la influencia de un bucle con respecto a otro.
+Esta matriz de transformación relaciona las salidas de los controladores con la acción de control requeridas por los actuadores, i.e., velocidad de rotación. Modificando estos valores se puede aumentar la influencia de un bucle con respecto a otro.
 
 \section{Redes neuronales artificiales} 
  Una red neuronal artificial (ANN) esta compuesta por un conjunto de nodos o perceptrones interconectados entre sí. Estos perceptrones se agrupan en capas ``ocultas'', se les atribuye este nombre debido a que todos los nodos de una capa se interconectan con todos los nodos de la capa anterior, por lo que después del aprendizaje de la red no se sabe cuales son los perceptrones de la capa anterior que influyen en un nodo.
@@ -142,7 +142,7 @@ Esta matriz de transformación relaciona las salidas de los controladores con lo
  \end{figure}
  
 
-Cada perceptron es la unidad mínima de computación de una ANN, estas unidades se dividen en dos partes, una parte lineal y una parte de activación o no lineal. En la parte lineal o parte ``Z'' se computa una regresión lineal de las salidas de los nodos anteriores.
+Cada perceptrón es la unidad mínima de computación de una ANN, estas unidades se dividen en dos partes, una parte lineal y una parte de activación o no lineal. En la parte lineal o parte ``Z'' se computa una regresión lineal de las salidas de los nodos anteriores.
  \begin{align}
  	z^{[l]}_i &= \sum_{j=0}^{n^{[l-1]}} {w_{ij}\cdot a^{[l-1]}_j} + b_i  \qquad &i=0,..,n^{[l]} \\
  	a^{[l]}_i &= g\left(z^{[l]}_i\right) \qquad  &i=0,..,n^{[l]}
@@ -288,7 +288,7 @@ Cada perceptron es la unidad mínima de computación de una ANN, estas unidades 
 
 \end{itemize} 
   
- Para conseguir que la red neuronal realice predicciones precisas es necesario ajustar los pesos de la red, a este proceso es al que se denomina entrenamiento o aprendizaje. En el paradigma del aprendizaje supervisado este entrenamiento se realiza sometiendo a la red a ejemplos cuya salida es conocida. El objetivo de la red es minimizar el error de la esperanza de la estimación con respecto a la salida real del ejemplo. Formalmente, se define una función de coste $\mathcal{J}$ la cúal se quiere minimizar. Por ejemplo, una función de coste típica para problemas de clasificación binaria es la \textit{binary cross-entropy}:
+ Para conseguir que la red neuronal realice predicciones precisas es necesario ajustar los pesos de la red, a este proceso es al que se denomina entrenamiento o aprendizaje. En el paradigma del aprendizaje supervisado este entrenamiento se realiza sometiendo a la red a ejemplos cuya salida es conocida. El objetivo de la red es minimizar el error de la esperanza de la estimación con respecto a la salida real del ejemplo. Formalmente, se define una función de coste $\mathcal{J}$ la cuál se quiere minimizar. Por ejemplo, una función de coste típica para problemas de clasificación binaria es la \textit{binary cross-entropy}:
  
  \begin{align}
  \mathcal{L}(\hat{y},y)&=-\big(y\log\hat{y} + (1-y)\log(1-\hat{y})\big)\\ 
@@ -303,7 +303,7 @@ Cada perceptron es la unidad mínima de computación de una ANN, estas unidades 
  	b:= b - \alpha\; &\frac{\partial\mathcal{J}(w,b)}{\partial b}
  \end{align}
  
- donde $\alpha$ denota la tasa de aprendizaje, es decir, lo rápido que varian estos pesos.
+ donde $\alpha$ denota la tasa de aprendizaje, es decir, lo rápido que varían estos pesos.
 
  
 
@@ -322,7 +322,7 @@ El aprendizaje por refuerzo o \textit{Reinforcement learning} \cite{sutton2018re
 \end{figure}
 
 
-Se diferencia de otras técnicas de aprendizaje automático es su enfoque orientado a la interacción directa con el entorno, sin basarse en un modelo completo del entorno o en un conjunto de ejemplos supervisados.
+Se diferencia de otras técnicas de aprendizaje automático en su enfoque orientado a la interacción directa con el entorno, sin basarse en un modelo completo del entorno o en un conjunto de ejemplos supervisados.
 
 \subsubsection{Elementos del aprendizaje por refuerzo}
 Además del agente y el entorno se pueden identificar tres elementos principales más en un sistema de aprendizaje con refuerzo:
@@ -351,7 +351,7 @@ Un proceso de decisión de Markov está compuesto por la 4-tupla $(S,A,P_a,R_a)$
 	\item \textbf{S} representa el estado del agente.
 	\item \textbf{A} es el conjunto de acciones que puede realizar el agente. $A_s$ denota las acciones que puede realizar el agente desde un estado $s$.
 	\item \textbf{$\boldsymbol{P_a(s,s')}$} = $Pr\big(s_{t+1} = s' \;|\; s_t = s , a_t = a  \big)$. Partiendo de un estado $s$, $P_a$ representa la probabilidad de pasar al estado $s'$ tomando la acción $a$.
-	\item \textbf{$\boldsymbol{R_a(s,s')}$} denota la recompensa inmediata que recibiría el agente al realizar la transicion de $s$ a $s'$ mediante la acción $a$.
+	\item \textbf{$\boldsymbol{R_a(s,s')}$} denota la recompensa inmediata que recibiría el agente al realizar la transición de $s$ a $s'$ mediante la acción $a$.
 \end{itemize}
 
 Estos procesos cumplen la propiedad de Markov, es decir, que el pasado no influye en el agente, lo único relevante es el estado actual.
@@ -379,7 +379,7 @@ Los algoritmos de Q-learning se basan en la función estado-acción, también co
 	Q^\pi(s,a) =  \mathbb{E}_\pi\left[\sum_{k=0}^{\infty}{\gamma^k r_{t+k+1}}\Big|s_t=s,a_t = a\right]
 \end{equation}
 
-La diferencia entre la función Q y la función de valor radica en que la función de valor cuantifica el valor, en términos de recompensa acumulada, que posee un estado concreto, mientras que la función Q evalúa la conveniencia de tomar una acción concreta en un estado determinado. Este matiz se empleará posteriormente para definir la función de ventaja en el apartado \ref{ALG_GRAD_POL}.
+La diferencia entre la función Q y la función de valor $V^\pi$ radica en que la función de valor cuantifica el valor, en términos de recompensa acumulada, que posee un estado concreto, mientras que la función Q evalúa la conveniencia de tomar una acción concreta en un estado determinado. Este matiz se empleará posteriormente para definir la función de ventaja en el apartado \ref{ALG_GRAD_POL}.
 
 El objetivo de estos algoritmos se basa en obtener la función óptima $Q^*$, esta función cumple la ecuación de Bellman 
 	\begin{equation}
@@ -392,7 +392,7 @@ Basándose en esta ecuación la función $Q^*$ se podría calcular como un proce
 	Q_{i+1}(s,a)= \mathbb{E}\left[r+\gamma\;\underset{a'}{\text{max}}\; Q_i(s',a')\big|s,a\right]
 	\end{equation}
 
-Aunque este proceso converge a la funcion estado-acción óptima, $Q_i \rightarrow Q^*$ cuando $i \rightarrow \infty$ \cite{sutton2018reinforcement}, esto no es práctico, debido a que esta aproximación de la función Q se estima de forma independiente para cada secuencia concreta, sin generalizar. En lugar de esto, se suele emplear una función que se aproxime a esta función estado-acción. En los casos en los que esta función sea aproximada por una red neuronal, ésta se denota por $Q(s,a; \theta)$ siendo $\theta$ los pesos de esta red-Q (\textit{Q-network}). 
+Aunque este proceso converge a la función estado-acción óptima, $Q_i \rightarrow Q^*$ cuando $i \rightarrow \infty$ \cite{sutton2018reinforcement}, esto no es práctico, debido a que esta aproximación de la función Q se estima de forma independiente para cada secuencia concreta, sin generalizar. En lugar de esto, se suele emplear una función que se aproxime a esta función estado-acción. En los casos en los que esta función sea aproximada por una red neuronal, ésta se denota por $Q(s,a; \theta)$ siendo $\theta$ los pesos de esta red-Q (\textit{Q-network}). 
 
 La función de pérdida que se intenta minimizar para entrenar esta red es
 \begin{equation}\label{eq:1}
@@ -404,7 +404,7 @@ Esta función de pérdida se puede minimizar con algoritmos de optimización com
 
 \subsubsection{DQN}
 
-El algoritmo DQN (\textit{Deep Q-network}) es un algoritmo basado en \textit{Q-learning} desarrollado por Mnih et al. \tb{citar} en 2015. Con este algoritmo la empresa DeepMind consiguió desarrollar un agente capaz de jugar a los juegos de la clásica consola Atari, superando con creces el rendimiento de los jugadores profesionales en algunos juegos. Este algoritmo está diseñado para actuar sobre un conjunto de acciones discretas, como son las acciones de la consola Atari.
+El algoritmo DQN (\textit{Deep Q-network}) es un algoritmo basado en \textit{Q-learning} desarrollado por Mnih et al. \cite{mnih2015human} en 2015. Con este algoritmo la empresa DeepMind consiguió desarrollar un agente capaz de jugar a los juegos de la clásica consola Atari, superando con creces el rendimiento de los jugadores profesionales en algunos juegos. Este algoritmo está diseñado para actuar sobre un conjunto de acciones discretas, como son las acciones de la consola Atari.
 
 El nombre del algoritmo, hace referencia al empleo de una red neuronal profunda (\textit{Deep Network}) como aproximador de la función Q (\textit{Q-network}).
 Este algoritmo introduce, principalmente, dos modificaciones sobre los algoritmos Q que favorecen el aprendizaje:
@@ -426,7 +426,7 @@ Este algoritmo introduce, principalmente, dos modificaciones sobre los algoritmo
 	\begin{equation}
 	y_i= \mathbb{E}_{s'}[ r + \gamma \; {\text{max}_{a'}} \; \hat Q(s',a';\theta^-)]
 	\end{equation}
-	En este algoritmo se realiza la optimización mediante el algoritmo SDG de la funcion de pérdida \ref{eq:1}.  Cada $C$ pasos se reinicia la función Q con los valores del objetivo $Q=\hat Q$.
+	En este algoritmo se realiza la optimización mediante el algoritmo SDG de la función de pérdida \ref{eq:1}.  Cada $C$ pasos se reinicia la función Q con los valores del objetivo $Q=\hat Q$.
 	
 	Al emplear una red con parámetros desactualizados, a la hora de actualizar la red, se  reduce las oscilaciones en el entrenamiento y se favorece la convergencia.
 	
@@ -441,11 +441,11 @@ En este algoritmo, la política $\pi$ que dicta que acción $a$ es la más conve
 es decir, se escoge la acción $a$ que maximice la función Q en ese estado.
 \subsubsection{DDPG}
 
-El algoritmo DDPG (\textit{Deep Deterministic Policy Gradient}), creado por Lillicrap et al. \tb{citar} en 2016, adapta las ideas del DQN a un dominio de acciones continuo. Este algoritmo emplea la filosofía \textit{actor-critic}, en la que una parte evalúa el valor de una accion en un estado (crítico) y  otra define la política que debe realizar el agente (actor).
+El algoritmo DDPG (\textit{Deep Deterministic Policy Gradient}), creado por Lillicrap et al. \cite{lillicrap2015continuous} en 2016, adapta las ideas del DQN a un dominio de acciones continuo. Este algoritmo emplea la filosofía \textit{actor-critic}, en la que una parte evalúa el valor de una acción en un estado (crítico) y  otra define la política que debe realizar el agente (actor).
 
 La función actor $\mu(s|\theta^\mu)$ devuelve la acción que se debe realizar en el estado $s$, es decir, la política $\pi$ que debe seguir el agente. El crítico $Q(s,a)$ se entrena empleando la identidad de Bellman al igual que en los algoritmos de \textit{Q-learning}.
 
-Para actualizar los pesos de la función actor se emplea el gradiente de la función de coste empleados por Silver et al. \tb{citar DPG paper} 
+Para actualizar los pesos de la función actor se emplea el gradiente de la función de coste empleados por Silver et al. \cite{silver2014deterministic}
 
 	\begin{align}
 		\nabla_{\theta^\mu}J &\approx \mathbb{E}_{s_t \sim \rho}\left[ \nabla_{\theta^\mu} Q(s,a |\theta^Q)|_{s=s_t,a=\mu(s_t|\theta^\mu)}\right]\\
@@ -457,7 +457,7 @@ Para favorecer la exploración del algoritmo se genera una política de explorac
 		 \mu'(s_t)=\mu(s_t|\theta^\mu_t) + \mathcal{N}
 	\end{equation}
 
-este ruido se puede generar de varias formas, en el artículo se emplea ruido generado mediante el proceso de Ornstein-Uhlenbeck \tb{(citar)} para generar ruido correlado temporalmente.
+este ruido se puede generar de varias formas, en el artículo se emplea ruido generado mediante el proceso de Ornstein-Uhlenbeck \cite{uhlenbeck1930theory} para generar ruido correlado temporalmente.
 
 Este algoritmo mantiene el contenedor de repeticiones y el empleo de redes objetivo del DQN aunque añade alguna modificación en esta última. En vez de reiniciar el valor de la red  con el valor de la red objetivo cada $C$ épocas, en el DDPG, esta actualización de las redes $Q$ y $\mu$ se realiza de forma suave mediante una media ponderada móvil.
 \begin{align}
@@ -478,7 +478,7 @@ siendo $r(\tau)$ la recompensa total obtenida al realizar una trayectoria $\tau$
 \begin{equation}
 	\theta_{t+1} = \theta_t + \alpha \nabla J (\theta_t)
 \end{equation}
-por lo que el objetivo es encontrar el gradiente $\nabla J (\theta_t)$ e iterar en el tiempo para obtener la política optima. El teorema del gradiente de política \tb{citar} se obtiene que 
+por lo que el objetivo es encontrar el gradiente $\nabla J (\theta_t)$ e iterar en el tiempo para obtener la política optima. El teorema del gradiente de política  \cite{silver2014deterministic} se obtiene que 
 
 \begin{equation}\label{eq:2}
 	\nabla J (\theta_t) = \mathbb{E}_\pi\left[\sum_{t=0}^{\infty}\gamma^t  \nabla_\theta \log \pi_\theta(a_t|s_t) A^{\pi_\theta}(s_t,a_t)\right]
@@ -492,7 +492,7 @@ intuitivamente, la función de ventaja representa el beneficio o perjuicio de el
 
 \subsubsection{TRPO}
 
-El algoritmo TRPO \textit{(Trust Region Policy Optimization)} es un algortimo desarrollado por Schulman et al. \tb{citar} en 2017, que emplea el concepto de la región de confianza (\textit{Trust Region}) para favorecer la convergencia del entrenamiento.
+El algoritmo TRPO \textit{(Trust Region Policy Optimization)} es un algoritmo desarrollado por Schulman et al. \cite{schulman2017proximal} en 2017, que emplea el concepto de la región de confianza (\textit{Trust Region}) para favorecer la convergencia del entrenamiento.
 
 La región de confianza limita el cambio que puede sufrir la política en cada iteración, de esta forma, primero se establece el tamaño máximo del paso y posteriormente se localiza el punto óptimo dentro de esta región.
 
@@ -514,9 +514,9 @@ La expresión \ref{eq:3} es una función límite inferior a $J(\theta^*)$, es de
 Al emplear este método, junto con las limitaciones impuestas con la región de confianza, se consigue mejorar la convergencia del entrenamiento a la solución óptima.
 
 \subsubsection{PPO}
-El algoritmo PPO (\textit{Proximal Policy Optimization}), fue desarrollado por Schulman et al. \tb{cite} en 2017, como una mejora del algoritmo TRPO explicado anteriormente. El algoritmo TRPO tiene una complejidad de implementación muy elevada, el objetivo PPO era simplifica esta complejidad y consigue mejorar el rendimiento de su predecesor.
+El algoritmo PPO (\textit{Proximal Policy Optimization}), fue desarrollado por Schulman et al. \cite{schulman2017proximal} en 2017, como una mejora del algoritmo TRPO explicado anteriormente. El algoritmo TRPO tiene una complejidad de implementación muy elevada, el PPO simplifica esta complejidad y consigue mejorar el rendimiento de su predecesor.
 
-Este algoritmo tiene dos variantes, aunque, en este trabajo, solamente se tratará sobre la variante que ``recorta'' el objetivo (\textit{Clipped Surrogate Objetive}).
+Este algoritmo tiene dos variantes, referidas en el artículo \cite{schulman2017proximal} como \textit{Adaptative KL Penalty Coefficient} y \textit{Clipper Surrogate Objetive}. aunque, en este trabajo, solamente se tratará sobre esta última, la variante que ``recorta'' el objetivo 
 
 Sea $r_t(\theta)$ el radio de probabilidad $r_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}(a_t|s_t)}}$, empleando esto en la expresión de la función objetivo del TRPO (eq. \ref{eq:3})
 
@@ -531,7 +531,7 @@ Si no hubiera ninguna limitación, al maximizar $L^{\text{CPI}}$, se realizaría
 	L^{\text{CLIP}}	(\theta) = 	{\mathbb{\hat E}_t} \left[ \text{min} \left(r_t(\theta)\hat{A}_t \;,\; \text{clip}(r_t(\theta),1-\epsilon,1+\epsilon )\;\hat{A}_t \right) \right]
 \end{equation}
 
-donde $\epsilon$ es un hiperparámetro, por ejemplo, $\epsilon = 0.2$. De esta forma, se limita que se potencien mucho las acciones realizadas, cuando la ventaja es positiva y que , cuando la ventaja sea negativa, no se rechacen de forma permantente las acciones realizadas, véase \cref{ppo_clip}.
+donde $\epsilon$ es un hiperparámetro, por ejemplo, $\epsilon = 0.2$. De esta forma, se limita que se potencien mucho las acciones realizadas, cuando la ventaja es positiva y que , cuando la ventaja sea negativa, no se rechacen de forma permanente las acciones realizadas, véase \cref{ppo_clip}.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{background/ppo_clip}
@@ -539,4 +539,4 @@ donde $\epsilon$ es un hiperparámetro, por ejemplo, $\epsilon = 0.2$. De esta f
 	\label{ppo_clip}
 \end{figure}
 
-De esta manera, la función objetivo se puede optimizar con un un optimizador de primer order, por lo que, aunque a veces se tomen algunas acciones erroneas, se consigue obtener un mejor rendimiento de una forma mucho mas sencilla al TRPO.
+De esta manera, la función objetivo se puede optimizar con un un optimizador de primer orden, por lo que, aunque a veces se tomen algunas acciones erróneas, se consigue obtener un mejor rendimiento de una forma mucho mas sencilla al TRPO.

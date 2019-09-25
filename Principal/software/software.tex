@@ -4,7 +4,7 @@ Durante el transcurso de este trabajo se ha dividido el desarrollo del software 
 
 \section{Software del Autopiloto}
 	
-	El autopiloto es la parte del multirrotor que se encarga de generar las acciones de control o comandos, que permitan que el dron llegue a un determinado estado.
+	El autopiloto es la parte del multirrotor que se encarga de generar las acciones de control o comandos, que permitan que el cuadricóptero llegue a un determinado estado.
 	Para generar esas acciones de control, el autopiloto estima el estado de la aeronave en cada instante mediante las lecturas de las IMUs y en función del estado genera las acciones de control pertinentes para mantener la estabilidad de la aeronave. Además el autopiloto que se ha desarrollado cuenta con un interfaz WiFi, por lo que permite enviar y recibir datos del autopiloto a una estación de tierra. A continuación se profundizará en como se han llevado a cabo estas tareas.
 
 \subsection{Estimación del Estado}
@@ -36,7 +36,6 @@ Durante el transcurso de este trabajo se ha dividido el desarrollo del software 
 
 \subsection{Generacion de comandos \textit{on-board}}
 	Para poder maximizar la frecuencia del algoritmo de control y permitir el control de la aeronave sin necesidad de una estación de tierra, los algoritmos de control validados en la simulación se pueden implementar directamente en el autopiloto, fijando previamente la frecuencia a la que se desea que se ejecute el algoritmo. 
-	\tb{actualizar en el momento}
 	En este trabajo se han implementado a bordo dos algoritmos de control distintos: un regulador PID clásico y un regulador PID en cascada.
 	
 \section{Software de la estación}
@@ -47,31 +46,33 @@ A continuación se profundizará con más detalle en la implementación de estas
 
 \subsection{Entorno de simulación}
 
-En cualquier proyecto de robótica es conveniente contar con un entorno de simulación que permita realizar pruebas en distintas situación de forma sencilla y rápida, sin necesidad de tener ni modelo real, ni el entorno concreto en el que quieras probar tu robot. Cuando se trabaja con drones, la simulación pasa de ser conveniente a ser muy necesaria. Ésto es debido a la peligrosidad intrínseca de estas aeronaves, ya que, cuentan con hélices que giran a gran velocidad.
+En cualquier proyecto de robótica es conveniente contar con un entorno de simulación que permita realizar pruebas en distintas situación de forma sencilla y rápida, sin necesidad de tener ni modelo real, ni el entorno concreto en el que quieras probar tu robot. Cuando se trabaja con cuadricópteros, la simulación pasa de ser conveniente a ser muy necesaria. Ésto es debido a la peligrosidad intrínseca de estas aeronaves, ya que, cuentan con hélices que giran a gran velocidad.
 
-%Es por esto que es necesario contar con un entorno de simulación en el que se puedan probar los algoritmos de control antes de llevarlos a la realidad, con el objetivo de minimizar los riesgos de estas pruebas.Si a todo esto se le añade la experimentación con algoritmos de aprendizaje por refuerzo e inteligencia artificial, la simulación y entrenamiento previos se hacen imprescindibles 
 
-Debido a la naturaleza del apredizaje por refuerzo, este requiere de la interacción de un agente con un entorno para que el agente aprenda que acciones son las que debe tomar en cada estado. Esto significa que al comienzo del entrenamiento el agente realiza acciones aleatorias para poder explorar cuales son las que le proporcionan una recompensa mayor.
+Debido a la naturaleza del aprendizaje por refuerzo, este requiere de la interacción de un agente con un entorno para que el agente aprenda que acciones son las que debe tomar en cada estado. Esto significa que al comienzo del entrenamiento el agente realiza acciones aleatorias para poder explorar cuales son las que le proporcionan una recompensa mayor.
 
 Debido a esta forma de explorar, el agente requiere de una gran cantidad de pruebas, de ensayo y error, hasta que consigue aprender, por lo que no es conveniente realizar todas estas iteraciones en un modelo real.
 
 Por estas razones se necesita de un entorno de simulación para poder validar los algoritmos y poder generar modelos entrenados en simulación sin deteriorar el equipo real. Además el entorno en simulación te permite entrenar distintos agentes simultáneamente y reducir los tiempos de entrenamiento.
 
-Para el entorno de simulación nos hemos basado en Gym \tb{citar},una librería escrita en Python y desarrollada por la compañía OpenAI, que permite desarrollar y comparar algoritmos de aprendizaje por refuerzo. Esta librería te permite generar un entorno con el cual interactúe el agente, sin importar la implementación de éste, permitiendo comparar el rendimiento de distintos agentes sobre el mismo entorno.
-\tb{IMAGEN GYM}
+Para el entorno de simulación nos hemos basado en Gym \cite{brockman2016openai},una librería escrita en Python y desarrollada por la compañía OpenAI, que permite desarrollar y comparar algoritmos de aprendizaje por refuerzo. Esta librería te permite generar un entorno con el cual interactúe el agente, sin importar la implementación de éste, permitiendo comparar el rendimiento de distintos agentes sobre el mismo entorno.
 
-\tb{revisar} Como entorno de simulación se ha partido de GymFC, desarrollado por William Koch et al. \cite{koch2019reinforcement}.
+Como entorno de simulación se ha partido de GymFC, desarrollado por William Koch et al. \cite{koch2019reinforcement}.
 Este entorno de simulación utiliza Gazebo 9, un entorno de simulación 3D de código abierto ampliamente utilizado en el campo de la robótica. En este entorno se simula el comportamiento de un multirrotor, concretamente el de un modelo del cuadricóptero IRIS.
-\tb{imagen GYMFC}
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{software/gymfc}
+	\caption{Entorno de simulación GymFC en Gazebo 9}
+	\label{d}
+\end{figure}
 
 Para acercar la simulación a la configuración de los experimentos que se realizarían posteriormente en la plataforma real, se han realizado algunas modificaciones sobre el modelo predeterminado de la aeronave:
 
 \begin{enumerate}
-	\item Se ha modificado la forma de anclaje del cuadricóptero. Originalmente el dron se encontraba anclado entorno a una articulación situada en su centro de gravedad. Esto permitía que el peso de la aeronave apenas tuviera influencia a la hora de rotar la aeronave, todo el peso estaba sustentado por la articulación, lo cual no se asemeja con los bancos de pruebas que se han diseñado. En estos bancos de prueba el anclaje se encuentra desplazado con respecto al centro de gravedad, por lo que cuanto mayor sea el valor de los ángulos $\varphi$ y $\theta$ mayor es la influencia del peso en el par necesario para estabilizar la aeronave. Es por esto que se ha desplazado la articulación del centro de gravedad y se ha conectado a la aeronave mediante una unión rígida, asemejando así el entorno de simulación al entorno de pruebas real.
+	\item Se ha modificado la forma de anclaje del cuadricóptero. Originalmente el cuadricóptero se encontraba anclado entorno a una articulación situada en su centro de gravedad. Esto permitía que el peso de la aeronave apenas tuviera influencia a la hora de rotar la aeronave, todo el peso estaba sustentado por la articulación, lo cual no se asemeja con los bancos de pruebas que se han diseñado. En estos bancos de prueba el anclaje se encuentra desplazado con respecto al centro de gravedad, por lo que cuanto mayor sea el valor de los ángulos $\varphi$ y $\theta$ mayor es la influencia del peso en el par necesario para estabilizar la aeronave. Es por esto que se ha desplazado la articulación del centro de gravedad y se ha conectado a la aeronave mediante una unión rígida, asemejando así el entorno de simulación al entorno de pruebas real.
 	\item Se ha modificado parámetros dinámicos de la aeronave. Los parámetros que mayor discrepancia tenían entre la simulación y el mundo real eran principalmente los parámetros inerciales. Tanto la masa como los momentos de inercia del cuadricóptero eran mucho inferiores a los de la aeronave real. Esto se manifestaba principalmente cuando al hacer pruebas con los algoritmos PID el comportamiento simulado no se parecía con el real, por ejemplo en simulación un regulador P era capaz de estabilizar al sistema, mientras que en la realidad un regulador P era inestable de por sí y requería de las acciones derivativa e integral para conseguir estabilizarlo.
 \end{enumerate}
-
-%Para acercar la simulación a la configuración de los experimentos que se realizarían posteriormente en la plataforma real, se ha situado una articulación en su centro de gravedad que fija la posición de su centro pero permite rotar el numero de grados de libertad que se predefina.
 
 
  \subsection{Agente (generación de comandos)}
@@ -82,10 +83,7 @@ Para acercar la simulación a la configuración de los experimentos que se reali
  En este caso, el agente recibe las observaciones del entorno a través del estado y en función de éste, produce la salida a los motores. Este agente es el más sencillo, ya que , una vez ajustadas las ganancias, éste solamente debe enviar los comandos de control a la aeronave.
  
  \subsubsection{Agente con algoritmos de RL}
- Este agente, se encarga, tanto de generar las acciones como de optimizar la política que las genera.
- 
- 
- El agente, basado en el estado observado $s_t$ y la política $\pi$ actual, genera una acción $a_t$, tras realizarla, el entorno le proporciona un estado $s_{t+1}$ y una recompensa $r_t$.
+ Este agente, se encarga, tanto de generar las acciones como de optimizar la política que las genera. El agente, basado en el estado observado $s_t$ y la política $\pi$ actual, genera una acción $a_t$, tras realizarla, el entorno le proporciona un estado $s_{t+1}$ y una recompensa $r_t$.
  Con esta tupla $[s_t,a_t,r_t,s_{t+1}]$ el agente emplea el algoritmo de aprendizaje por refuerzo definido para actualizar la política $\pi$ y así intentar mejorarla con cada iteración. 
 
 Para probar distintos distintos algoritmos se han empleado la implementación de los algoritmos del estado del arte, del repositorio de GitHub \textit{Stable-Baselines} \cite{stable-baselines}. Inicialmente se comenzó empleando las \textit{Baselines} de OpenAI \cite{OpenAIbaselines} pero se decidió cambiar a las \textit{Stable Baselines} por la limpieza del código y la facilidad para realizar experimentos con diversos algoritmos e hiperparámetros. Con esta herramienta se ha podido experimentar con distintos algoritmos para comparar el rendimiento conseguido de cada uno.
@@ -93,7 +91,7 @@ Para probar distintos distintos algoritmos se han empleado la implementación de
 
 \subsection{Interfaz Estación-Autopiloto}
 
-Para las pruebas reales se ha empleado ROS (Robotic Operative System) Melodic para gestionar la comunicación WiFi con la aeronave y la comunicación con el agente. Para esto se emplea la estructura de \textit{topics}: un \textit{topic} se emplea para enviar datos a la aeronave y otro \textit{topic} publica los datos recibidos por ésta. De esta manera se pueden utilizar las herramientas de ROS para poder monitorizar el proceso además de aprovechar la estructura de \textit{topics} para poder intregrar código escrito en distintos lenguajes de forma sencilla.
+Para las pruebas reales se ha empleado ROS (Robotic Operative System) Melodic para gestionar la comunicación WiFi con la aeronave y la comunicación con el agente. Para esto se emplea la estructura de \textit{topics}: un \textit{topic} se emplea para enviar datos a la aeronave y otro \textit{topic} publica los datos recibidos por ésta. De esta manera se pueden utilizar las herramientas de ROS para poder monitorizar el proceso además de aprovechar la estructura de \textit{topics} para poder integrar código escrito en distintos lenguajes de forma sencilla.
 
 \begin{figure}[htb!]
 	\centering

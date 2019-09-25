@@ -1,72 +1,73 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{6}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivaci\IeC {\'o}n}{6}{section.1.1}
-\contentsline {section}{\numberline {1.2}Soluci\IeC {\'o}n propuesta}{7}{section.1.2}
-\contentsline {section}{\numberline {1.3}Objetivos}{8}{section.1.3}
-\contentsline {chapter}{\numberline {2}Estado del arte}{9}{chapter.2}
-\contentsline {section}{\numberline {2.1}Plataformas de control de cuadric\IeC {\'o}pteros}{9}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Plataformas tipo gimbal}{9}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Plataformas con uni\IeC {\'o}n esf\IeC {\'e}rica}{10}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Aprendizaje por refuerzo}{12}{section.2.2}
-\contentsline {chapter}{\numberline {3}Fundamentos te\IeC {\'o}ricos}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}Controlador PID}{13}{section.3.1}
-\contentsline {subsubsection}{Control de la aeronave }{14}{subsubsection*.11}
-\contentsline {section}{\numberline {3.2}Redes neuronales artificiales}{15}{section.3.2}
-\contentsline {section}{\numberline {3.3}Aprendizaje por refuerzo}{17}{section.3.3}
-\contentsline {subsubsection}{Elementos del aprendizaje por refuerzo}{17}{subsubsection*.19}
-\contentsline {subsubsection}{Procesos de decisi\IeC {\'o}n de Markov}{18}{subsubsection*.20}
-\contentsline {subsection}{\numberline {3.3.1}Algoritmos de \textit {Q-learning}}{19}{subsection.3.3.1}
-\contentsline {subsubsection}{DQN}{20}{subsubsection*.21}
-\contentsline {subsubsection}{DDPG}{21}{subsubsection*.22}
-\contentsline {subsection}{\numberline {3.3.2}Algoritmos de gradiente de pol\IeC {\'\i }tica}{21}{subsection.3.3.2}
-\contentsline {subsubsection}{TRPO}{22}{subsubsection*.23}
-\contentsline {subsubsection}{PPO}{22}{subsubsection*.25}
-\contentsline {chapter}{\numberline {4}Hardware}{24}{chapter.4}
-\contentsline {section}{\numberline {4.1}Cuadro}{25}{section.4.1}
-\contentsline {section}{\numberline {4.2}Motores y h\IeC {\'e}lices}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}Variadores (ESC)}{28}{section.4.3}
-\contentsline {section}{\numberline {4.4}Bater\IeC {\'\i }as}{29}{section.4.4}
-\contentsline {section}{\numberline {4.5}Autopiloto}{29}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Fase de Potencia}{30}{subsection.4.5.1}
-\contentsline {subsubsection}{Interruptor de potencia}{31}{subsubsection*.40}
-\contentsline {subsubsection}{Regulador a 3.3V}{31}{subsubsection*.41}
-\contentsline {subsection}{\numberline {4.5.2}El microcontrolador (ESP32)}{31}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Sensores}{32}{subsection.4.5.3}
-\contentsline {section}{\numberline {4.6}Banco de pruebas}{32}{section.4.6}
-\contentsline {chapter}{\numberline {5}Software}{35}{chapter.5}
-\contentsline {section}{\numberline {5.1}Software del Autopiloto}{35}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Estimaci\IeC {\'o}n del Estado}{35}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Interfaz WiFi}{35}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Generacion de comandos \textit {on-board}}{36}{subsection.5.1.3}
-\contentsline {section}{\numberline {5.2}Software de la estaci\IeC {\'o}n}{36}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Entorno de simulaci\IeC {\'o}n}{36}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Agente (generaci\IeC {\'o}n de comandos)}{38}{subsection.5.2.2}
-\contentsline {subsubsection}{Agente con algoritmos PID}{38}{subsubsection*.46}
-\contentsline {subsubsection}{Agente con algoritmos de RL}{38}{subsubsection*.47}
-\contentsline {subsection}{\numberline {5.2.3}Interfaz Estaci\IeC {\'o}n-Autopiloto}{38}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Descripci\IeC {\'o}n del equipo}{39}{section.5.3}
-\contentsline {chapter}{\numberline {6}Metodolog\IeC {\'\i }a (\leavevmode {\color {blue}Problem Formulation})}{40}{chapter.6}
-\contentsline {section}{\numberline {6.1}Dise\IeC {\~n}o del estado}{40}{section.6.1}
-\contentsline {section}{\numberline {6.2}Dise\IeC {\~n}o de las acciones}{40}{section.6.2}
-\contentsline {section}{\numberline {6.3}Dise\IeC {\~n}o de la funci\IeC {\'o}n de recompensa y ajuste de hiperpar\IeC {\'a}metros}{41}{section.6.3}
-\contentsline {subsubsection}{Funci\IeC {\'o}n de recompensa}{41}{subsubsection*.50}
-\contentsline {subsubsection}{Ajuste de hiperpar\IeC {\'a}metros}{42}{subsubsection*.52}
-\contentsline {chapter}{\numberline {7}Experimentos}{43}{chapter.7}
-\contentsline {section}{\numberline {7.1}Experimentos en simulaci\IeC {\'o}n}{43}{section.7.1}
-\contentsline {subsubsection}{Control en 1 GdL (\textit {Roll})}{43}{subsubsection*.53}
-\contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{44}{subsubsection*.55}
-\contentsline {subsubsection}{Control en los 3 GdL}{44}{subsubsection*.57}
-\contentsline {section}{\numberline {7.2}Experimentos en real}{44}{section.7.2}
-\contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{44}{subsubsection*.59}
-\contentsline {subsubsection}{Control en 1 Gdl (\textit {Roll})}{44}{subsubsection*.62}
-\contentsline {subsubsection}{Control en los 3 Gdl}{46}{subsubsection*.65}
-\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{49}{chapter.8}
-\contentsline {section}{\numberline {8.1}Conclusiones}{49}{section.8.1}
-\contentsline {subsubsection}{Autopiloto}{49}{subsubsection*.68}
-\contentsline {subsubsection}{Plataforma de vuelo}{49}{subsubsection*.69}
-\contentsline {subsubsection}{Algoritmos basados en aprendizaje por refuerzo}{50}{subsubsection*.70}
-\contentsline {section}{\numberline {8.2}Trabajo futuro}{50}{section.8.2}
-\contentsline {chapter}{\numberline {A}Presupuesto y Planificaci\IeC {\'o}n}{51}{appendix.Alph1}
-\contentsline {section}{\numberline {A.1}Presupuesto}{51}{section.Alph1.1}
-\contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n}{52}{section.Alph1.2}
-\contentsline {chapter}{\numberline {B}Impacto social y medioambiental}{54}{appendix.Alph2}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{10}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivaci\IeC {\'o}n}{10}{section.1.1}
+\contentsline {section}{\numberline {1.2}Soluci\IeC {\'o}n propuesta}{11}{section.1.2}
+\contentsline {section}{\numberline {1.3}Objetivos}{12}{section.1.3}
+\contentsline {chapter}{\numberline {2}Estado del arte}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Plataformas de control de cuadric\IeC {\'o}pteros}{13}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Plataformas tipo gimbal}{13}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Plataformas con uni\IeC {\'o}n esf\IeC {\'e}rica}{14}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Aprendizaje por refuerzo}{16}{section.2.2}
+\contentsline {chapter}{\numberline {3}Fundamentos te\IeC {\'o}ricos}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Controlador PID}{17}{section.3.1}
+\contentsline {subsubsection}{Control de la aeronave }{17}{subsubsection*.13}
+\contentsline {section}{\numberline {3.2}Redes neuronales artificiales}{19}{section.3.2}
+\contentsline {section}{\numberline {3.3}Aprendizaje por refuerzo}{21}{section.3.3}
+\contentsline {subsubsection}{Elementos del aprendizaje por refuerzo}{21}{subsubsection*.21}
+\contentsline {subsubsection}{Procesos de decisi\IeC {\'o}n de Markov}{22}{subsubsection*.22}
+\contentsline {subsection}{\numberline {3.3.1}Algoritmos de \textit {Q-learning}}{23}{subsection.3.3.1}
+\contentsline {subsubsection}{DQN}{24}{subsubsection*.23}
+\contentsline {subsubsection}{DDPG}{25}{subsubsection*.24}
+\contentsline {subsection}{\numberline {3.3.2}Algoritmos de gradiente de pol\IeC {\'\i }tica}{25}{subsection.3.3.2}
+\contentsline {subsubsection}{TRPO}{26}{subsubsection*.25}
+\contentsline {subsubsection}{PPO}{26}{subsubsection*.27}
+\contentsline {chapter}{\numberline {4}Hardware}{28}{chapter.4}
+\contentsline {section}{\numberline {4.1}Cuadro}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}Motores y h\IeC {\'e}lices}{31}{section.4.2}
+\contentsline {section}{\numberline {4.3}Variadores (ESC)}{32}{section.4.3}
+\contentsline {section}{\numberline {4.4}Bater\IeC {\'\i }as}{33}{section.4.4}
+\contentsline {section}{\numberline {4.5}Autopiloto}{33}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Fase de Potencia}{34}{subsection.4.5.1}
+\contentsline {subsubsection}{Interruptor de potencia}{35}{subsubsection*.42}
+\contentsline {subsubsection}{Regulador a 3.3V}{35}{subsubsection*.43}
+\contentsline {subsection}{\numberline {4.5.2}El microcontrolador (ESP32)}{35}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Sensores}{36}{subsection.4.5.3}
+\contentsline {section}{\numberline {4.6}Banco de pruebas}{36}{section.4.6}
+\contentsline {chapter}{\numberline {5}Software}{39}{chapter.5}
+\contentsline {section}{\numberline {5.1}Software del Autopiloto}{39}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Estimaci\IeC {\'o}n del Estado}{39}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Interfaz WiFi}{39}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Generacion de comandos \textit {on-board}}{40}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Software de la estaci\IeC {\'o}n}{40}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Entorno de simulaci\IeC {\'o}n}{40}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Agente (generaci\IeC {\'o}n de comandos)}{42}{subsection.5.2.2}
+\contentsline {subsubsection}{Agente con algoritmos PID}{42}{subsubsection*.50}
+\contentsline {subsubsection}{Agente con algoritmos de RL}{42}{subsubsection*.51}
+\contentsline {subsection}{\numberline {5.2.3}Interfaz Estaci\IeC {\'o}n-Autopiloto}{42}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Descripci\IeC {\'o}n del equipo}{43}{section.5.3}
+\contentsline {chapter}{\numberline {6}Metodolog\IeC {\'\i }a}{44}{chapter.6}
+\contentsline {section}{\numberline {6.1}Dise\IeC {\~n}o del estado}{44}{section.6.1}
+\contentsline {section}{\numberline {6.2}Dise\IeC {\~n}o de las acciones}{44}{section.6.2}
+\contentsline {section}{\numberline {6.3}Dise\IeC {\~n}o de la funci\IeC {\'o}n de recompensa y ajuste de hiperpar\IeC {\'a}metros}{45}{section.6.3}
+\contentsline {subsubsection}{Funci\IeC {\'o}n de recompensa}{45}{subsubsection*.54}
+\contentsline {subsubsection}{Ajuste de hiperpar\IeC {\'a}metros}{46}{subsubsection*.56}
+\contentsline {chapter}{\numberline {7}Experimentos}{47}{chapter.7}
+\contentsline {section}{\numberline {7.1}Experimentos en simulaci\IeC {\'o}n}{47}{section.7.1}
+\contentsline {subsubsection}{Control en 1 GdL (\textit {Roll})}{47}{subsubsection*.57}
+\contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{48}{subsubsection*.59}
+\contentsline {subsubsection}{Control en los 3 GdL}{48}{subsubsection*.61}
+\contentsline {section}{\numberline {7.2}Experimentos en real}{48}{section.7.2}
+\contentsline {subsubsection}{Control en 1 GdL (\textit {Pitch})}{48}{subsubsection*.63}
+\contentsline {subsubsection}{Control en 1 Gdl (\textit {Roll})}{48}{subsubsection*.66}
+\contentsline {subsubsection}{Control en los 3 Gdl}{51}{subsubsection*.69}
+\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{53}{chapter.8}
+\contentsline {section}{\numberline {8.1}Conclusiones}{53}{section.8.1}
+\contentsline {subsubsection}{Autopiloto}{53}{subsubsection*.72}
+\contentsline {subsubsection}{Plataforma de vuelo}{53}{subsubsection*.73}
+\contentsline {subsubsection}{Algoritmos basados en aprendizaje por refuerzo}{54}{subsubsection*.74}
+\contentsline {section}{\numberline {8.2}Trabajo futuro}{54}{section.8.2}
+\contentsline {chapter}{\numberline {A}Esquem\IeC {\'a}ticos del autopiloto}{55}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Presupuesto y Planificaci\IeC {\'o}n}{59}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Presupuesto}{59}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Planificaci\IeC {\'o}n}{60}{section.Alph2.2}
+\contentsline {chapter}{\numberline {C}Impacto social y medioambiental}{62}{appendix.Alph3}

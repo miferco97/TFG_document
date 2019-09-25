@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: principal.aux
 The style file: IEEEtran.bst
@@ -12,46 +12,48 @@ Database file #2: workBibliography.bib
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty booktitle in silver2014deterministic
 
 Done.
-You've used 10 entries,
+You've used 19 entries,
             4024 wiz_defined-function locations,
-            1235 strings with 16398 characters,
-and the built_in function-call counts, 7166 in all, are:
-= -- 532
-> -- 234
-< -- 43
-+ -- 122
-- -- 48
-* -- 351
-:= -- 1058
-add.period$ -- 21
-call.type$ -- 10
-change.case$ -- 9
-chr.to.int$ -- 96
-cite$ -- 10
-duplicate$ -- 515
-empty$ -- 587
-format.name$ -- 56
-if$ -- 1629
+            1284 strings with 18325 characters,
+and the built_in function-call counts, 12862 in all, are:
+= -- 942
+> -- 469
+< -- 58
++ -- 238
+- -- 103
+* -- 622
+:= -- 1923
+add.period$ -- 40
+call.type$ -- 19
+change.case$ -- 18
+chr.to.int$ -- 120
+cite$ -- 20
+duplicate$ -- 973
+empty$ -- 1067
+format.name$ -- 120
+if$ -- 2926
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 110
-newline$ -- 57
-num.names$ -- 8
-pop$ -- 294
+int.to.str$ -- 19
+missing$ -- 211
+newline$ -- 84
+num.names$ -- 17
+pop$ -- 568
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 544
+skip$ -- 972
 stack$ -- 0
-substring$ -- 237
-swap$ -- 403
-text.length$ -- 11
+substring$ -- 314
+swap$ -- 718
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 10
-warning$ -- 0
-while$ -- 25
-width$ -- 12
-write$ -- 116
+type$ -- 19
+warning$ -- 1
+while$ -- 40
+width$ -- 21
+write$ -- 194
+(There was 1 warning)
